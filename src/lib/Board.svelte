@@ -56,8 +56,8 @@
 
 <style>
   section {
-    width: 454px;
-    height: 454px;
+    width: 458px;
+    height: 458px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -76,7 +76,24 @@
   }
 
   p {
+    position: absolute;
     font-size: 30px;
     font-weight: 600;
+    bottom: 60px;
+  }
+
+  @media (max-width: 600px) {
+    section {
+      width: 308px;
+      height: 308px;
+    }
+
+    div {
+      font-size: 80px;
+    }
+
+    p {
+      font-size: 20px;
+    }
   }
 </style>
