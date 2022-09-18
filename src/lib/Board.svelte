@@ -76,12 +76,7 @@
   {/each}
 </section>
 {#if isWin || isDraw}
-  {#if isWin}
-    <p>Player {winner} won!</p>
-  {/if}
-  {#if isDraw}
-    <p>Nobody won! Game Drawn!</p>
-  {/if}
+  <p>{isWin ? `Player ${winner} won!` : `Nobody won! Game Drawn!`}</p>
 {/if}
 
 <style>
