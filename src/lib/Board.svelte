@@ -1,22 +1,26 @@
 <script lang="ts">
   let turn: "O" | "X" = "X";
-  
+  let array = ["", "", "", "", "", "", "", "", ""];
+
+  const changeTurn = () => (turn = turn === "X" ? "O" : "X");
+
+  const onClick = (i: number) => {
+    if(array[i]!=="") return
+    array[i] = turn
+    changeTurn();
+  };
 </script>
 
-<div class="container">
-  <div class="cell">X</div>
-  <div class="cell">O</div>
-  <div class="cell">X</div>
-  <div class="cell">O</div>
-  <div class="cell">X</div>
-  <div class="cell">O</div>
-  <div class="cell">X</div>
-  <div class="cell">O</div>
-  <div class="cell">X</div>
-</div>
+<section class="container">
+  {#each array as move, i}
+    <div on:click={() => {onClick(i)}}>
+      {move}
+    </div>
+  {/each}
+</section>
 
 <style>
-  .container {
+  section {
     width: 454px;
     height: 454px;
     display: grid;
@@ -26,7 +30,7 @@
     background-color: black;
   }
 
-  .cell {
+  div {
     display: flex;
     cursor: pointer;
     justify-content: center;
