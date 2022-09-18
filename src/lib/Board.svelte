@@ -1,16 +1,24 @@
 <script lang="ts">
+  import { winLogic } from "./utils";
   import type { Move, Turn } from "./types";
 
   let turn: Turn = "X";
   let win = false;
-  const array: Move[] = ["", "", "", "", "", "", "", "", ""];
-
+  let array: Move[] = Array(9).fill("");
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
 
   const onClick = (i: number) => {
+    if (win) (array = Array(9).fill("")), (win = false);
     if (array[i] !== "") return;
     array[i] = turn;
     changeTurn();
+    checkWin();
+  };
+
+  const checkWin = () => {
+    winLogic.forEach(([a, b, c]) => {
+      if (array[a] && array[a] === array[b] && array[b] === array[c]) return;
+    });
   };
 </script>
 
@@ -21,6 +29,9 @@
     </div>
   {/each}
 </section>
+{#if win}
+  <p>There is a win!</p>
+{/if}
 
 <style>
   section {
