@@ -1,19 +1,24 @@
 <script lang="ts">
+  type move = "X" | "O" | "";
   let turn: "O" | "X" = "X";
-  let array = ["", "", "", "", "", "", "", "", ""];
+  let array: move[] = ["", "", "", "", "", "", "", "", ""];
 
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
 
   const onClick = (i: number) => {
-    if(array[i]!=="") return
-    array[i] = turn
+    if (array[i] !== "") return;
+    array[i] = turn;
     changeTurn();
   };
 </script>
 
 <section class="container">
   {#each array as move, i}
-    <div on:click={() => {onClick(i)}}>
+    <div
+      on:click={() => {
+        onClick(i);
+      }}
+    >
       {move}
     </div>
   {/each}
