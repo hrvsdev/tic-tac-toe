@@ -1,5 +1,7 @@
 <script lang="ts">
+  import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
+
   import type { Move, Turn } from "./types";
 
   // Turn of the game
@@ -66,12 +68,20 @@
     isWin = false;
     isDraw = false;
   };
+
+  // Cell in and out animation
+  const anim = {
+    in: { duration: 100 },
+    out: { duration: 300 },
+  };
 </script>
 
 <section class="container">
   {#each moves as move, i}
     <div on:click={() => onClick(i)}>
-      {move}
+      {#if move}
+        <span in:scale={anim.in} out:scale={anim.out}>{move}</span>
+      {/if}
     </div>
   {/each}
 </section>
@@ -93,11 +103,19 @@
 
   div {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
     cursor: pointer;
+  }
+
+  span {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 110px;
-    background-color: white;
   }
 
   p {
@@ -113,7 +131,7 @@
       height: 308px;
     }
 
-    div {
+    span {
       font-size: 80px;
     }
 
