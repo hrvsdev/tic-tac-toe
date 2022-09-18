@@ -1,10 +1,17 @@
-<script lang="ts">
-  let count = 0
-  const increment = () => {
-    count += 1
-  }
+<script>
+  import Board from "./Board.svelte";
 </script>
 
-<button on:click={increment}>
-  count is {count}
-</button>
+<main>
+  <Board />
+</main>
+
+<style>
+  main {
+    display: flex;
+    width: 100vw;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
