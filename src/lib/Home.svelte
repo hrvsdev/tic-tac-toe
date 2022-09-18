@@ -13,5 +13,6 @@
     min-height: 100vh;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
   }
 </style>
