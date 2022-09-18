@@ -2,37 +2,67 @@
   import { winLogic } from "./utils";
   import type { Move, Turn } from "./types";
 
+  // Turn of the game
   let turn: Turn = "X";
-  let isWin = false;
-  let isDraw = false;
-  let winner: Turn;
+
+  // Moves of the Tic Tac Toe Board
   let moves: Move[] = Array(9).fill("");
 
+  // Winner of the game
+  let winner: Turn;
+
+  // Win and draw state
+  let isWin = false;
+  let isDraw = false;
+
+  // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
 
+  // Cell click action
   const onClick = (i: number) => {
-    if (isWin || isDraw) return onEnd();
+    // Checking if previous game is win or draw and ending it
+    if (isWin || isDraw) return endGame();
+
+    // Returning if cell is not empty
     if (moves[i] !== "") return;
+
+    // Making cell value equal to the current turn
     moves[i] = turn;
+
+    // Changing turn and checking for win
     changeTurn();
     checkWin();
   };
 
+  // Winning move check function
   const checkWin = () => {
-    if (moves.every((v) => v !== "")) return (isDraw = true);
+    // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
+      // Getting value of the first cell of combination
       const move = moves[a];
+
+      // Returning if value is empty
       if (move === "") return;
+
+      // Checking if all values are equal
       if (moves[a] === moves[b] && moves[a] === moves[c]) {
+        // Setting winner and making win state true
         winner = move;
         isWin = true;
         return true;
       }
     });
+
+    // If loop doesn't return, making game draw if all values are filled
+    if (moves.every((v) => v !== "")) return (isDraw = true);
   };
 
-  const onEnd = () => {
+  // Ending the game
+  const endGame = () => {
+    // Emptying the moves array
     moves = Array(9).fill("");
+
+    // Setting win and draw state to false
     isWin = false;
     isDraw = false;
   };
