@@ -8,7 +8,7 @@
   let turn: Turn = "X";
 
   // Moves of the Tic Tac Toe Board
-  let moves: Move[] = Array(9).fill("");
+  let moves: Moves = Array(9).fill({value: "", state: null});
   let conc = Array(9).fill(null);
 
   // Winner of the game
@@ -121,11 +121,11 @@
   }
 
   .win {
-    animation: blink 1s steps(3, start);
+    animation: blink 300ms steps(1) 3;
   }
 
   @keyframes blink {
-    to {
+    50% {
       visibility: hidden;
     }
   }
@@ -141,6 +141,7 @@
     justify-content: center;
     align-items: center;
     font-size: 110px;
+    transition:opacity .1s
   }
 
   p {
