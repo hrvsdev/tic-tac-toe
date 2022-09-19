@@ -2,7 +2,7 @@
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
 
-  import type { Move, Turn } from "./types";
+  import type { Moves, Turn } from "./types";
 
   // Turn of the game
   let turn: Turn = "X";
