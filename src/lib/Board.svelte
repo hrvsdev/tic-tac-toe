@@ -51,20 +51,16 @@
 
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
-        // Setting winner and making win state true
+        // Setting winner
         winner = moveA;
+
+        // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
-          switch (i) {
-            case a:
-              return { value: moveA, state: "W" };
-            case b:
-              return { value: moveB, state: "W" };
-            case c:
-              return { value: moveC, state: "W" };
-            default:
-              return { value: v.value, state: "L" };
-          }
+          if (i === a || i === b || i === c) return { value: moveA, state: "W" };
+          else return { value: v.value, state: "L" };
         });
+
+        // Making win state true
         isWin = true;
         return;
       }
