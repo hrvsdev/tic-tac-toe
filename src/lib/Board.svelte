@@ -41,12 +41,13 @@
   const checkWin = () => {
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
-      console.timeLog()
       // Getting value of the first cell of combination
       const move = moves[a].value;
 
       // Returning if value is empty
       if (!move) return;
+
+      console.log("lol")
 
       // Checking if all values are equal
       if (moves[a] === moves[b] && moves[a] === moves[c]) {
@@ -57,11 +58,10 @@
         moves[b] = { value: move, state: "W" };
         moves[c] = { value: move, state: "W" };
         isWin = true;
-        console.timeEnd()
         return;
       }
       // If loop doesn't return, making game draw if all values are filled
-      if (moves.every((v) => v.value !== null)) return (isDraw = true);
+      // if (moves.every((v) => v.value !== null)) return (isDraw = true);
     });
   };
 
