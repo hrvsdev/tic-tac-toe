@@ -42,12 +42,13 @@
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
       // Getting value of the combination
+      const move = moves[a].value;
       const moveA = moves[a].value;
       const moveB = moves[b].value;
       const moveC = moves[c].value;
 
       // Returning if value is empty
-      if (!moveA) return;
+      if (!move) return;
 
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
@@ -56,7 +57,7 @@
 
         // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
-          if (i === a || i === b || i === c) return { value: moveA, state: "W" };
+          if (i === a || i === b || i === c) return { value: move, state: "W" };
           else return { value: v.value, state: "L" };
         });
 
