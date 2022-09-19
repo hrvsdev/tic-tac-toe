@@ -1,7 +1,9 @@
 <script context="module">
+  import { writable } from "svelte/store";
+
   // Scores of players
-  export let scoreX = 0;
-  export let scoreO = 0;
+  export const scoreX = writable(0);
+  export const scoreO = writable(0);
 </script>
 
 <script lang="ts">
@@ -59,7 +61,7 @@
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
         winner = moveA;
-        winner === "X" ? (scoreX = scoreX + 1) : scoreO + 1;
+        winner === "X" ? scoreX.update((v) => v + 1) : scoreO.update((v) => v + 1);
 
         // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
@@ -88,19 +90,14 @@
 
   // Cell in and out animation
   const anim = {
-    in: { duration: 100 },
+    in: { duration: 100, opacity: 0.4 },
     out: { duration: 0 },
   };
 </script>
 
 <section class="container">
   {#each moves as { value, state }, i}
-    <div
-      on:click={() => onClick(i)}
-      class:lose={state === "L"}
-      class:draw={isDraw}
-      class:win={state === "W"}
-    >
+    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={isDraw}>
       {#if value}
         <span in:scale={anim.in} out:scale={anim.out}>
           {value}
@@ -152,10 +149,6 @@
   .lose > span,
   .draw > span {
     color: rgb(170, 170, 170);
-  }
-
-  .win > span {
-    animation: scale 300ms 3;
   }
 
   @keyframes blink {

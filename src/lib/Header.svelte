@@ -5,12 +5,12 @@
 <div class="header">
   <div class="left">
     <div class="player">PLAYER (X)</div>
-    <div class="score">{scoreX}</div>
+    <div class="score">{$scoreX}</div>
   </div>
   <div class="center" />
   <div class="right">
     <div class="player">PLAYER (O)</div>
-    <div class="score">{scoreO}</div>
+    <div class="score">{$scoreO}</div>
   </div>
 </div>
 
