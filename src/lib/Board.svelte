@@ -9,6 +9,7 @@
 
   // Moves of the Tic Tac Toe Board
   let moves: Move[] = Array(9).fill("");
+  let conc = Array(9).fill(null);
 
   // Winner of the game
   let winner: Turn;
@@ -50,19 +51,23 @@
       if (moves[a] === moves[b] && moves[a] === moves[c]) {
         // Setting winner and making win state true
         winner = move;
+        conc = conc.fill("L");
+        conc[a] = "W";
+        conc[b] = "W";
+        conc[c] = "W";
         isWin = true;
-        return true;
+        return;
       }
+      // If loop doesn't return, making game draw if all values are filled
+      if (moves.every((v) => v !== "")) return (isDraw = true);
     });
-
-    // If loop doesn't return, making game draw if all values are filled
-    if (moves.every((v) => v !== "")) return (isDraw = true);
   };
 
   // Ending the game
   const endGame = () => {
     // Emptying the moves array
-    moves = Array(9).fill("");
+    moves = moves.fill("");
+    conc = conc.fill(null);
 
     // Setting win and draw state to false
     isWin = false;
@@ -72,15 +77,17 @@
   // Cell in and out animation
   const anim = {
     in: { duration: 100 },
-    out: { duration: 300 },
+    out: { duration: 0 },
   };
 </script>
 
 <section class="container">
   {#each moves as move, i}
-    <div on:click={() => onClick(i)}>
+    <div on:click={() => onClick(i)} class:lose={conc[i] === "L"} class:draw={isDraw}>
       {#if move}
-        <span in:scale={anim.in} out:scale={anim.out}>{move}</span>
+        <span in:scale={anim.in} out:scale={anim.out} class:win={conc[i] === "W"}>
+          {move}
+        </span>
       {/if}
     </div>
   {/each}
@@ -107,6 +114,24 @@
     align-items: center;
     background-color: white;
     cursor: pointer;
+  }
+
+  .lose {
+    color: rgb(170, 170, 170);
+  }
+
+  .win {
+    animation: blink 1s steps(3, start);
+  }
+
+  @keyframes blink {
+    to {
+      visibility: hidden;
+    }
+  }
+
+  .draw {
+    color: rgb(170, 170, 170);
   }
 
   span {
