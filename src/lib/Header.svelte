@@ -1,16 +1,16 @@
 <script lang="ts">
-    import {scoreX} from "./Board.svelte"
+  import { scoreO, scoreX } from "./Board.svelte";
 </script>
 
 <div class="header">
   <div class="left">
     <div class="player">PLAYER (X)</div>
-    <div class="score"></div>
+    <div class="score">{scoreX}</div>
   </div>
   <div class="center" />
   <div class="right">
     <div class="player">PLAYER (O)</div>
-    <div class="score">5</div>
+    <div class="score">{scoreO}</div>
   </div>
 </div>
 
@@ -25,12 +25,12 @@
     margin-bottom: 50px;
   }
 
-  .player{
+  .player {
     font-size: 20px;
     margin-bottom: 8px;
   }
 
-  .score{
+  .score {
     font-size: 30px;
     text-align: center;
   }

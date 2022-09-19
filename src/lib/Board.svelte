@@ -1,3 +1,9 @@
+<script context="module">
+  // Scores of players
+  export let scoreX = 0;
+  export let scoreO = 0;
+</script>
+
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
@@ -16,10 +22,6 @@
   // Win and draw state
   let isWin = false;
   let isDraw = false;
-
-  // Scores of players
-  export let scoreX = 0;
-  export let scoreO = 0;
 
   // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
