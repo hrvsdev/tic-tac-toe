@@ -61,6 +61,10 @@
           else return { value: v.value, state: "L" };
         });
 
+        for (let a of document.getAnimations()) {
+          a.startTime = 0;
+        }
+
         // Making win state true
         isWin = true;
         return;
@@ -89,9 +93,14 @@
 
 <section class="container">
   {#each moves as { value, state }, i}
-    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={isDraw}>
+    <div
+      on:click={() => onClick(i)}
+      class:lose={state === "L"}
+      class:draw={isDraw}
+      class:win={state === "W"}
+    >
       {#if value}
-        <span in:scale={anim.in} out:scale={anim.out} class:win={state === "W"}>
+        <span in:scale={anim.in} out:scale={anim.out}>
           {value}
         </span>
       {/if}
@@ -122,24 +131,6 @@
     cursor: pointer;
   }
 
-  .lose {
-    color: rgb(170, 170, 170);
-  }
-
-  .win {
-    animation: blink 300ms steps(1) 3;
-  }
-
-  @keyframes blink {
-    50% {
-      visibility: hidden;
-    }
-  }
-
-  .draw {
-    color: rgb(170, 170, 170);
-  }
-
   span {
     width: calc(100% - 2px);
     height: calc(100% - 2px);
@@ -147,7 +138,6 @@
     justify-content: center;
     align-items: center;
     font-size: 110px;
-    transition: opacity 0.1s;
   }
 
   p {
@@ -155,6 +145,21 @@
     font-size: 30px;
     font-weight: 600;
     bottom: 60px;
+  }
+
+  .lose > span,
+  .draw > span {
+    color: rgb(170, 170, 170);
+  }
+
+  .win > span {
+    animation: blink 300ms 3;
+  }
+
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
   }
 
   @media (max-width: 600px) {
