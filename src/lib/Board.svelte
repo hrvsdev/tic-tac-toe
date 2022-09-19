@@ -153,7 +153,7 @@
   }
 
   .win > span {
-    animation: blink 300ms 3;
+    animation: scale 300ms 3;
   }
 
   @keyframes blink {
