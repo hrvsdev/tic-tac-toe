@@ -41,22 +41,30 @@
   const checkWin = () => {
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
-      // Getting value of the first cell of combination
-      const move = moves[a].value;
+      // Getting value of the combination
+      const moveA = moves[a].value;
+      const moveB = moves[b].value;
+      const moveC = moves[c].value;
 
       // Returning if value is empty
-      if (!move) return;
-
-      console.log("lol")
+      if (!moveA) return;
 
       // Checking if all values are equal
-      if (moves[a] === moves[b] && moves[a] === moves[c]) {
+      if (moveA === moveB && moveA === moveC) {
         // Setting winner and making win state true
-        winner = move;
-        moves = moves.map((v) => ({ ...v, state: "L" }));
-        moves[a] = { value: move, state: "W" };
-        moves[b] = { value: move, state: "W" };
-        moves[c] = { value: move, state: "W" };
+        winner = moveA;
+        moves = moves.map((v, i) => {
+          switch (i) {
+            case a:
+              return { value: moveA, state: "W" };
+            case b:
+              return { value: moveB, state: "W" };
+            case c:
+              return { value: moveC, state: "W" };
+            default:
+              return { value: v.value, state: "L" };
+          }
+        });
         isWin = true;
         return;
       }
