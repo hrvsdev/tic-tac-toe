@@ -3,13 +3,13 @@
   import { winLogic } from "./utils";
 
   import type { Moves, Turn } from "./types";
+  import { validate_each_argument } from "svelte/internal";
 
   // Turn of the game
   let turn: Turn = "X";
 
   // Moves of the Tic Tac Toe Board
-  let moves: Moves = Array(9).fill({value: "", state: null});
-  let conc = Array(9).fill(null);
+  let moves: Moves = Array(9).fill({ value: "", state: null });
 
   // Winner of the game
   let winner: Turn;
@@ -27,10 +27,10 @@
     if (isWin || isDraw) return endGame();
 
     // Returning if cell is not empty
-    if (moves[i] !== "") return;
+    if (moves[i].value) return;
 
     // Making cell value equal to the current turn
-    moves[i] = turn;
+    moves[i] = { value: turn, state: null };
 
     // Changing turn and checking for win
     changeTurn();
@@ -41,33 +41,34 @@
   const checkWin = () => {
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
+      console.timeLog()
       // Getting value of the first cell of combination
-      const move = moves[a];
+      const move = moves[a].value;
 
       // Returning if value is empty
-      if (move === "") return;
+      if (!move) return;
 
       // Checking if all values are equal
       if (moves[a] === moves[b] && moves[a] === moves[c]) {
         // Setting winner and making win state true
         winner = move;
-        conc = conc.fill("L");
-        conc[a] = "W";
-        conc[b] = "W";
-        conc[c] = "W";
+        moves = moves.map((v) => ({ ...v, state: "L" }));
+        moves[a] = { value: move, state: "W" };
+        moves[b] = { value: move, state: "W" };
+        moves[c] = { value: move, state: "W" };
         isWin = true;
+        console.timeEnd()
         return;
       }
       // If loop doesn't return, making game draw if all values are filled
-      if (moves.every((v) => v !== "")) return (isDraw = true);
+      if (moves.every((v) => v.value !== null)) return (isDraw = true);
     });
   };
 
   // Ending the game
   const endGame = () => {
     // Emptying the moves array
-    moves = moves.fill("");
-    conc = conc.fill(null);
+    moves = moves.fill({ value: null, state: null });
 
     // Setting win and draw state to false
     isWin = false;
@@ -82,11 +83,11 @@
 </script>
 
 <section class="container">
-  {#each moves as move, i}
-    <div on:click={() => onClick(i)} class:lose={conc[i] === "L"} class:draw={isDraw}>
-      {#if move}
-        <span in:scale={anim.in} out:scale={anim.out} class:win={conc[i] === "W"}>
-          {move}
+  {#each moves as { value, state }, i}
+    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={isDraw}>
+      {#if value}
+        <span in:scale={anim.in} out:scale={anim.out} class:win={state === "W"}>
+          {value}
         </span>
       {/if}
     </div>
@@ -141,7 +142,7 @@
     justify-content: center;
     align-items: center;
     font-size: 110px;
-    transition:opacity .1s
+    transition: opacity 0.1s;
   }
 
   p {
