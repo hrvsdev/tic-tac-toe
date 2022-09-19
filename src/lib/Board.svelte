@@ -3,7 +3,6 @@
   import { winLogic } from "./utils";
 
   import type { Moves, Turn } from "./types";
-  import { validate_each_argument } from "svelte/internal";
 
   // Turn of the game
   let turn: Turn = "X";
@@ -17,6 +16,10 @@
   // Win and draw state
   let isWin = false;
   let isDraw = false;
+
+  // Scores of players
+  export let scoreX = 0;
+  export let scoreO = 0;
 
   // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
@@ -54,16 +57,13 @@
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
         winner = moveA;
+        winner === "X" ? (scoreX = scoreX + 1) : scoreO + 1;
 
         // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
           if (i === a || i === b || i === c) return { value: move, state: "W" };
           else return { value: v.value, state: "L" };
         });
-
-        for (let a of document.getAnimations()) {
-          a.startTime = 0;
-        }
 
         // Making win state true
         isWin = true;
