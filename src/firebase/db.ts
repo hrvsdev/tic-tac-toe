@@ -1,10 +1,14 @@
-import { getDatabase, ref, set } from "firebase/database";
+import { collection, getFirestore } from "firebase/firestore";
+import { addDoc } from "firebase/firestore";
+
 import base from "./config";
 
-const db = getDatabase(base);
+const db = getFirestore(base);
 
-const write = (name: string) => {
-  set(ref(db), { name });
+const games = collection(db, "games");
+
+const write = (name: string[]) => {
+  addDoc(games, { name });
 };
 
 export default write;

@@ -34,7 +34,7 @@
     // Checking if previous game is win or draw and ending it
     if (isWin || isDraw) return endGame();
 
-    write("Hello")
+    write(["Hello"])
 
     // Returning if cell is not empty
     if (moves[i].value) return;
