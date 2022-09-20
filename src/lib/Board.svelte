@@ -9,6 +9,7 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
+  import write from "../firebase/db";
 
   import type { Moves, Turn } from "./types";
 
@@ -32,6 +33,8 @@
   const onClick = (i: number) => {
     // Checking if previous game is win or draw and ending it
     if (isWin || isDraw) return endGame();
+
+    write("Hello")
 
     // Returning if cell is not empty
     if (moves[i].value) return;
