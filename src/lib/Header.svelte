@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { scale } from "svelte/transition";
   import { scoreO, scoreX } from "./Board.svelte";
+  import { scale } from "svelte/transition";
 </script>
 
 <div class="header">
