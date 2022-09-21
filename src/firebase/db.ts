@@ -3,7 +3,7 @@ import { addDoc } from "firebase/firestore";
 
 import base from "./config";
 
-import type { IGame, IUpdateGame } from "./types";
+import type { IGame, IGetGame, IGetGameReturn, IGetGameReturnError, IUpdateGame } from "./types";
 
 // Firestore ref
 const db = getFirestore(base);
@@ -23,10 +23,11 @@ const newGame = async (data: IGame) => {
 };
 
 // Getting game
-const getGame = async (id: string) => {
+const getGame = async (id: string): Promise<IGetGameReturn | IGetGameReturnError> => {
   try {
     const res = await getDoc(doc(games, id));
-    return { success: true, data: {...res.data(), id: res.id}};
+    const data: IGetGame = res.data()
+    return { success: true, data: data};
   } catch (error) {
     console.log(error);
     return { success: false };
