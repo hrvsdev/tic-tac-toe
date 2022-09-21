@@ -34,17 +34,17 @@
 </script>
 
 <script lang="ts">
-  import { doc, increment, onSnapshot } from "firebase/firestore";
+  import { doc, onSnapshot } from "firebase/firestore";
   import { scale } from "svelte/transition";
 
   import { winLogic } from "./utils";
   import { games, updateGame } from "../firebase/db";
 
   // Data used locally
-  let turn: Turn = "X";
-  let moves: Moves = Array(9).fill({ value: null, state: null });
-  let scoreX = 0;
-  let scoreO = 0;
+  let turn: Turn
+  let moves: Moves
+  let scoreX: number
+  let scoreO: number
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -62,16 +62,16 @@
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    if ($player !== $data.turn) return;
+    // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
     moves = $data.moves;
-    moves[i] = { value: turn, state: null };
+    moves[i] = { value: $data.turn, state: null };
 
-    // Changing turn and checking for win
+    // Changing turn
     changeTurn();
 
     // Updating data in db
@@ -86,10 +86,10 @@
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
       // Getting value of the combination
-      const move = $data.moves[a].value;
-      const moveA = $data.moves[a].value;
-      const moveB = $data.moves[b].value;
-      const moveC = $data.moves[c].value;
+      const move = moves[a].value;
+      const moveA = moves[a].value;
+      const moveB = moves[b].value;
+      const moveC = moves[c].value;
 
       // Returning if value is empty
       if (!move) return;
@@ -97,8 +97,9 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Updating score
-        if (move === "X") scoreX = $data.scoreX + 1;
-        else scoreO = $data.scoreO + 1;
+        scoreX = $data.scoreX
+        scoreO = $data.scoreO
+        move === "X" ? scoreX = scoreX + 1 : scoreO = scoreO + 1;
 
         // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
