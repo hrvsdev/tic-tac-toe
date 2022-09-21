@@ -1,6 +1,6 @@
 <script lang="ts">
   import { newGame } from "../firebase/db";
-  import { data } from "./Board.svelte";
+  import { data, player } from "./Board.svelte";
   import { show } from "./Home.svelte";
   import { id } from "./Board.svelte";
 
@@ -13,6 +13,7 @@
 
   const openGame = async () => {
     id.set(window.location.pathname.substring(1));
+    player.set("O")
     show.set(true);
   };
 </script>

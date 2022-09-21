@@ -3,6 +3,7 @@
 
   import type { IGame } from "src/firebase/types";
   import type { Writable } from "svelte/store";
+  import type { Turn } from "./types";
 
   // Game data
   export const data: Writable<IGame> = writable({
@@ -13,11 +14,14 @@
     host: "X",
     friend: "O",
     isWin: false,
-    isDraw: false
+    isDraw: false,
   });
 
   // Id of the game
   export const id = writable("");
+
+  // Player status state
+  export const player: Writable<Turn> = writable("X");
 </script>
 
 <script lang="ts">
@@ -44,6 +48,9 @@
   const onClick = (i: number) => {
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
+
+    // Checking if player whose turn is clicking
+    if($player !== $data.turn) return
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
