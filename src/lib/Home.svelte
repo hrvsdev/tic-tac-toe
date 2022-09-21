@@ -1,11 +1,21 @@
-<script>
+<script lang="ts" context="module">
+  import { writable } from "svelte/store";
+
   import Board from "./Board.svelte";
+  import CreateGame from "./CreateGame.svelte";
   import Header from "./Header.svelte";
+
+  // Show game
+  export const show = writable(false);
 </script>
 
 <main>
-  <Header/>
-  <Board />
+  {#if $show}
+    <Header />
+    <Board />
+  {:else}
+    <CreateGame />
+  {/if}
 </main>
 
 <style>

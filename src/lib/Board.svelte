@@ -1,20 +1,30 @@
 <script context="module" lang="ts">
   import { writable } from "svelte/store";
 
+  import type { IGame } from "src/firebase/types";
+  import type { Writable } from "svelte/store";
+
   // Scores of players
   export const scoreX = writable(0);
   export const scoreO = writable(0);
 
-  // Current game data
-  export const gameData = writable();
+  // Game data
+  export const gameData: Writable<IGame> = writable({
+    turn: "X",
+    moves: Array(9).fill({ value: "", state: null }),
+    scoreX: 0,
+    scoreY: 0,
+    host: "X",
+    friend: "O",
+  });
+
+  // Id of the game
+  export const id = writable("");
 </script>
 
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
-
-  import { doc, onSnapshot } from "firebase/firestore";
-  import { games } from "../firebase/db";
 
   import type { Moves, Turn } from "./types";
 
@@ -30,15 +40,6 @@
   // Win and draw state
   let isWin = false;
   let isDraw = false;
-
-  // Game id
-  const gameId = window.location.pathname.substring(1);
-
-  // Subscribing to firebase data
-  // onSnapshot(doc(games, gameId), (doc) => {
-  //   console.log(doc.data())
-  //   gameData.set(doc.data());
-  // });
 
   // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
