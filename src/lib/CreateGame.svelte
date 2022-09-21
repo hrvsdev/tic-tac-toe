@@ -6,6 +6,7 @@
 
   const createGame = async () => {
     const res = await newGame($data);
+    console.log(res.id)
     id.set(res.id);
     show.set(true);
   };
@@ -21,5 +22,5 @@
 <button on:click={createGame}>Create</button>
 
 {#if window.location.pathname.substring(1)}
-  <button on:click={createGame}>Create</button>
+  <button on:click={openGame}>Join</button>
 {/if}
