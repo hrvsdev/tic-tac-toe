@@ -4,16 +4,12 @@
   import type { IGame } from "src/firebase/types";
   import type { Writable } from "svelte/store";
 
-  // Scores of players
-  export const scoreX = writable(0);
-  export const scoreO = writable(0);
-
   // Game data
-  export const gameData: Writable<IGame> = writable({
+  export const data: Writable<IGame> = writable({
     turn: "X",
     moves: Array(9).fill({ value: "", state: null }),
     scoreX: 0,
-    scoreY: 0,
+    scoreO: 0,
     host: "X",
     friend: "O",
   });
@@ -26,23 +22,12 @@
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
 
-  import type { Moves, Turn } from "./types";
-
-  // Turn of the game
-  let turn: Turn = "X";
-
-  // Moves of the Tic Tac Toe Board
-  let moves: Moves = Array(9).fill({ value: "", state: null });
-
-  // Winner of the game
-  let winner: Turn;
-
-  // Win and draw state
-  let isWin = false;
-  let isDraw = false;
+  // Win and draw states
+  let isWin = false
+  let isDraw = false
 
   // Change turn function
-  const changeTurn = () => (turn = turn === "X" ? "O" : "X");
+  const changeTurn = () => ($data.turn = $data.turn === "X" ? "O" : "X");
 
   // Cell click action
   const onClick = (i: number) => {
@@ -50,10 +35,10 @@
     if (isWin || isDraw) return endGame();
 
     // Returning if cell is not empty
-    if (moves[i].value) return;
+    if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
-    moves[i] = { value: turn, state: null };
+    $data.moves[i] = { value: $data.turn, state: null };
 
     // Changing turn and checking for win
     changeTurn();
@@ -65,10 +50,10 @@
     // Looping over the all possible combinations
     winLogic.forEach(([a, b, c]) => {
       // Getting value of the combination
-      const move = moves[a].value;
-      const moveA = moves[a].value;
-      const moveB = moves[b].value;
-      const moveC = moves[c].value;
+      const move = $data.moves[a].value;
+      const moveA = $data.moves[a].value;
+      const moveB = $data.moves[b].value;
+      const moveC = $data.moves[c].value;
 
       // Returning if value is empty
       if (!move) return;
@@ -76,11 +61,10 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
-        winner = moveA;
-        winner === "X" ? scoreX.update((v) => v + 1) : scoreO.update((v) => v + 1);
+        move === "X" ? $data.scoreX = $data.scoreX + 1 : $data.scoreO = $data.scoreO + 1
 
         // Adding win and lose state to the individual moves
-        moves = moves.map((v, i) => {
+        $data.moves = $data.moves.map((v, i) => {
           if (i === a || i === b || i === c) return { value: move, state: "W" };
           else return { value: v.value, state: "L" };
         });
@@ -97,7 +81,7 @@
   // Ending the game
   const endGame = () => {
     // Emptying the moves array
-    moves = moves.fill({ value: null, state: null });
+    $data.moves = $data.moves.fill({ value: null, state: null });
 
     // Setting win and draw state to false
     isWin = false;
@@ -112,7 +96,7 @@
 </script>
 
 <section class="container">
-  {#each moves as { value, state }, i}
+  {#each $data.moves as { value, state }, i}
     <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={isDraw}>
       {#if value}
         <span in:scale={anim.in} out:scale={anim.out}>
@@ -122,9 +106,6 @@
     </div>
   {/each}
 </section>
-{#if isWin || isDraw}
-  <p>{isWin ? `Player ${winner} won!` : `Nobody won! Game Drawn!`}</p>
-{/if}
 
 <style>
   section {
@@ -155,13 +136,6 @@
     font-size: 110px;
   }
 
-  p {
-    position: absolute;
-    font-size: 30px;
-    font-weight: 600;
-    bottom: 60px;
-  }
-
   .lose > span,
   .draw > span {
     color: rgb(170, 170, 170);
@@ -181,10 +155,6 @@
 
     span {
       font-size: 80px;
-    }
-
-    p {
-      font-size: 20px;
     }
   }
 </style>

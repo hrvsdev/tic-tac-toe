@@ -2,7 +2,7 @@ import type { Moves, Turn } from "../lib/types";
 
 export interface IGame {
   scoreX: number;
-  scoreY: number;
+  scoreO: number;
   draw?: number;
   hostname?: string;
   friendname?: string;
@@ -14,7 +14,7 @@ export interface IGame {
 
 export interface IUpdateGame {
   scoreX?: number;
-  scoreY?: number;
+  scoreO?: number;
   draw?: number;
   hostname?: string;
   friendname?: string;
