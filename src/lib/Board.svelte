@@ -5,14 +5,23 @@
   import type { Writable } from "svelte/store";
   import type { Turn } from "./types";
 
-  // Game data
+  // Game data used for sharing between players via db
   export const data: Writable<IGame> = writable({
+    // Current turn
     turn: "X",
-    moves: Array(9).fill({ value: "", state: null }),
+
+    // Moves of the board
+    moves: Array(9).fill({ value: null, state: null }),
+
+    // Current scores of players
     scoreX: 0,
     scoreO: 0,
+
+    // Host and friend value
     host: "X",
     friend: "O",
+
+    // Current game win and draw state
     isWin: false,
     isDraw: false,
   });
@@ -25,11 +34,14 @@
 </script>
 
 <script lang="ts">
-  import { doc, onSnapshot } from "firebase/firestore";
+  import { doc, increment, onSnapshot } from "firebase/firestore";
   import { scale } from "svelte/transition";
 
   import { winLogic } from "./utils";
   import { games, updateGame } from "../firebase/db";
+
+  // Moves of the board
+  $: moves = $data.moves;
 
   // Getting realtime data by firebase snapshot
   if (id) {
@@ -39,9 +51,8 @@
   }
 
   // Change turn function
-  const changeTurn = () => {
-    // $data.turn = $data.turn === "X" ? "O" : "X";
-    updateGame($id, { turn: $data.turn === "X" ? "O" : "X" });
+  const changeTurn = async () => {
+    await updateGame($id, { turn: $data.turn === "X" ? "O" : "X" });
   };
 
   // Cell click action
@@ -56,8 +67,8 @@
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
-    $data.moves[i] = { value: $data.turn, state: null };
-    updateGame($id, {})
+    moves[i] = { value: $data.turn, state: null };
+    updateGame($id, { moves });
 
     // Changing turn and checking for win
     changeTurn();
@@ -80,17 +91,18 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
-        if (move === "X") $data.scoreX = $data.scoreX + 1;
-        else $data.scoreO = $data.scoreO + 1;
+        if (move === "X") updateGame($id, { scoreX: increment(1) as unknown as number });
+        else updateGame($id, { scoreO: increment(1) as unknown as number });
 
         // Adding win and lose state to the individual moves
-        $data.moves = $data.moves.map((v, i) => {
+        let moves = $data.moves;
+        moves = moves.map((v, i) => {
           if (i === a || i === b || i === c) return { value: move, state: "W" };
           else return { value: v.value, state: "L" };
         });
 
-        // Making win state true
-        $data.isWin = true;
+        updateGame($id, { moves, isWin: true });
+
         return;
       }
       // If loop doesn't return, making game draw if all values are filled
@@ -101,11 +113,15 @@
   // Ending the game
   const endGame = () => {
     // Emptying the moves array
-    $data.moves = $data.moves.fill({ value: null, state: null });
+    updateGame($id, {
+      moves: Array(9).fill({ value: "", state: null }),
+      isDraw: false,
+      isWin: false,
+    });
 
     // Setting win and draw state to false
-    $data.isWin = false;
-    $data.isDraw = false;
+    // $data.isWin = false;
+    // $data.isDraw = false;
   };
 
   // Cell in and out animation
