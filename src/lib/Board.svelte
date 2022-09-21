@@ -38,11 +38,11 @@
     });
   }
 
-  // Updating db data whenever the data changes locally
-  $: updateGame($id, $data);
-
   // Change turn function
-  const changeTurn = () => ($data.turn = $data.turn === "X" ? "O" : "X");
+  const changeTurn = () => {
+    // $data.turn = $data.turn === "X" ? "O" : "X";
+    updateGame($id, { turn: $data.turn === "X" ? "O" : "X" });
+  };
 
   // Cell click action
   const onClick = (i: number) => {
@@ -50,13 +50,14 @@
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    if($player !== $data.turn) return
+    if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
     $data.moves[i] = { value: $data.turn, state: null };
+    updateGame($id, {})
 
     // Changing turn and checking for win
     changeTurn();

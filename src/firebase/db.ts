@@ -35,6 +35,7 @@ const getGame = async (id: string) => {
 
 // Updating game data
 const updateGame = async (id: string, data: IUpdateGame) => {
+  console.log(data)
   try {
     await updateDoc(doc(games, id), { ...data });
     return { success: true };

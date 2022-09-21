@@ -20,8 +20,8 @@ export interface IUpdateGame {
   draw?: number;
   hostname?: string;
   friendname?: string;
-  turn: Turn;
-  moves: Moves;
-  isWin: boolean;
-  isDraw: boolean;
+  turn?: Turn;
+  moves?: Moves;
+  isWin?: boolean;
+  isDraw?: boolean;
 }
