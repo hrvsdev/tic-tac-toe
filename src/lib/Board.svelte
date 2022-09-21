@@ -21,10 +21,18 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
+  import { doc, onSnapshot } from "firebase/firestore";
+  import { games } from "src/firebase/db";
 
   // Win and draw states
-  let isWin = false
-  let isDraw = false
+  let isWin = false;
+  let isDraw = false;
+
+  // onSnapshot
+  $id &&
+    onSnapshot(doc(games, $id), (doc) => {
+      $data = doc.data() as IGame;
+    });
 
   // Change turn function
   const changeTurn = () => ($data.turn = $data.turn === "X" ? "O" : "X");
@@ -61,7 +69,9 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
-        move === "X" ? $data.scoreX = $data.scoreX + 1 : $data.scoreO = $data.scoreO + 1
+        move === "X"
+          ? ($data.scoreX = $data.scoreX + 1)
+          : ($data.scoreO = $data.scoreO + 1);
 
         // Adding win and lose state to the individual moves
         $data.moves = $data.moves.map((v, i) => {

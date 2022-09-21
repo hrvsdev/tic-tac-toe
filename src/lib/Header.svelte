@@ -1,21 +1,21 @@
 <script lang="ts">
-  import { scoreO, scoreX } from "./Board.svelte";
+  import { data } from "./Board.svelte";
   import { scale } from "svelte/transition";
 </script>
 
 <div class="header">
   <div class="left">
     <div class="player">PLAYER (X)</div>
-    {#key $scoreX}
-      <div in:scale class="score">{$scoreX}</div>
+    {#key $data.scoreX}
+      <div in:scale class="score">{$data.scoreX}</div>
     {/key}
   </div>
   <div class="center" />
   <div class="right">
     <div class="player">PLAYER (O)</div>
-    {#key $scoreO}
+    {#key $data.scoreO}
       <div in:scale class="score">
-        {$scoreO}
+        {$data.scoreO}
       </div>
     {/key}
   </div>
