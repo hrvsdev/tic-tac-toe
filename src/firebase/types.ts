@@ -18,19 +18,6 @@ export interface IUpdateGame {
   draw?: number;
   hostname?: string;
   friendname?: string;
-  turn?: Turn;
-  moves?: Moves;
-}
-
-export interface IGetGame extends IGame {
-  id: string;
-}
-
-export interface IGetGameReturn {
-  success: true;
-  data: IGetGame;
-}
-
-export interface IGetGameReturnError {
-  success: false;
+  turn: Turn;
+  moves: Moves;
 }

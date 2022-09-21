@@ -1,9 +1,9 @@
-import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
 import { addDoc } from "firebase/firestore";
 
 import base from "./config";
 
-import type { IGame, IGetGame, IGetGameReturn, IGetGameReturnError, IUpdateGame } from "./types";
+import type { IGame, IUpdateGame } from "./types";
 
 // Firestore ref
 const db = getFirestore(base);
@@ -23,11 +23,10 @@ const newGame = async (data: IGame) => {
 };
 
 // Getting game
-const getGame = async (id: string): Promise<IGetGameReturn | IGetGameReturnError> => {
+const getGame = async (id: string) => {
   try {
     const res = await getDoc(doc(games, id));
-    const data: IGetGame = res.data()
-    return { success: true, data: data};
+    return { success: true, data: res.data() };
   } catch (error) {
     console.log(error);
     return { success: false };
@@ -35,10 +34,10 @@ const getGame = async (id: string): Promise<IGetGameReturn | IGetGameReturnError
 };
 
 // Updating game data
-const updateGame = async (data: IUpdateGame) => {
+const updateGame = async (id: string, data: IUpdateGame) => {
   try {
-    const res = await addDoc(games, data);
-    return { success: true, id: res.id };
+    await updateDoc(doc(games, id), data);
+    return { success: true };
   } catch (error) {
     console.log(error);
     return { success: false };
@@ -46,9 +45,9 @@ const updateGame = async (data: IUpdateGame) => {
 };
 
 // Delete game
-const deleteGame = async (data: IGame) => {
+const deleteGame = async (id: string) => {
   try {
-    const res = await addDoc(games, data);
+    const res = await deleteDoc(games);
     return { success: true, id: res.id };
   } catch (error) {
     console.log(error);
