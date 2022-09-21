@@ -1,12 +1,12 @@
-import { collection, getFirestore, updateDoc } from "firebase/firestore";
-import { addDoc, deleteDoc, doc, getDoc } from "firebase/firestore";
+import {  getDatabase } from "firebase/database";
+import { set } from "firebase/database";
 
 import base from "./config";
 
 import type { IGame, IUpdateGame } from "./types";
 
-// Firestore ref
-const db = getFirestore(base);
+// Realtime database ref
+const db = getDatabase(base);
 
 // Games collection reference
 const games = collection(db, "games");
