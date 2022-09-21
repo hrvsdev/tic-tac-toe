@@ -11,7 +11,7 @@
     turn: "X",
 
     // Moves of the board
-    moves: JSON.stringify(Array(9).fill({ value: null, state: null })),
+    moves: Array(9).fill({ value: "", state: "" }),
 
     // Current scores of players
     scoreX: 0,
@@ -41,10 +41,10 @@
   import { db, updateGame } from "../firebase/db";
 
   // Data used locally
-  let turn: Turn
-  let moves: Moves
-  let scoreX: number
-  let scoreO: number
+  let turn: Turn;
+  let moves: Moves;
+  let scoreX: number;
+  let scoreO: number;
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -65,17 +65,17 @@
     // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
-    if (JSON.parse($data.moves)[i].value) return;
+    if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
-    moves = JSON.parse($data.moves);
-    moves[i] = { value: $data.turn, state: null };
+    moves = $data.moves;
+    moves[i] = { value: $data.turn, state: "" };
 
     // Changing turn
     changeTurn();
 
     // Updating data in db
-    updateGame($id, { moves: JSON.stringify(moves), turn });
+    updateGame($id, { moves, turn });
 
     // Checking for win
     checkWin();
@@ -97,9 +97,9 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Updating score
-        scoreX = $data.scoreX
-        scoreO = $data.scoreO
-        move === "X" ? scoreX = scoreX + 1 : scoreO = scoreO + 1;
+        scoreX = $data.scoreX;
+        scoreO = $data.scoreO;
+        move === "X" ? (scoreX = scoreX + 1) : (scoreO = scoreO + 1);
 
         // Adding win and lose state to the individual moves
         moves = moves.map((v, i) => {
@@ -108,7 +108,7 @@
         });
 
         // Updating data online
-        updateGame($id, { moves: JSON.stringify(moves), scoreX, scoreO, isWin: true });
+        updateGame($id, { moves, scoreX, scoreO, isWin: true });
       }
       // If loop doesn't return, making game draw if all values are filled
       // if (moves.every((v) => v.value !== null)) return (isDraw = true);
@@ -118,10 +118,10 @@
   // Ending the game
   const endGame = () => {
     // Emptying the moves array
-    moves = moves.fill({ value: null, state: null });
+    moves = moves.fill({ value: "", state: "" });
 
     // Updating data online
-    updateGame($id, { moves: JSON.stringify(moves), isDraw: false, isWin: false });
+    updateGame($id, { moves: moves, isDraw: false, isWin: false });
   };
 
   // Cell in and out animation
@@ -132,8 +132,8 @@
 </script>
 
 <section class="container">
-  {#each JSON.parse($data.moves) as { value, state }, i}
-    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={($data.isDraw)}>
+  {#each $data.moves as { value, state }, i}
+    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={$data.isDraw}>
       {#if value}
         <span in:scale={anim.in} out:scale={anim.out}>
           {value}
