@@ -1,15 +1,21 @@
-<script context="module">
+<script context="module" lang="ts">
   import { writable } from "svelte/store";
 
   // Scores of players
   export const scoreX = writable(0);
   export const scoreO = writable(0);
+
+  // Current game data
+  export const gameData = writable();
 </script>
 
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { winLogic } from "./utils";
 
+  import { doc, onSnapshot } from "firebase/firestore";
+  import { games } from "src/firebase/db";
+  
   import type { Moves, Turn } from "./types";
 
   // Turn of the game
@@ -24,6 +30,11 @@
   // Win and draw state
   let isWin = false;
   let isDraw = false;
+
+  // Subscribing to firebase data
+  onSnapshot(doc(games, window.location.pathname.substring(1)), (doc) => {
+    gameData.set(doc.data());
+  });
 
   // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");

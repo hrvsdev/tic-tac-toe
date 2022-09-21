@@ -55,4 +55,4 @@ const deleteGame = async (id: string) => {
   }
 };
 
-export { newGame, getGame, updateGame, deleteGame };
+export { games, newGame, getGame, updateGame, deleteGame };
