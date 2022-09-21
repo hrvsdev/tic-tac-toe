@@ -1,5 +1,5 @@
-import { collection, deleteDoc, doc, getDoc, getFirestore, updateDoc } from "firebase/firestore";
-import { addDoc } from "firebase/firestore";
+import { collection, getFirestore, updateDoc } from "firebase/firestore";
+import { addDoc, deleteDoc, doc, getDoc } from "firebase/firestore";
 
 import base from "./config";
 
@@ -36,7 +36,7 @@ const getGame = async (id: string) => {
 // Updating game data
 const updateGame = async (id: string, data: IUpdateGame) => {
   try {
-    await updateDoc(doc(games, id), data);
+    await updateDoc(doc(games, id), { ...data });
     return { success: true };
   } catch (error) {
     console.log(error);
@@ -47,12 +47,12 @@ const updateGame = async (id: string, data: IUpdateGame) => {
 // Delete game
 const deleteGame = async (id: string) => {
   try {
-    const res = await deleteDoc(games);
-    return { success: true, id: res.id };
+    await deleteDoc(doc(games, id));
+    return { success: true };
   } catch (error) {
     console.log(error);
     return { success: false };
   }
 };
 
-export { newGame };
+export { newGame, getGame, updateGame, deleteGame };
