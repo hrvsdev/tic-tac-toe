@@ -35,10 +35,10 @@
   const gameId = window.location.pathname.substring(1);
 
   // Subscribing to firebase data
-  onSnapshot(doc(games, gameId), (doc) => {
-    console.log(doc.data())
-    gameData.set(doc.data());
-  });
+  // onSnapshot(doc(games, gameId), (doc) => {
+  //   console.log(doc.data())
+  //   gameData.set(doc.data());
+  // });
 
   // Change turn function
   const changeTurn = () => (turn = turn === "X" ? "O" : "X");
