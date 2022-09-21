@@ -12,6 +12,8 @@
     scoreO: 0,
     host: "X",
     friend: "O",
+    isWin: false,
+    isDraw: false
   });
 
   // Id of the game
@@ -25,15 +27,15 @@
   import { winLogic } from "./utils";
   import { games, updateGame } from "../firebase/db";
 
-  // Win and draw states
-  let isWin = false;
-  let isDraw = false;
-
-  // onSnapshot
-  $id &&
+  // Getting realtime data by firebase snapshot
+  if (id) {
     onSnapshot(doc(games, $id), (doc) => {
       $data = doc.data() as IGame;
     });
+  }
+
+  // Updating db data whenever the data changes locally
+  $: updateGame($id, $data);
 
   // Change turn function
   const changeTurn = () => ($data.turn = $data.turn === "X" ? "O" : "X");
@@ -41,7 +43,7 @@
   // Cell click action
   const onClick = (i: number) => {
     // Checking if previous game is win or draw and ending it
-    if (isWin || isDraw) return endGame();
+    if ($data.isWin || $data.isDraw) return endGame();
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
@@ -53,8 +55,6 @@
     changeTurn();
     checkWin();
   };
-
-  $: $id && updateGame($id, $data);
 
   // Winning move check function
   const checkWin = () => {
@@ -72,9 +72,8 @@
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
         // Setting winner
-        move === "X"
-          ? ($data.scoreX = $data.scoreX + 1)
-          : ($data.scoreO = $data.scoreO + 1);
+        if (move === "X") $data.scoreX = $data.scoreX + 1;
+        else $data.scoreO = $data.scoreO + 1;
 
         // Adding win and lose state to the individual moves
         $data.moves = $data.moves.map((v, i) => {
@@ -83,7 +82,7 @@
         });
 
         // Making win state true
-        isWin = true;
+        $data.isWin = true;
         return;
       }
       // If loop doesn't return, making game draw if all values are filled
@@ -97,8 +96,8 @@
     $data.moves = $data.moves.fill({ value: null, state: null });
 
     // Setting win and draw state to false
-    isWin = false;
-    isDraw = false;
+    $data.isWin = false;
+    $data.isDraw = false;
   };
 
   // Cell in and out animation
@@ -110,7 +109,7 @@
 
 <section class="container">
   {#each $data.moves as { value, state }, i}
-    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={isDraw}>
+    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={$data.isDraw}>
       {#if value}
         <span in:scale={anim.in} out:scale={anim.out}>
           {value}

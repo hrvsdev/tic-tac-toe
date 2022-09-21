@@ -6,6 +6,8 @@ export interface IGame {
   draw?: number;
   hostname?: string;
   friendname?: string;
+  isWin: boolean;
+  isDraw: boolean;
   host: "X";
   friend: "O";
   turn: Turn;
@@ -20,4 +22,6 @@ export interface IUpdateGame {
   friendname?: string;
   turn: Turn;
   moves: Moves;
+  isWin: boolean;
+  isDraw: boolean;
 }
