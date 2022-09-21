@@ -1,9 +1,9 @@
-import { collection, getFirestore } from "firebase/firestore";
+import { collection, doc, getDoc, getFirestore } from "firebase/firestore";
 import { addDoc } from "firebase/firestore";
 
 import base from "./config";
 
-import type { IGame } from "./types";
+import type { IGame, IUpdateGame } from "./types";
 
 // Firestore ref
 const db = getFirestore(base);
@@ -23,10 +23,10 @@ const newGame = async (data: IGame) => {
 };
 
 // Getting game
-const getGame = async (data: IGame) => {
+const getGame = async (id: string) => {
   try {
-    const res = await addDoc(games, data);
-    return { success: true, id: res.id };
+    const res = await getDoc(doc(games, id));
+    return { success: true, data: {...res.data(), id: res.id}};
   } catch (error) {
     console.log(error);
     return { success: false };
@@ -34,7 +34,7 @@ const getGame = async (data: IGame) => {
 };
 
 // Updating game data
-const updateGame = async (data: IGame) => {
+const updateGame = async (data: IUpdateGame) => {
   try {
     const res = await addDoc(games, data);
     return { success: true, id: res.id };
@@ -55,4 +55,4 @@ const deleteGame = async (data: IGame) => {
   }
 };
 
-export {newGame}
+export { newGame };
