@@ -1,5 +1,7 @@
-import {  getDatabase } from "firebase/database";
-import { set } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
+import { set, remove, update } from "firebase/database";
+
+import { genId } from "../utils";
 
 import base from "./config";
 
@@ -8,25 +10,12 @@ import type { IGame, IUpdateGame } from "./types";
 // Realtime database ref
 const db = getDatabase(base);
 
-// Games collection reference
-const games = collection(db, "games");
-
 // Creating a new game
 const newGame = async (data: IGame) => {
   try {
-    const res = await addDoc(games, data);
-    return { success: true, id: res.id };
-  } catch (error) {
-    console.log(error);
-    return { success: false };
-  }
-};
-
-// Getting game
-const getGame = async (id: string) => {
-  try {
-    const res = await getDoc(doc(games, id));
-    return { success: true, data: res.data() };
+    const id = genId();
+    await set(ref(db, id), data);
+    return { success: true, id };
   } catch (error) {
     console.log(error);
     return { success: false };
@@ -35,9 +24,9 @@ const getGame = async (id: string) => {
 
 // Updating game data
 const updateGame = async (id: string, data: IUpdateGame) => {
-  console.log(data)
+  console.log(data);
   try {
-    await updateDoc(doc(games, id), { ...data });
+    await update(ref(db, id), data);
     return { success: true };
   } catch (error) {
     console.log(error);
@@ -48,7 +37,7 @@ const updateGame = async (id: string, data: IUpdateGame) => {
 // Delete game
 const deleteGame = async (id: string) => {
   try {
-    await deleteDoc(doc(games, id));
+    await remove(ref(db, id));
     return { success: true };
   } catch (error) {
     console.log(error);
@@ -56,4 +45,4 @@ const deleteGame = async (id: string) => {
   }
 };
 
-export { games, newGame, getGame, updateGame, deleteGame };
+export { newGame, updateGame, deleteGame };
