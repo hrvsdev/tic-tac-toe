@@ -21,9 +21,9 @@
 <script lang="ts">
   import { doc, onSnapshot } from "firebase/firestore";
   import { scale } from "svelte/transition";
-  
+
   import { winLogic } from "./utils";
-  import { games } from "../firebase/db";
+  import { games, updateGame } from "../firebase/db";
 
   // Win and draw states
   let isWin = false;
@@ -53,6 +53,8 @@
     changeTurn();
     checkWin();
   };
+
+  $: $id && updateGame($id, $data);
 
   // Winning move check function
   const checkWin = () => {
