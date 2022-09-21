@@ -34,11 +34,11 @@
 </script>
 
 <script lang="ts">
-  import { doc, onSnapshot } from "firebase/firestore";
   import { scale } from "svelte/transition";
+  import { onValue, ref } from "firebase/database";
 
   import { winLogic } from "./utils";
-  import { games, updateGame } from "../firebase/db";
+  import { db, updateGame } from "../firebase/db";
 
   // Data used locally
   let turn: Turn
@@ -48,8 +48,8 @@
 
   // Getting realtime data by firebase snapshot
   if ($id) {
-    onSnapshot(doc(games, $id), (doc) => {
-      $data = doc.data() as IGame;
+    onValue(ref(db, $id), (res) => {
+      $data = res.val() as IGame;
     });
   }
 
