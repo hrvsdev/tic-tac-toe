@@ -19,10 +19,11 @@
 </script>
 
 <script lang="ts">
-  import { scale } from "svelte/transition";
-  import { winLogic } from "./utils";
   import { doc, onSnapshot } from "firebase/firestore";
-  import { games } from "src/firebase/db";
+  import { scale } from "svelte/transition";
+  
+  import { winLogic } from "./utils";
+  import { games } from "../firebase/db";
 
   // Win and draw states
   let isWin = false;

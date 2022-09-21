@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { newGame } from "src/firebase/db";
+  import { newGame } from "../firebase/db";
   import { data } from "./Board.svelte";
   import { show } from "./Home.svelte";
   import { id } from "./Board.svelte";
