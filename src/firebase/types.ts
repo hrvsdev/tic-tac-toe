@@ -11,7 +11,7 @@ export interface IGame {
   host: "X";
   friend: "O";
   turn: Turn;
-  moves: Moves;
+  moves: string;
 }
 
 export interface IUpdateGame {
@@ -21,7 +21,7 @@ export interface IUpdateGame {
   hostname?: string;
   friendname?: string;
   turn?: Turn;
-  moves?: Moves;
+  moves?: string;
   isWin?: boolean;
   isDraw?: boolean;
 }

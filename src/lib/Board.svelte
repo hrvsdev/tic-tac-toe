@@ -11,7 +11,7 @@
     turn: "X",
 
     // Moves of the board
-    moves: Array(9).fill({ value: null, state: null }),
+    moves: JSON.stringify(Array(9).fill({ value: null, state: null })),
 
     // Current scores of players
     scoreX: 0,
@@ -65,17 +65,17 @@
     // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
-    if ($data.moves[i].value) return;
+    if (JSON.parse($data.moves)[i].value) return;
 
     // Making cell value equal to the current turn
-    moves = $data.moves;
+    moves = JSON.parse($data.moves);
     moves[i] = { value: $data.turn, state: null };
 
     // Changing turn
     changeTurn();
 
     // Updating data in db
-    updateGame($id, { moves, turn });
+    updateGame($id, { moves: JSON.stringify(moves), turn });
 
     // Checking for win
     checkWin();
@@ -108,7 +108,7 @@
         });
 
         // Updating data online
-        updateGame($id, { moves, scoreX, scoreO, isWin: true });
+        updateGame($id, { moves: JSON.stringify(moves), scoreX, scoreO, isWin: true });
       }
       // If loop doesn't return, making game draw if all values are filled
       // if (moves.every((v) => v.value !== null)) return (isDraw = true);
@@ -121,7 +121,7 @@
     moves = moves.fill({ value: null, state: null });
 
     // Updating data online
-    updateGame($id, { moves, isDraw: false, isWin: false });
+    updateGame($id, { moves: JSON.stringify(moves), isDraw: false, isWin: false });
   };
 
   // Cell in and out animation
@@ -132,8 +132,8 @@
 </script>
 
 <section class="container">
-  {#each $data.moves as { value, state }, i}
-    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={$data.isDraw}>
+  {#each JSON.parse($data.moves) as { value, state }, i}
+    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={($data.isDraw)}>
       {#if value}
         <span in:scale={anim.in} out:scale={anim.out}>
           {value}

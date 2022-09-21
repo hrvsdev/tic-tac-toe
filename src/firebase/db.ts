@@ -1,4 +1,4 @@
-import { getDatabase, ref } from "firebase/database";
+import { getDatabase, push, ref } from "firebase/database";
 import { set, remove, update } from "firebase/database";
 
 import { genId } from "../utils";
@@ -11,10 +11,10 @@ import type { IGame, IUpdateGame } from "./types";
 const db = getDatabase(base);
 
 // Creating a new game
-const newGame = async (data: IGame) => {
+const newGame = (data: IGame) => {
   try {
     const id = genId();
-    await set(ref(db, id), data);
+    set(ref(db, id), data);
     return { success: true, id };
   } catch (error) {
     console.log(error);
