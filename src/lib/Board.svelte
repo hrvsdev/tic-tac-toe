@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import { writable } from "svelte/store";
+  import { writable, derived } from "svelte/store";
 
   import type { IGame } from "src/firebase/types";
   import type { Writable } from "svelte/store";
@@ -31,11 +31,18 @@
 
   // Player status state
   export const player: Writable<Turn> = writable("X");
+
+  // Player is host or friend store
+  export const type = derived(player, ($v) => {
+    return $v === "X" ? "host/isDisconnected" : "friend/isDisconnected";
+  });
+
+  
 </script>
 
 <script lang="ts">
   import { scale } from "svelte/transition";
-  import { onValue, ref } from "firebase/database";
+  import { onDisconnect, onValue, ref } from "firebase/database";
 
   import { winLogic } from "./utils";
   import { db, updateGame } from "../firebase/db";
@@ -52,6 +59,9 @@
       $data = res.val() as IGame;
     });
   }
+
+  // When user disconnects
+  onDisconnect(ref(db, $id)).update({ [$type]: true });
 
   // Change turn function
   const changeTurn = () => (turn = $data.turn === "X" ? "O" : "X");

@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { data, player } from "./Board.svelte";
-  import { newGame } from "../firebase/db";
+  import { data, player, id } from "./Board.svelte";
+  import { db, newGame, updateGame } from "../firebase/db";
   import { show } from "./Home.svelte";
-  import { id } from "./Board.svelte";
+  import { get, ref } from "firebase/database";
+
+  import type { IGame } from "../firebase/types";
 
   const createGame = () => {
     $data.host.isDisconnected = false;
-    $data.host.sign = "X";
-    $player = "X"
+    $player = "X";
 
     const res = newGame($data);
     id.set(res.id);
@@ -15,12 +16,18 @@
     show.set(true);
   };
 
-  const openGame = () => {
-    $data.host.isDisconnected = false;
-    $data.host.sign = "O";
-    $player = "O"
-    
-    id.set(window.location.pathname.substring(1));
+  const openGame = async () => {
+    const path = window.location.pathname.substring(1);
+    id.set(path);
+
+    const snap = await get(ref(db, path));
+    const data = snap.val() as IGame;
+
+    if (data.host.isDisconnected) return;
+    if (!data.friend.isDisconnected) return;
+
+    updateGame(path, { friend: { isDisconnected: false } });
+    $player = "O";
     show.set(true);
   };
 </script>
