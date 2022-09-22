@@ -31,7 +31,7 @@
     const snap = await get(ref(db, queryId));
 
     // Check if game exists
-    if(!snap.exists()) return alert("Game doesn't exists")
+    if(snap.exists() === false) return alert("Game doesn't exists")
 
     // Getting data from snap
     const data = snap.val() as IGame;
