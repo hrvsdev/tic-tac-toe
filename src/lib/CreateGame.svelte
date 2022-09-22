@@ -1,19 +1,26 @@
 <script lang="ts">
-  import { newGame } from "../firebase/db";
   import { data, player } from "./Board.svelte";
+  import { newGame } from "../firebase/db";
   import { show } from "./Home.svelte";
   import { id } from "./Board.svelte";
 
-  const createGame = async () => {
-    const res = await newGame($data);
-    console.log(res.id)
+  const createGame = () => {
+    $data.host.isDisconnected = false;
+    $data.host.sign = "X";
+    $player = "X"
+
+    const res = newGame($data);
     id.set(res.id);
+    console.log(res.id);
     show.set(true);
   };
 
-  const openGame = async () => {
+  const openGame = () => {
+    $data.host.isDisconnected = false;
+    $data.host.sign = "O";
+    $player = "O"
+    
     id.set(window.location.pathname.substring(1));
-    player.set("O")
     show.set(true);
   };
 </script>

@@ -18,8 +18,8 @@
     scoreO: 0,
 
     // Host and friend value
-    host: "X",
-    friend: "O",
+    host: { isDisconnected: true, sign: "X" },
+    friend: { isDisconnected: true, sign: "O" },
 
     // Current game win and draw state
     isWin: false,
@@ -62,7 +62,7 @@
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    // if ($player !== $data.turn) return;
+    if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;

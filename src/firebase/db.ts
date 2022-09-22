@@ -1,4 +1,4 @@
-import { getDatabase, push, ref } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 import { set, remove, update } from "firebase/database";
 
 import { genId } from "../utils";
@@ -23,10 +23,9 @@ const newGame = (data: IGame) => {
 };
 
 // Updating game data
-const updateGame = async (id: string, data: IUpdateGame) => {
-  console.log(data);
+const updateGame = (id: string, data: IUpdateGame) => {
   try {
-    await update(ref(db, id), data);
+    update(ref(db, id), data);
     return { success: true };
   } catch (error) {
     console.log(error);
@@ -35,9 +34,9 @@ const updateGame = async (id: string, data: IUpdateGame) => {
 };
 
 // Delete game
-const deleteGame = async (id: string) => {
+const deleteGame = (id: string) => {
   try {
-    await remove(ref(db, id));
+    remove(ref(db, id));
     return { success: true };
   } catch (error) {
     console.log(error);
