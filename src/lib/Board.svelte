@@ -123,7 +123,7 @@
         return;
       }
     });
-    if ($data.isWin && moves.every((v) => v.value !== "")) {
+    if (!$data.isWin && moves.every((v) => v.value !== "")) {
       updateGame($id, { isDraw: true, draw: $data.draw + 1 });
       return
     }
