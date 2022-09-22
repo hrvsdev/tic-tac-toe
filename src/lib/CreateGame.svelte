@@ -1,10 +1,15 @@
 <script lang="ts">
-  import { data, player, id } from "./Board.svelte";
-  import { db, newGame, updateGame } from "../firebase/db";
-  import { show } from "./Home.svelte";
   import { get, ref } from "firebase/database";
+  import queryString from "query-string";
+
+  import { data, player, id } from "./Board.svelte";
+  import { show } from "./Home.svelte";
+  import { db, newGame, updateGame } from "../firebase/db";
 
   import type { IGame } from "../firebase/types";
+
+  // Getting game id from URL
+  const queryId = queryString.parse(window.location.search).g as string;
 
   // Create a new game function
   const createGame = () => {
@@ -20,27 +25,35 @@
     show.set(true);
   };
 
-  // Join a game
+  // Join a game function
   const openGame = async () => {
-    const path = window.location.pathname.substring(1);
-    id.set(path);
+    // Getting snapshot from db via id
+    const snap = await get(ref(db, queryId));
 
-    const snap = await get(ref(db, path));
+    // Check if game exists
+    if(!snap.exists()) return alert("Game doesn't exists")
+
+    // Getting data from snap
     const data = snap.val() as IGame;
 
+    // Checking if host is connected and friend is disconnceted
     if (data.host.isDisconnected) return alert("Host is disconnected");
     if (!data.friend.isDisconnected) return alert("There are already connections");
 
-    updateGame(path, { friend: { isDisconnected: false } });
+    //  Updating db with friend as online
+    updateGame(queryId, { friend: { isDisconnected: false, sign: "O" } });
+
+    // Setting player
     $player = "O";
+
+    // Showing the board
     show.set(true);
   };
 </script>
 
+
 <h1>Create a new game</h1>
-
 <button on:click={createGame}>Create</button>
-
-{#if window.location.pathname.substring(1)}
+{#if queryId}
   <button on:click={openGame}>Join</button>
 {/if}
