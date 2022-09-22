@@ -156,7 +156,7 @@
   };
 </script>
 
-<section class="container">
+<section>
   {#each $data.moves as { value, state }, i}
     <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={$data.isDraw}>
       {#if value}
