@@ -119,9 +119,9 @@
 
         // Updating data online
         updateGame($id, { moves, scoreX, scoreO, isWin: true });
+      } else if (moves.every((v) => v.value !== "")) {
+        updateGame($id, { isDraw: true, draw: $data.draw + 1 });
       }
-      // If loop doesn't return, making game draw if all values are filled
-      // if (moves.every((v) => v.value !== null)) return (isDraw = true);
     });
   };
 

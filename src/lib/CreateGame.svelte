@@ -15,7 +15,7 @@
   const createGame = () => {
     // Setting player to host and making it connected
     $data.host.isDisconnected = false;
-    $player = "X";
+    player.set("X");
 
     // Creating a new game and getting its uid
     const res = newGame($data);
@@ -27,11 +27,14 @@
 
   // Join a game function
   const openGame = async () => {
+    // Setting id
+    id.set(queryId);
+
     // Getting snapshot from db via id
     const snap = await get(ref(db, queryId));
 
     // Check if game exists
-    if(snap.exists() === false) return alert("Game doesn't exists")
+    if (snap.exists() === false) return alert("Game doesn't exists");
 
     // Getting data from snap
     const data = snap.val() as IGame;
@@ -44,13 +47,12 @@
     updateGame(queryId, { friend: { isDisconnected: false, sign: "O" } });
 
     // Setting player
-    $player = "O";
+    player.set("O");
 
     // Showing the board
     show.set(true);
   };
 </script>
-
 
 <h1>Create a new game</h1>
 <button on:click={createGame}>Create</button>
