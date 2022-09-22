@@ -67,13 +67,13 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    // if ($player !== $data.turn) return;
+    if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
@@ -93,8 +93,13 @@
   };
 
   // Winning move check function
-  const checkWin = () => {
-    // Looping over the all possible combinations
+  const checkWin = () => loopLogic() || checkDraw();
+
+  // Looping over the all possible combinations
+  const loopLogic = () => {
+    // Returning value
+    let returnVal: boolean;
+
     winLogic.forEach(([a, b, c]) => {
       // Getting value of the combination
       const move = moves[a].value;
@@ -103,7 +108,7 @@
       const moveC = moves[c].value;
 
       // Returning if value is empty
-      if (!move) return;
+      if (!move) return (returnVal = false);
 
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
@@ -120,12 +125,18 @@
 
         // Updating data online
         updateGame($id, { moves, scoreX, scoreO, isWin: true });
-        return;
-      }
+        return (returnVal = true);
+      } else return (returnVal = false);
     });
-    if (!$data.isWin && moves.every((v) => v.value !== "")) {
+
+    return returnVal;
+  };
+
+  // Draw check function
+  const checkDraw = () => {
+    if (moves.every((v) => v.value !== "")) {
       updateGame($id, { isDraw: true, draw: $data.draw + 1 });
-      return
+      return;
     }
   };
 
@@ -195,12 +206,6 @@
   .lose > span,
   .draw > span {
     color: rgb(170, 170, 170);
-  }
-
-  @keyframes blink {
-    50% {
-      opacity: 0;
-    }
   }
 
   @media (max-width: 600px) {
