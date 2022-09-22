@@ -36,8 +36,6 @@
   export const type = derived(player, ($v) => {
     return $v === "X" ? "host/isDisconnected" : "friend/isDisconnected";
   });
-
-  
 </script>
 
 <script lang="ts">
@@ -68,6 +66,9 @@
 
   // Cell click action
   const onClick = (i: number) => {
+    // Disabling move if player is disconncted'
+    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
@@ -151,6 +152,12 @@
       {/if}
     </div>
   {/each}
+  {#if $data.friend.isDisconnected}
+    <p>Waiting for other player to connect!</p>
+  {/if}
+  {#if $data.host.isDisconnected}
+    <p>Host disconnected. Create a new game!</p>
+  {/if}
 </section>
 
 <style>

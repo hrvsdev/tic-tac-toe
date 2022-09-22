@@ -23,10 +23,10 @@
     const snap = await get(ref(db, path));
     const data = snap.val() as IGame;
 
-    if (data.host.isDisconnected) return;
-    if (!data.friend.isDisconnected) return;
+    if (data.host.isDisconnected) return alert("Host is disconnected");
+    if (!data.friend.isDisconnected) return alert("There are already connections");
 
-    updateGame(path, { friend: { isDisconnected: false } });
+    updateGame(path, { friend: { isDisconnected: false,  } });
     $player = "O";
     show.set(true);
   };
