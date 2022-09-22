@@ -1,5 +1,5 @@
 <script context="module" lang="ts">
-  import { writable, derived } from "svelte/store";
+  import { writable } from "svelte/store";
 
   import type { IGame } from "src/firebase/types";
   import type { Writable } from "svelte/store";
@@ -16,6 +16,7 @@
     // Current scores of players
     scoreX: 0,
     scoreO: 0,
+    draw: 0,
 
     // Host and friend value
     host: { isDisconnected: true, sign: "X" },
@@ -66,13 +67,13 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    if ($player !== $data.turn) return;
+    // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
@@ -119,10 +120,13 @@
 
         // Updating data online
         updateGame($id, { moves, scoreX, scoreO, isWin: true });
-      } else if (moves.every((v) => v.value !== "")) {
-        updateGame($id, { isDraw: true, draw: $data.draw + 1 });
+        return;
       }
     });
+    if ($data.isWin && moves.every((v) => v.value !== "")) {
+      updateGame($id, { isDraw: true, draw: $data.draw + 1 });
+      return
+    }
   };
 
   // Ending the game

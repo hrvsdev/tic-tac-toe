@@ -1,6 +1,6 @@
 <script lang="ts">
   import { data } from "./Board.svelte";
-  import { scale } from "svelte/transition";
+  import { draw, scale } from "svelte/transition";
 </script>
 
 <div class="header">
@@ -10,7 +10,14 @@
       <div in:scale class="score">{$data.scoreX}</div>
     {/key}
   </div>
-  <div class="center" />
+  <div class="center">
+    <div class="player">DRAW</div>
+    {#key $data.draw}
+      <div in:scale class="score">
+        {$data.draw}
+      </div>
+    {/key}
+  </div>
   <div class="right">
     <div class="player">PLAYER (O)</div>
     {#key $data.scoreO}
