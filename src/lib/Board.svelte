@@ -32,7 +32,7 @@
   // Player status state
   export const player: Writable<Turn> = writable("X");
 
-  // Player is host or friend store
+  // Player is host or friend store for disconnection
   export const type = derived(player, ($v) => {
     return $v === "X" ? "host/isDisconnected" : "friend/isDisconnected";
   });
@@ -58,8 +58,12 @@
     });
   }
 
+  // Removing if host disconnects
+  if ($player === "X") onDisconnect(ref(db, $id)).remove();
+
   // When user disconnects
-  onDisconnect(ref(db, $id)).update({ [$type]: true });
+  if ($player === "O")
+    onDisconnect(ref(db, $id)).update({ "friend/isDisconnected": true });
 
   // Change turn function
   const changeTurn = () => (turn = $data.turn === "X" ? "O" : "X");
