@@ -152,13 +152,13 @@
       {/if}
     </div>
   {/each}
-  {#if $data.friend.isDisconnected}
-    <p>Waiting for other player to connect!</p>
-  {/if}
-  {#if $data.host.isDisconnected}
-    <p>Host disconnected. Create a new game!</p>
-  {/if}
 </section>
+{#if $data.friend.isDisconnected}
+  <p>Waiting for other player to connect!</p>
+{/if}
+{#if $data.host.isDisconnected}
+  <p>Host disconnected. Create a new game!</p>
+{/if}
 
 <style>
   section {
