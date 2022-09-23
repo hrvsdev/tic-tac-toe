@@ -1,9 +1,9 @@
 <script lang="ts" context="module">
   import { writable } from "svelte/store";
 
-  import Board from "./Board.svelte";
-  import CreateGame from "./CreateGame.svelte";
-  import Header from "./Header.svelte";
+  import Board from "./game/Board.svelte";
+  import CreateGame from "./join-game/JoinGame.svelte";
+  import Header from "./game/Header.svelte";
 
   // Show game
   export const show = writable(false);

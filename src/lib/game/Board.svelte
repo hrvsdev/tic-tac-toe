@@ -3,7 +3,7 @@
 
   import type { IGame } from "src/firebase/types";
   import type { Writable } from "svelte/store";
-  import type { Moves, Turn } from "./types";
+  import type { Moves, Turn } from "../types";
 
   // Game data used for sharing between players via db
   export const data: Writable<IGame> = writable({
@@ -38,8 +38,8 @@
   import { scale } from "svelte/transition";
   import { onDisconnect, onValue, ref } from "firebase/database";
 
-  import { winLogic } from "./utils";
-  import { db, updateGame } from "../firebase/db";
+  import { winLogic } from "../utils";
+  import { db, updateGame } from "../../firebase/db";
 
   // Data used locally
   let turn: Turn;

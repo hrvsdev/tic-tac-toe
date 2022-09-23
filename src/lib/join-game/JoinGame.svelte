@@ -2,11 +2,11 @@
   import { get, ref } from "firebase/database";
   import queryString from "query-string";
 
-  import { data, player, id } from "./Board.svelte";
-  import { show } from "./Home.svelte";
-  import { db, newGame, updateGame } from "../firebase/db";
+  import { data, player, id } from "../game/Board.svelte";
+  import { show } from "../Home.svelte";
+  import { db, newGame, updateGame } from "../../firebase/db";
 
-  import type { IGame } from "../firebase/types";
+  import type { IGame } from "../../firebase/types";
 
   // Getting game id from URL
   const queryId = queryString.parse(window.location.search).g as string;
