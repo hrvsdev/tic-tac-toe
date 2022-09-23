@@ -1,10 +1,10 @@
 <script lang="ts">
   import { get, ref } from "firebase/database";
   import queryString from "query-string";
-  
+
   import CreateButton from "../buttons/CreateButton.svelte";
   import JoinButton from "../buttons/JoinButton.svelte";
-  
+
   import { data, player, id } from "../game/Board.svelte";
   import { show } from "../Home.svelte";
   import { db, newGame, updateGame } from "../../firebase/db";
@@ -58,7 +58,7 @@
 </script>
 
 <h1>Create a new game</h1>
-<CreateButton on:click={createGame}>Create</CreateButton>
+<CreateButton on:click={createGame} />
 {#if queryId}
-  <JoinButton on:click={openGame}>Join</JoinButton>
+  <JoinButton on:click={openGame} />
 {/if}
