@@ -2,7 +2,7 @@
   import { writable } from "svelte/store";
 
   import Board from "./game/Board.svelte";
-  import CreateGame from "./join-game/JoinGame.svelte";
+  import CreateGame from "./into-game/IntoGame.svelte";
   import Header from "./game/Header.svelte";
 
   // Show game
