@@ -9,7 +9,7 @@
     outline: 2px solid #17c964;
     background-color: #f1fdf7;
     box-shadow: rgb(136, 241, 182) 0px 4px 14px 0px;
-    ma
+    margin-bottom: 20px;
     border-radius: 15px;
     overflow: hidden;
     max-width: 400px;
