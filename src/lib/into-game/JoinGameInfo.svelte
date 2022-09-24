@@ -1,46 +1,47 @@
 <div class="card-wrapper">
-    <h3>Copy your Game ID</h3>
-    <p>Create a new game and invite your friends to play or only spectate.</p>
+  <h3>Copy your Game ID</h3>
+  <div class="card-body">
+    <p>
+      Give this ID to someone to connect to this game. The game will be deleted if you
+      leave this page or close the app.
+    </p>
+    <div class="id-wrapper">https://t3.hrvs.me/#572937</div>
   </div>
-  
-  <style>
-    .card-wrapper {
-      outline: 2px solid #17c964;
-      background-color: #f1fdf7;
-      box-shadow: rgb(136, 241, 182) 0px 4px 14px 0px;
-      border-radius: 15px;
-      overflow: hidden;
-      max-width: 400px;
-    }
-  
-    h3 {
-      padding: 12px 20px;
-      font-size: 19px;
-      font-weight: 500;
-      border-bottom: 2px solid #17c964;
-    }
-  
-    p {
-      padding: 25px 20px;
-      font-size: 17px;
-      color: rgba(0 0 0/0.8)  }
-  
-    button {
-      all: unset;
-      width: 100%;
-      cursor: pointer;
-      box-sizing: border-box;
-      font-size: 17px;
-      font-weight: 500;
-      padding: 12px 20px;
-      text-align: center;
-      color: white;
-      background-color: #17c964;
-      transition: all 300ms;
-    }
-  
-    button:hover {
-      filter: brightness(0.95);
-    }
-  </style>
-  
+</div>
+
+<style>
+  .card-wrapper {
+    outline: 2px solid #17c964;
+    background-color: #f1fdf7;
+    box-shadow: rgb(136, 241, 182) 0px 4px 14px 0px;
+    border-radius: 15px;
+    overflow: hidden;
+    max-width: 400px;
+  }
+
+  h3 {
+    padding: 12px 20px;
+    font-size: 19px;
+    font-weight: 500;
+    border-bottom: 2px solid #17c964;
+  }
+
+  .card-body {
+    padding: 25px 20px;
+    font-size: 17px;
+    color: rgba(0 0 0/0.8);
+  }
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  .id-wrapper {
+    color: black;
+    letter-spacing: 0.5px;
+    border-radius: 10px;
+    padding: 10px 15px;
+    background-color: #c8f9dd;
+    text-align: center;
+  }
+</style>
