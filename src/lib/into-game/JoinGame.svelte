@@ -11,7 +11,6 @@
     outline: 2px solid #ff4ecd;
     background-color: #fff0fb;
     box-shadow: #ff7ad9 0px 4px 14px 0px;
-    margin-bottom: 20px;
     border-radius: 15px;
     overflow: hidden;
     max-width: 400px;

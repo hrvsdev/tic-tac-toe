@@ -3,5 +3,13 @@
   import JoinGame from "./JoinGame.svelte";
 </script>
 
-<CreateGame/>
-<JoinGame />
+<section>
+  <CreateGame />
+  <JoinGame />
+</section>
+
+<style>section{
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+}</style>
