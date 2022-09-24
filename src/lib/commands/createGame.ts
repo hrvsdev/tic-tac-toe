@@ -5,8 +5,13 @@ import { newGame } from "../../firebase/db";
 
 // Create a new game function
 const createGame = () => {
-  // Setting player to host and making it connected
-  data.update((d) => ({ ...d, host: { isDisconnected: false } }));
+  // Making host connected
+  data.update((d) => {
+    d.host.isDisconnected = false;
+    return d;
+  });
+
+  // Setting player to host
   player.set("X");
 
   // Creating a new game and getting its uid

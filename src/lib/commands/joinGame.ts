@@ -29,7 +29,7 @@ const joinGame = async () => {
   if (!data.friend.isDisconnected) return alert("There are already connections");
 
   //  Updating db with friend as online
-  updateGame(queryId, { friend: { isDisconnected: false } });
+  updateGame(queryId, { friend: { isDisconnected: false, sign: "O" } });
 
   // Setting player
   player.set("O");
