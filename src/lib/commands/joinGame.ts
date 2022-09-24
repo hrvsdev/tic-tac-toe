@@ -11,7 +11,7 @@ import type { IGame } from "../../firebase/types";
 const queryId = getQueryId();
 
 // Join a game function
-const joinGame = async (gameId?: string) => {
+const joinGame = async () => {
   // Setting id
   id.set(queryId);
 
@@ -29,7 +29,7 @@ const joinGame = async (gameId?: string) => {
   if (!data.friend.isDisconnected) return alert("There are already connections");
 
   //  Updating db with friend as online
-  updateGame(queryId, { friend: { isDisconnected: false, sign: "O" } });
+  updateGame(queryId, { friend: { isDisconnected: false } });
 
   // Setting player
   player.set("O");

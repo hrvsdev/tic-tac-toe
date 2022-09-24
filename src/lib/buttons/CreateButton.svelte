@@ -1,21 +1,5 @@
 <script lang="ts">
-  import { data, player, id } from "../game/Board.svelte";
-  import { show } from "../Home.svelte";
-  import { newGame } from "../../firebase/db";
-
-  // Create a new game function
-  const createGame = () => {
-    // Setting player to host and making it connected
-    $data.host.isDisconnected = false;
-    player.set("X");
-
-    // Creating a new game and getting its uid
-    const res = newGame($data);
-    id.set(res.id), alert(res.id);
-
-    // Showing the board
-    show.set(true);
-  };
+  import createGame from "../commands/createGame";
 </script>
 
 <button on:click={createGame}>Create new game</button>
