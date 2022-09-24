@@ -1,12 +1,11 @@
 <script context="module" lang="ts">
   import { writable } from "svelte/store";
 
-  import type { IGame } from "src/firebase/types";
-  import type { Writable } from "svelte/store";
+  import type { IGame } from "../../firebase/types";
   import type { Moves, Turn } from "../types";
 
   // Game data used for sharing between players via db
-  export const data: Writable<IGame> = writable({
+  export const data = writable<IGame>({
     // Current turn
     turn: "X",
 
@@ -31,7 +30,7 @@
   export const id = writable("");
 
   // Player status state
-  export const player: Writable<Turn> = writable("X");
+  export const player = writable<Turn>("X");
 </script>
 
 <script lang="ts">
