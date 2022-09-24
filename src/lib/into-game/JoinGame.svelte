@@ -20,10 +20,10 @@
     padding: 12px 20px;
     font-size: 19px;
     font-weight: 500;
+    border-bottom: 2px solid #ff4ecd;
   }
 
   p {
-    border-top: 2px solid #ff4ecd;
     padding: 25px 20px;
     font-size: 17px;
     color: rgba(0 0 0/0.8);
