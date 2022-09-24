@@ -1,3 +1,9 @@
+<script>
+  import { copy } from "../../utils";
+
+  const copyId = () => copy("text");
+</script>
+
 <div class="card-wrapper">
   <h3>Copy your Game ID</h3>
   <div class="card-body">
@@ -5,7 +11,7 @@
       Give this ID to someone to connect to this game. The game will be deleted if you
       leave this page or close the app.
     </p>
-    <div class="id-wrapper">https://t3.hrvs.me/#572937</div>
+    <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
   </div>
 </div>
 
@@ -37,11 +43,21 @@
   }
 
   .id-wrapper {
+    cursor: pointer;
     color: black;
     letter-spacing: 0.5px;
     border-radius: 10px;
     padding: 10px 15px;
-    background-color: #c8f9dd;
+    background: #adf5cc;
     text-align: center;
+    transition: background 300ms, transform 150ms;
+  }
+
+  .id-wrapper:hover {
+    background: #88f1b6;
+  }
+
+  .id-wrapper:active {
+    transform: translateY(2px);
   }
 </style>
