@@ -1,16 +1,16 @@
-<div class="card-root">
+<div class="card-wrapper">
   <h3>Create a new game</h3>
   <p>Create a new game and invite your friends to play or only spectate.</p>
-  <button>Create</button>
+  <!-- <button>Create</button> -->
 </div>
 
 <style>
-  .card-root {
-    border-radius: 15px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-    max-width: 400px;
+  .card-wrapper {
     border: 2px solid #17c964;
+    border-radius: 15px;
     overflow: hidden;
+    max-width: 400px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
   }
 
   h3 {
