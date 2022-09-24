@@ -9,22 +9,23 @@
     border-radius: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
     max-width: 400px;
-    outline: 2px solid #17C964;
+    border: 2px solid #17c964;
+    overflow: hidden;
   }
 
   h3 {
     padding: 10px 20px;
     font-size: 19px;
     font-weight: 500;
-}
+  }
 
-p {
-      border-top: 2px solid #17C964;
+  p {
+    border-top: 2px solid #17c964;
     padding: 25px 20px;
     font-size: 17px;
   }
 
-  button{
+  button {
     all: unset;
     width: 100%;
     cursor: pointer;
@@ -33,8 +34,7 @@ p {
     font-weight: 500;
     padding: 10px 20px;
     text-align: center;
-    border-radius: 0 0 13px 13px;
     color: white;
-    background-color: #17C964;
+    background-color: #17c964;
   }
 </style>
