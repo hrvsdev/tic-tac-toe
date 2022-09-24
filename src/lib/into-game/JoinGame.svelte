@@ -1,7 +1,9 @@
 <div class="card-wrapper">
-  <h3>Create a new game</h3>
-  <p>Create a new game and invite your friends to play or only spectate.</p>
-  <button>Create</button>
+  <h3>Join an existing game</h3>
+  <p>
+    Join the game that your friend already created by the <strong>code</strong>.
+  </p>
+  <button>Join</button>
 </div>
 
 <style>
