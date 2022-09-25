@@ -1,7 +1,8 @@
 <script lang="ts">
   import CreateGame from "./CreateGame.svelte";
   import JoinGame from "./JoinGame.svelte";
-  import JoinGameInfo from "./CreateGameInfo.svelte";
+  import CreateGameInfo from "./CreateGameInfo.svelte";
+  import JoinGameInfo from "./JoinGameInfo.svelte";
 </script>
 
 <section>

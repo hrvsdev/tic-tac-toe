@@ -8,7 +8,7 @@
   .card-wrapper {
     outline: 2px solid #17c964;
     background-color: #f1fdf7;
-    box-shadow: rgb(136, 241, 182) 0px 4px 14px 0px;
+    box-shadow: #88f1b6 0px 4px 14px 0px;
     border-radius: 15px;
     overflow: hidden;
     max-width: 400px;

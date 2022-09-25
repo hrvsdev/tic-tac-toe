@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap");
 
 :root {
   font-family: DM Sans, Avenir, Helvetica, Arial, sans-serif;
@@ -13,9 +13,21 @@
   -webkit-text-size-adjust: 100%;
 }
 
-*{
+* {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --green-primary: #17c964;
+  --green-light: #adf5cc;
+  --green-dark-light: #88f1b6;
+  --green-bg: #f1fdf7;
+
+  --pink-primary: #ff4ecd;
+  --pink-light: #ffa3e5;
+  --pink-dark-light: #ff7ad9;
+  --pink-bg: #fff0fb;
 }
