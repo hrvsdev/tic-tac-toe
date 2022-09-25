@@ -5,11 +5,11 @@
 </script>
 
 <div class="card-wrapper">
-  <h3>Copy your Game ID</h3>
+  <h3>Share your Game ID</h3>
   <div class="card-body">
     <p>
-      Give this ID to someone to connect to this game. The game will be deleted if you
-      leave this page or close the app.
+      <mark>Share</mark> this ID to someone to connect to this game. The game will be deleted
+      if you leave this page or close the app.
     </p>
     <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
   </div>
@@ -42,19 +42,32 @@
     margin-bottom: 20px;
   }
 
+  mark {
+    background: transparent;
+    cursor: pointer;
+    color: var(--green-text);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    transition: all 300ms;
+  }
+
+  mark:hover{
+    filter: brightness(0.7);
+  }
+
   .id-wrapper {
     cursor: pointer;
     color: black;
     letter-spacing: 0.5px;
     border-radius: 10px;
     padding: 10px 15px;
-    background: var(--green-light);
+    background: var(--green-extra-light);
     text-align: center;
     transition: background 300ms, transform 150ms;
   }
 
   .id-wrapper:hover {
-    background: var(--green-dark-light);
+    background: var(--green-light);
   }
 
   .id-wrapper:active {

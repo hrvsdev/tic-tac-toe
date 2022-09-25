@@ -63,10 +63,12 @@
     background: transparent;
     cursor: pointer;
     color: var(--pink-text);
+    text-decoration: underline;
+    text-underline-offset: 5px;
   }
 
   mark:hover {
-    text-decoration: underline;
+    filter: brightness(0.7);
   }
 
   .id-wrapper {

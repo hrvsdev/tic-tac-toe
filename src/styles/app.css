@@ -26,15 +26,17 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type="number"] {
+/* input[type="number"] {
   -moz-appearance: textfield;
-}
+} */
 
 :root {
   --green-primary: #17c964;
   --green-light: #adf5cc;
   --green-dark-light: #88f1b6;
+  --green-extra-light: #c8f9dd;
   --green-bg: #f1fdf7;
+  --green-text: #108944;
 
   --pink-primary: #ff4ecd;
   --pink-light: #ffa3e5;

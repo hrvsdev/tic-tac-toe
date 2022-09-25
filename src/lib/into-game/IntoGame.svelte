@@ -6,6 +6,7 @@
 </script>
 
 <section>
+  <CreateGameInfo/>
   <JoinGameInfo/>
 </section>
 
