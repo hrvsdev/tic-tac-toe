@@ -21,6 +21,7 @@
     </p>
     <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
   </div>
+  <button>Continue</button>
 </div>
 
 <style>
@@ -79,6 +80,28 @@
   }
 
   .id-wrapper:active {
+    transform: translateY(2px);
+  }
+
+  button {
+    all: unset;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 12px 20px;
+    text-align: center;
+    color: white;
+    background-color: var(--green-primary);
+    transition: filter 300ms, transform 100ms;
+  }
+
+  button:hover {
+    filter: brightness(0.95);
+  }
+
+  button:active {
     transform: translateY(2px);
   }
 </style>

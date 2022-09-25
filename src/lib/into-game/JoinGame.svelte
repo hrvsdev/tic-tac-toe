@@ -40,10 +40,14 @@
     text-align: center;
     color: white;
     background-color: var(--pink-primary);
-    transition: all 300ms;
+    transition: filter 300ms, transform 100ms;
   }
 
   button:hover {
     filter: brightness(0.95);
+  }
+
+  button:active {
+    transform: translateY(2px);
   }
 </style>

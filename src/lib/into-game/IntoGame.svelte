@@ -7,7 +7,9 @@
 
 <section>
   <CreateGameInfo/>
+  <CreateGame/>
   <JoinGameInfo/>
+  <JoinGame/>
 </section>
 
 <style>
