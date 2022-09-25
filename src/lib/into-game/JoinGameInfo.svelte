@@ -1,17 +1,21 @@
 <script>
-  import { copy } from "../../utils";
+  import { copy, genId } from "../../utils";
 
   const copyId = () => copy("text");
 </script>
 
 <div class="card-wrapper">
-  <h3>Copy your Game ID</h3>
+  <h3>Connect to the game via ID</h3>
   <div class="card-body">
     <p>
-      Give this ID to someone to connect to this game. The game will be deleted if you
-      leave this page or close the app.
+      Here is the ID from the link you entered. Do you want to connect to it or change it?
     </p>
-    <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
+    <input
+      value={genId()}
+      class="id-wrapper"
+      type="number"
+      placeholder="Enter Game ID"
+    />
   </div>
 </div>
 
@@ -43,21 +47,28 @@
   }
 
   .id-wrapper {
-    cursor: pointer;
+    all: unset;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: initial;
     color: black;
     letter-spacing: 0.5px;
     border-radius: 10px;
     padding: 10px 15px;
-    background: var(--pink-light);
+    background: var(--pink-extra-light);
     text-align: center;
-    transition: background 300ms, transform 150ms;
+    font-weight: 600;
+    font-size: 20px;
+    transition: all 300ms;
   }
 
-  .id-wrapper:hover {
-    background: var(--pink-dark-light);
+  .id-wrapper::placeholder {
+    color: rgb(0 0 0/0.8);
+    font-weight: 400;
+    font-size: 17px;
   }
 
-  .id-wrapper:active {
-    transform: translateY(2px);
+  .id-wrapper:focus {
+    background: var(--pink-light);
   }
 </style>

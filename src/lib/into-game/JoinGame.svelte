@@ -8,9 +8,9 @@
 
 <style>
   .card-wrapper {
-    outline: 2px solid #ff4ecd;
-    background-color: #fff0fb;
-    box-shadow: #ff7ad9 0px 4px 14px 0px;
+    outline: 2px solid var(--pink-primary);
+    background-color: var(--pink-bg);
+    box-shadow: var(--pink-dark-light) 0px 4px 14px 0px;
     border-radius: 15px;
     overflow: hidden;
     max-width: 400px;
@@ -20,7 +20,7 @@
     padding: 12px 20px;
     font-size: 19px;
     font-weight: 500;
-    border-bottom: 2px solid #ff4ecd;
+    border-bottom: 2px solid var(--pink-primary);
   }
 
   p {
@@ -39,7 +39,7 @@
     padding: 12px 20px;
     text-align: center;
     color: white;
-    background-color: #ff4ecd;
+    background-color: var(--pink-primary);
     transition: all 300ms;
   }
 

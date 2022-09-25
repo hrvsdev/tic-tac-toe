@@ -17,9 +17,9 @@
 
 <style>
   .card-wrapper {
-    outline: 2px solid #17c964;
-    background-color: #f1fdf7;
-    box-shadow: rgb(136, 241, 182) 0px 4px 14px 0px;
+    outline: 2px solid var(--green-primary);
+    background-color: var(--green-bg);
+    box-shadow: var(--green-dark-light) 0px 4px 14px 0px;
     border-radius: 15px;
     overflow: hidden;
     max-width: 400px;
@@ -29,7 +29,7 @@
     padding: 12px 20px;
     font-size: 19px;
     font-weight: 500;
-    border-bottom: 2px solid #17c964;
+    border-bottom: 2px solid var(--green-primary);
   }
 
   .card-body {
@@ -48,13 +48,13 @@
     letter-spacing: 0.5px;
     border-radius: 10px;
     padding: 10px 15px;
-    background: #adf5cc;
+    background: var(--green-light);
     text-align: center;
     transition: background 300ms, transform 150ms;
   }
 
   .id-wrapper:hover {
-    background: #88f1b6;
+    background: var(--green-dark-light);
   }
 
   .id-wrapper:active {
