@@ -2,14 +2,19 @@
   import { copy } from "../../utils";
 
   const copyId = () => copy("text");
+
+  const shareId = () => {
+    navigator.share({ title: "Tic Tac Toe - T3", text: "hello", url: "https://hrvs.me" });
+  };
 </script>
 
 <div class="card-wrapper">
   <h3>Share your Game ID</h3>
   <div class="card-body">
     <p>
-      <mark>Share</mark> this ID to someone to connect to this game. The game will be deleted
-      if you leave this page or close the app.
+      <mark on:click={shareId}>Share</mark>
+      this ID to someone to connect to this game. The game will be deleted if you leave this
+      page or close the app.
     </p>
     <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
   </div>
@@ -51,7 +56,7 @@
     transition: all 300ms;
   }
 
-  mark:hover{
+  mark:hover {
     filter: brightness(0.7);
   }
 
