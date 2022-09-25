@@ -18,6 +18,7 @@
       placeholder="Enter Game ID"
     />
   </div>
+  <button>Connect</button>
 </div>
 
 <style>
@@ -71,5 +72,23 @@
 
   .id-wrapper:focus {
     background: var(--pink-light);
+  }
+
+  button {
+    all: unset;
+    width: 100%;
+    cursor: pointer;
+    box-sizing: border-box;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 12px 20px;
+    text-align: center;
+    color: white;
+    background-color: var(--pink-primary);
+    transition: all 300ms;
+  }
+
+  button:hover {
+    filter: brightness(0.95);
   }
 </style>
