@@ -1,24 +1,35 @@
-<script>
+<script lang="ts">
   import { copy, genId } from "../../utils";
 
+  let inputEl: HTMLInputElement;
+
+  // Copy text button
   const copyId = () => copy("text");
+
+  // Focus input
+  const focusInput = () => inputEl.focus();
 </script>
 
 <div class="card-wrapper">
-  <h3>Connect to the game via ID</h3>
-  <div class="card-body">
-    <p>
-      Here is the ID from the link you entered. Do you want to connect to it or change it?
-    </p>
-    <input
-      value={genId()}
-      class="id-wrapper"
-      inputmode="numeric"
-      type="number"
-      placeholder="Enter Game ID"
-    />
-  </div>
-  <button>Connect</button>
+  <form>
+    <h3>Connect to the game via ID</h3>
+    <div class="card-body">
+      <p>
+        Here is the ID from the link you entered. Do you want to <mark
+          on:click={focusInput}>change it</mark
+        > or connect?
+      </p>
+      <input
+        value={genId()}
+        bind:this={inputEl}
+        class="id-wrapper"
+        inputmode="numeric"
+        type="number"
+        placeholder="Enter Game ID"
+      />
+    </div>
+    <button>Connect</button>
+  </form>
 </div>
 
 <style>
@@ -46,6 +57,16 @@
 
   p {
     margin-bottom: 20px;
+  }
+
+  mark {
+    background: transparent;
+    cursor: pointer;
+    color: var(--pink-text);
+  }
+
+  mark:hover {
+    text-decoration: underline;
   }
 
   .id-wrapper {
@@ -85,10 +106,14 @@
     text-align: center;
     color: white;
     background-color: var(--pink-primary);
-    transition: all 300ms;
+    transition: filter 300ms, transform 100ms;
   }
 
   button:hover {
     filter: brightness(0.95);
+  }
+
+  button:active {
+    transform: translateY(2px);
   }
 </style>
