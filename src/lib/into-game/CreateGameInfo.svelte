@@ -4,7 +4,11 @@
   const copyId = () => copy("text");
 
   const shareId = () => {
-    navigator.share({ title: "Tic Tac Toe - T3", text: "hello", url: "https://hrvs.me" });
+    navigator.share({
+      title: "Tic Tac Toe - T3",
+      text: "hello",
+      url: "https://hrvs.me",
+    });
   };
 </script>
 
