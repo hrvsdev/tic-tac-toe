@@ -13,6 +13,7 @@
     <input
       value={genId()}
       class="id-wrapper"
+      inputmode="numeric"
       type="number"
       placeholder="Enter Game ID"
     />

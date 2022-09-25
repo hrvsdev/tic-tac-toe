@@ -20,6 +20,16 @@
   -webkit-tap-highlight-color: transparent;
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 :root {
   --green-primary: #17c964;
   --green-light: #adf5cc;
