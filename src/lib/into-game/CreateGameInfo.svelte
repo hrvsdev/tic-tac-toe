@@ -17,8 +17,7 @@
   <div class="card-body">
     <p>
       <mark on:click={shareId}>Share</mark>
-      this ID to someone to connect to this game. The game will be deleted if you leave this
-      page or close the app.
+      this ID with your friend to connect to this game.
     </p>
     <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
   </div>

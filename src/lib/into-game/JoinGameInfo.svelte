@@ -15,7 +15,7 @@
     <h3>Connect to the game via ID</h3>
     <div class="card-body">
       <p>
-        Here is the ID from the link you entered. Do you want to
+        Here is the ID from the link. Do you want to
         <mark on:click={focusInput}>change it</mark> or connect?
       </p>
       <input
