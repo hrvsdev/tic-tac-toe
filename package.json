@@ -1,6 +1,6 @@
 {
   "name": "tic-tac-toe",
-  "description": "A multiplayer Tic Tac Toe game made with Svelte and Firebase."
+  "description": "A multiplayer Tic Tac Toe game made with Svelte and Firebase.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
