@@ -8,9 +8,6 @@
   let error = false;
   let loading = false;
 
-  // Copy text button
-  const copyId = () => copy("text");
-
   // Focus input
   const focusInput = () => inputEl.focus();
 
