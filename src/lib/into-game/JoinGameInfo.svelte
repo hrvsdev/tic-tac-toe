@@ -1,7 +1,11 @@
 <script lang="ts">
   import { copy, genId } from "../../utils";
 
+  // Input element
   let inputEl: HTMLInputElement;
+
+  // Input error
+  let error: boolean = true;
 
   // Copy text button
   const copyId = () => copy("text");
@@ -22,6 +26,7 @@
         value={genId()}
         bind:this={inputEl}
         class="id-wrapper"
+        class:error
         inputmode="numeric"
         type="number"
         placeholder="Enter Game ID"
@@ -74,6 +79,7 @@
     all: unset;
     width: 100%;
     box-sizing: border-box;
+    position: relative;
     cursor: initial;
     color: black;
     letter-spacing: 0.5px;
@@ -94,6 +100,10 @@
 
   .id-wrapper:focus {
     background: var(--pink-light);
+  }
+
+  .error {
+    outline: 2px solid var(--red-primary);
   }
 
   button {
