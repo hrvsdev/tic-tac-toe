@@ -12,10 +12,13 @@
 
   // Focus input
   const focusInput = () => inputEl.focus();
+
+  // Form submit action
+  const 
 </script>
 
 <div class="card-wrapper">
-  <form>
+  <form >
     <h3>Connect to the game via ID</h3>
     <div class="card-body">
       <p>
@@ -25,12 +28,16 @@
       <input
         value={genId()}
         bind:this={inputEl}
-        class="id-wrapper"
         class:error
         inputmode="numeric"
         type="number"
         placeholder="Enter Game ID"
       />
+      {#if error}
+        <div class="error">
+          Game not found! It means that the game is deleted or never created.
+        </div>
+      {/if}
     </div>
     <button>Connect</button>
   </form>
@@ -75,7 +82,7 @@
     filter: brightness(0.7);
   }
 
-  .id-wrapper {
+  input {
     all: unset;
     width: 100%;
     box-sizing: border-box;
@@ -92,18 +99,26 @@
     transition: all 300ms;
   }
 
-  .id-wrapper::placeholder {
+  input:placeholder {
     color: rgb(0 0 0/0.8);
     font-weight: 400;
     font-size: 17px;
   }
 
-  .id-wrapper:focus {
+  input:focus {
     background: var(--pink-light);
   }
 
-  .error {
+  input.error {
     outline: 2px solid var(--red-primary);
+    background: var(--red-extra-light);
+  }
+
+  div.error {
+    font-size: 15px;
+    margin-top: 10px;
+    color: var(--red-primary);
+    line-height: normal;
   }
 
   button {
