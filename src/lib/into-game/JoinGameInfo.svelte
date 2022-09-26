@@ -4,8 +4,9 @@
   // Input element
   let inputEl: HTMLInputElement;
 
-  // Input error
-  let error: boolean = true;
+  // Input states
+  let error = false;
+  let loading = false;
 
   // Copy text button
   const copyId = () => copy("text");
@@ -14,11 +15,16 @@
   const focusInput = () => inputEl.focus();
 
   // Form submit action
-  const 
+  const onSubmit = () => {
+    loading = true;
+    setTimeout(() => {
+      (loading = false), (error = true);
+    }, 2000);
+  };
 </script>
 
 <div class="card-wrapper">
-  <form >
+  <form on:submit|preventDefault={onSubmit}>
     <h3>Connect to the game via ID</h3>
     <div class="card-body">
       <p>
@@ -28,6 +34,7 @@
       <input
         value={genId()}
         bind:this={inputEl}
+        on:focus={() => (error = false)}
         class:error
         inputmode="numeric"
         type="number"
@@ -39,7 +46,13 @@
         </div>
       {/if}
     </div>
-    <button>Connect</button>
+    <button disabled={loading}>
+      {#if loading}
+        <span class="loader" />
+      {:else}
+        <span>Continue</span>
+      {/if}
+    </button>
   </form>
 </div>
 
@@ -96,7 +109,7 @@
     text-align: center;
     font-weight: 600;
     font-size: 20px;
-    transition: all 300ms;
+    transition: background 300ms;
   }
 
   input:placeholder {
@@ -124,22 +137,46 @@
   button {
     all: unset;
     width: 100%;
-    cursor: pointer;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     box-sizing: border-box;
     font-size: 17px;
     font-weight: 500;
-    padding: 12px 20px;
-    text-align: center;
     color: white;
     background-color: var(--pink-primary);
     transition: filter 300ms, transform 100ms;
   }
 
-  button:hover {
+  button:enabled {
+    cursor: pointer;
+  }
+
+  button:enabled:hover {
     filter: brightness(0.95);
   }
 
-  button:active {
+  button:enabled:active {
     transform: translateY(2px);
+  }
+
+  .loader {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: inline-block;
+    border-top: 3px solid #fff;
+    border-right: 3px solid transparent;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 </style>
