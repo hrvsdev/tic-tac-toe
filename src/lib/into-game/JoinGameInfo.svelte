@@ -109,7 +109,7 @@
     transition: background 300ms;
   }
 
-  input:placeholder {
+  input::placeholder {
     color: rgb(0 0 0/0.8);
     font-weight: 400;
     font-size: 17px;
