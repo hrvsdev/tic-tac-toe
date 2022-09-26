@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { copy, genId } from "../../utils";
+  import { genId } from "../../utils";
 
   // Input element
   let inputEl: HTMLInputElement;
