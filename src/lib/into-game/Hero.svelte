@@ -6,20 +6,20 @@
 
 <style>
   h1 {
-    font-size: 100px;
-    font-family: "Pacifico";
+    font-size: 70px;
+    font-family: "Inter";
     display: inline;
   }
 
   h1:first-child {
-    color: #06371b;
+    color: #7828c8;
   }
 
   h1 {
-    color: #00254d;
+    color: #0072f5;
   }
 
   h1:last-child {
-    color: #4d0037;
+    color: #f31260;
   }
 </style>
