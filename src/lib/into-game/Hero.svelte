@@ -3,5 +3,6 @@
 <style>
   h1 {
     font-size: 100px;
+    font-family: "Pacifico";
   }
 </style>
