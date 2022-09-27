@@ -1,6 +1,6 @@
 <section>
-  <h1>Tic&nbsp</h1>
-  <h1>Tac&nbsp</h1>
+  <h1>Tic</h1>
+  <h1>Tac</h1>
   <h1>Toe</h1>
 </section>
 
@@ -11,7 +11,15 @@
     display: inline;
   }
 
-  h1:first-child{
-    color: var(--green-text);
+  h1:first-child {
+    color: #06371b;
+  }
+
+  h1 {
+    color: #00254d;
+  }
+
+  h1:last-child {
+    color: #4d0037;
   }
 </style>
