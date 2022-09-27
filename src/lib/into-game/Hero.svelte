@@ -6,8 +6,8 @@
 
 <style>
   h1 {
-    font-size: 70px;
-    font-family: "Inter";
+    font-size: 90px;
+    font-family: "Pacifico";
     display: inline;
   }
 
