@@ -1,6 +1,5 @@
 <script lang="ts">
   import { showJoinGameInfo } from "../into-game-store";
-  import JoinGameInfo from "./JoinGameInfo.svelte";
 
   // Button click action
   const onClick = () => {
