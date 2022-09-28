@@ -1,6 +1,6 @@
 <script lang="ts">
   import joinGame from "../../../commands/joinGame";
-  
+
   import { show } from "../../../lib/game/game-store";
   import { getURLId } from "../../../lib/utils";
 
@@ -10,8 +10,11 @@
   // Input element
   let inputEl: HTMLInputElement;
 
-  // Input states
+  // Error states
   let error = false;
+  let errorMsg = "Some error occured!";
+
+  // Loading state
   let loading = false;
 
   // Focus input
@@ -20,9 +23,17 @@
   // Form submit action
   const onSubmit = async () => {
     loading = true;
-    await joinGame();
-    loading = false;
-    show.set(true)
+    const res = await joinGame();
+
+    if (res.success) {
+      show.set(true);
+      loading = false;
+    } else {
+      loading = false;
+      if (res.msg === "not-found") return (errorMsg = "Game not found!");
+      if (res.msg === "host-dis") return (errorMsg = "Host is not connected!");
+      if (res.msg === "already-conn") return (errorMsg = "Another player connected!");
+    }
   };
 </script>
 
@@ -45,7 +56,7 @@
       />
       {#if error}
         <div class="error">
-          Game not found! It means that the game is deleted or never created.
+          {errorMsg}
         </div>
       {/if}
     </div>

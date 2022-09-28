@@ -18,13 +18,13 @@ const joinGame = async () => {
   const snap = await get(ref(db, queryId));
 
   // Check if game exists
-  if (snap.exists() === false) return { sucess: false, msg: "not-found" };
+  if (snap.exists() === false) return { success: false, msg: "not-found" };
 
   // Getting data from snap
   const data = snap.val() as IGame;
 
   // Checking if host is connected and friend is disconnceted
-  if (data.host.isDisconnected) return { sucess: false, msg: "host-dis" };
+  if (data.host.isDisconnected) return { success: false, msg: "host-dis" };
   if (!data.friend.isDisconnected) return { success: false, msg: "already-conn" };
   //  Updating db with friend as online
   updateGame(queryId, { friend: { isDisconnected: false, sign: "O" } });
