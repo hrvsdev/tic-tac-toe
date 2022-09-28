@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Hero from "./Hero.svelte";
-  import CreateGame from "./CreateGame.svelte";
-  import JoinGame from "./JoinGame.svelte";
-  import CreateGameInfo from "./CreateGameInfo.svelte";
-  import JoinGameInfo from "./JoinGameInfo.svelte";
+  import Hero from "./header/Hero.svelte";
+  import CreateGame from "./create-game/CreateGame.svelte";
+  import CreateGameInfo from "./create-game/CreateGameInfo.svelte";
+  import JoinGame from "./join-game/JoinGame.svelte";
+  import JoinGameInfo from "./join-game/JoinGameInfo.svelte";
 </script>
 
 <Hero/>
