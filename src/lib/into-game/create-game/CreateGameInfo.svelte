@@ -1,5 +1,6 @@
 <script>
   import { id } from "../../game/game-store";
+  import { show } from "../../Home.svelte";
   import { copy } from "../../../utils";
 
   // URL with id
@@ -25,9 +26,9 @@
       <mark on:click={shareId}>Share</mark>
       this ID with your friend to connect to this game.
     </p>
-    <div class="id-wrapper" on:click={copyId}>{$id}</div>
+    <div class="id-wrapper" on:click={copyId}>{url}</div>
   </div>
-  <button>Continue</button>
+  <button on:click={}>Continue</button>
 </div>
 
 <style>
@@ -78,7 +79,7 @@
     padding: 10px 15px;
     background: var(--green-extra-light);
     text-align: center;
-    transition: background 300ms, transform 150ms;
+    transition: background 300ms, transform 100ms;
   }
 
   .id-wrapper:hover {
