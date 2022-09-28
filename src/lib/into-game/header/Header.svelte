@@ -17,12 +17,12 @@
   header {
     width: 100%;
     border-bottom: 1px solid rgb(239 239 239);
-    padding: 10px 35px;
-    margin-bottom: 30px;
+    padding: 15px 20px;
+    margin-bottom: 50px;
   }
 
   .container {
-    max-width: 800px;
+    max-width: 830px;
     width: 100%;
     margin: auto;
     display: flex;

@@ -8,15 +8,18 @@
 
 <Hero/>
 <section>
+  {#}
   <CreateGame/>
   <JoinGame/>
 </section>
 
 <style>
   section {
-    display: flex;
-    flex-direction: column;
-    row-gap: 50px;
-    padding: 20px;
+    max-width: 870px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
   }
 </style>

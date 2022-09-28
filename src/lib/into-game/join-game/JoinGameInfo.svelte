@@ -60,7 +60,7 @@
     box-shadow: var(--pink-dark-light) 0px 4px 14px 0px;
     border-radius: 15px;
     overflow: hidden;
-    max-width: 400px;
+    width: 100%;
   }
 
   h3 {
