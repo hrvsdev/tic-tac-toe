@@ -1,9 +1,9 @@
 <script>
-  import {id} from "../../game/game-store"
+  import { id } from "../../game/game-store";
   import { copy } from "../../../utils";
 
   // URL with id
-  $: url = window.location.origin + "#" + $id
+  $: url = window.location.origin + "#" + $id;
 
   // Copy id button action
   const copyId = () => copy(url);
@@ -25,7 +25,7 @@
       <mark on:click={shareId}>Share</mark>
       this ID with your friend to connect to this game.
     </p>
-    <div class="id-wrapper" on:click={copyId}>https://t3.hrvs.me/#572937</div>
+    <div class="id-wrapper" on:click={copyId}>{$id}</div>
   </div>
   <button>Continue</button>
 </div>

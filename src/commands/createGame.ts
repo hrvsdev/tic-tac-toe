@@ -1,6 +1,5 @@
 import { get } from "svelte/store";
 import { data, player, id } from "../lib/game/game-store";
-import { show } from "../lib/Home.svelte";
 import { newGame } from "../firebase/db";
 
 // Create a new game function
@@ -17,9 +16,6 @@ const createGame = () => {
   // Creating a new game and getting its uid
   const res = newGame(get(data));
   id.set(res.id), alert(res.id);
-
-  // Showing the board
-  show.set(true);
 };
 
 export default createGame;
