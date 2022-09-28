@@ -1,5 +1,11 @@
 <script lang="ts">
-  import { genId } from "../../../utils";
+  import joinGame from "../../../commands/joinGame";
+  
+  import { show } from "../../../lib/game/game-store";
+  import { getURLId } from "../../../lib/utils";
+
+  // URL Hash Id
+  const id = getURLId();
 
   // Input element
   let inputEl: HTMLInputElement;
@@ -12,11 +18,11 @@
   const focusInput = () => inputEl.focus();
 
   // Form submit action
-  const onSubmit = () => {
+  const onSubmit = async () => {
     loading = true;
-    setTimeout(() => {
-      (loading = false), (error = true);
-    }, 2000);
+    await joinGame();
+    loading = false;
+    show.set(true)
   };
 </script>
 
@@ -29,7 +35,7 @@
         <mark on:click={focusInput}>change it</mark> or connect?
       </p>
       <input
-        value={genId()}
+        value={id}
         bind:this={inputEl}
         on:focus={() => (error = false)}
         class:error
