@@ -7,10 +7,11 @@ import type { IGame } from "../firebase/types";
 // Join a game function
 const joinGame = async (hashId: string) => {
   try {
+    // Checking if there is id
+    if (!hashId.trim()) return { success: false };
+
     // Setting id
     id.set(hashId);
-
-    console.log(hashId);
 
     // Getting snapshot from db via id
     const snap = await get(ref(db, hashId));
