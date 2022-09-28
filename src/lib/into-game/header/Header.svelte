@@ -1,25 +1,44 @@
-<section>
-  <h1>Tic</h1>
-  <h1>Tac</h1>
-  <h1>Toe</h1>
-</section>
+<script>
+  import IUS from "../../assets/IUS.svelte";
+</script>
+
+<header>
+  <div class="container">
+    <div class="left">
+      <a href="/" class="icon"><IUS /></a>
+    </div>
+    <div class="right">
+      <a href="https://hrvs.me" target="_blank">Github</a>
+    </div>
+  </div>
+</header>
 
 <style>
-  h1 {
-    font-size: 90px;
-    font-family: "Pacifico";
-    display: inline;
+  header {
+    width: 100%;
+    border-bottom: 1px solid rgb(239 239 239);
+    padding: 10px 35px;
+    margin-bottom: 30px;
   }
 
-  h1:first-child {
-    color: #7828c8;
+  .container {
+    max-width: 800px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  h1 {
-    color: #0072f5;
+  .left,
+  .right {
+    display: flex;
+    align-items: center;
+    column-gap: 20px;
   }
 
-  h1:last-child {
-    color: #f31260;
+  .icon {
+    display: flex;
+    align-items: center;
   }
 </style>
