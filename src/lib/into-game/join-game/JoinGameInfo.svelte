@@ -29,6 +29,7 @@
       show.set(true);
       loading = false;
     } else {
+      error = true;
       loading = false;
       if (res.msg === "not-found") return (errorMsg = "Game not found!");
       if (res.msg === "host-dis") return (errorMsg = "Host is not connected!");
