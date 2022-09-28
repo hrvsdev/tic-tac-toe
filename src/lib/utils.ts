@@ -11,6 +11,6 @@ export const winLogic = [
   [2, 4, 6],
 ];
 
-export const getQueryId = () => window.location.hash.substring(1)
+export const getURLId = () => window.location.hash.substring(1)
 
 // export const getQueryId = () => queryString.parse(window.location.search).g as string;
