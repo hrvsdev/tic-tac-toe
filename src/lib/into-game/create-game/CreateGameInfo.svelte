@@ -1,13 +1,19 @@
 <script>
+  import {id} from "../../game/game-store"
   import { copy } from "../../../utils";
 
-  const copyId = () => copy("text");
+  // URL with id
+  $: url = window.location.origin + "#" + $id
 
+  // Copy id button action
+  const copyId = () => copy(url);
+
+  // Id share action
   const shareId = () => {
     navigator.share({
       title: "Tic Tac Toe - T3",
-      text: "hello",
-      url: "https://hrvs.me",
+      text: url,
+      url: url,
     });
   };
 </script>

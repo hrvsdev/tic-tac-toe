@@ -1,8 +1,11 @@
 <script lang="ts">
   import { showCreateGameInfo } from "../into-game-store";
+  
+  import createGame from "src/commands/createGame";
 
   // Button click action
   const onClick = () => {
+    createGame()
     showCreateGameInfo.set(true);
   };
 </script>
