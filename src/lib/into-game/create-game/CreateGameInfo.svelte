@@ -17,6 +17,11 @@
       url: url,
     });
   };
+
+  // Button click action
+  const onClick = () => {
+    show.set(true);
+  };
 </script>
 
 <div class="card-wrapper">
@@ -28,7 +33,7 @@
     </p>
     <div class="id-wrapper" on:click={copyId}>{url}</div>
   </div>
-  <button on:click={}>Continue</button>
+  <button on:click={onClick}>Continue</button>
 </div>
 
 <style>
