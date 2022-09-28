@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Hero from "./header/Hero.svelte";
+  import Hero from "./header/Header.svelte";
   import CreateGame from "./create-game/CreateGame.svelte";
   import CreateGameInfo from "./create-game/CreateGameInfo.svelte";
   import JoinGame from "./join-game/JoinGame.svelte";
