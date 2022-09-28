@@ -1,21 +1,23 @@
 <script lang="ts">
-  import { showCreateGameInfo } from "./into-game-store";
-  import Hero from "./header/Header.svelte";
+  import { showCreateGameInfo, showJoinGameInfo } from "./into-game-store";
+
+  import Header from "./header/Header.svelte";
   import CreateGame from "./create-game/CreateGame.svelte";
   import CreateGameInfo from "./create-game/CreateGameInfo.svelte";
   import JoinGame from "./join-game/JoinGame.svelte";
   import JoinGameInfo from "./join-game/JoinGameInfo.svelte";
 </script>
 
-<Hero />
+<Header />
 <section>
   {#if $showCreateGameInfo}
     <CreateGameInfo />
+  {:else if $showJoinGameInfo}
+    <JoinGameInfo />
   {:else}
     <CreateGame />
+    <JoinGame />
   {/if}
-  <CreateGame />
-  <JoinGame />
 </section>
 
 <style>
