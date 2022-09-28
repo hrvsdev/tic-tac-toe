@@ -1,7 +1,7 @@
 import { get } from "svelte/store";
-import { data, player, id } from "../game/Board.svelte";
-import { show } from "../Home.svelte";
-import { newGame } from "../../firebase/db";
+import { data, player, id } from "../lib/game/Board.svelte";
+import { show } from "../lib/Home.svelte";
+import { newGame } from "../firebase/db";
 
 // Create a new game function
 const createGame = () => {
