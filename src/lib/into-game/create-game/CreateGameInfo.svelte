@@ -1,5 +1,5 @@
 <script>
-  import { copy } from "../../utils";
+  import { copy } from "../../../utils";
 
   const copyId = () => copy("text");
 
