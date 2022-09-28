@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { data, player, id } from "../lib/game/Board.svelte";
+import { data, player, id } from "../lib/game/game-store";
 import { show } from "../lib/Home.svelte";
 import { newGame } from "../firebase/db";
 

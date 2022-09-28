@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { data } from "./Board.svelte";
+  import { data } from "./game-store";
   import { scale } from "svelte/transition";
 </script>
 

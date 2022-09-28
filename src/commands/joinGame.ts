@@ -1,11 +1,11 @@
 import { get, ref } from "firebase/database";
 
-import { player, id } from "../game/Board.svelte";
-import { show } from "../Home.svelte";
-import { db, updateGame } from "../../firebase/db";
-import { getQueryId } from "../utils";
+import { player, id } from "../lib/game/game-store";
+import { show } from "../lib/Home.svelte";
+import { db, updateGame } from "../firebase/db";
+import { getQueryId } from "../lib/utils";
 
-import type { IGame } from "../../firebase/types";
+import type { IGame } from "../firebase/types";
 
 // Query id from URL
 const queryId = getQueryId();
