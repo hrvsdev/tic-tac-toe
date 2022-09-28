@@ -5,7 +5,7 @@
   import { getURLId } from "../../../lib/utils";
 
   // URL Hash Id
-  const id = getURLId();
+  let id = getURLId();
 
   // Input element
   let inputEl: HTMLInputElement;
@@ -23,7 +23,7 @@
   // Form submit action
   const onSubmit = async () => {
     loading = true;
-    const res = await joinGame();
+    const res = await joinGame(id);
 
     if (res.success) {
       show.set(true);
@@ -47,8 +47,8 @@
         <mark on:click={focusInput}>change it</mark> or connect?
       </p>
       <input
-        value={id}
         bind:this={inputEl}
+        bind:value={id}
         on:focus={() => (error = false)}
         class:error
         inputmode="numeric"
