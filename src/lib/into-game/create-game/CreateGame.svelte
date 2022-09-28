@@ -1,7 +1,16 @@
+<script lang="ts">
+  import { showCreateGameInfo } from "../into-game-store";
+
+  // Button click action
+  const onClick = () => {
+    showCreateGameInfo.set(true);
+  };
+</script>
+
 <div class="card-wrapper">
   <h3>Create a new game</h3>
   <p>Create a new game and invite your friends to play or only spectate.</p>
-  <button>Create</button>
+  <button on:click={onClick}>Create</button>
 </div>
 
 <style>
@@ -24,7 +33,8 @@
   p {
     padding: 25px 20px;
     font-size: 17px;
-    color: rgba(0 0 0/0.8)  }
+    color: rgba(0 0 0/0.8);
+  }
 
   button {
     all: unset;

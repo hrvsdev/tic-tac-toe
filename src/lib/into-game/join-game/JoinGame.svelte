@@ -1,9 +1,19 @@
+<script lang="ts">
+  import { showJoinGameInfo } from "../into-game-store";
+  import JoinGameInfo from "./JoinGameInfo.svelte";
+
+  // Button click action
+  const onClick = () => {
+    showJoinGameInfo.set(true);
+  };
+</script>
+
 <div class="card-wrapper">
   <h3>Join an existing game</h3>
   <p>
     Join the game that your friend already created by the <strong>code</strong>.
   </p>
-  <button>Join</button>
+  <button on:click={onClick}>Join</button>
 </div>
 
 <style>
