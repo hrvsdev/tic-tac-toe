@@ -1,12 +1,17 @@
-<script lang="ts" context="module">
-  import { writable } from "svelte/store";
+<script lang="ts">
+  import { onMount } from "svelte";
+  import { show } from "./game/game-store";
+  import { showJoinGameInfo } from "./into-game/into-game-store";
+  import { getURLId } from "./utils";
 
   import Board from "./game/Board.svelte";
-  import CreateGame from "./into-game/IntoGame.svelte";
+  import Into from "./into-game/IntoGame.svelte";
   import Header from "./game/Header.svelte";
 
-  // Show game
-  export const show = writable(false);
+  // onMount action
+  onMount(() => {
+    if (getURLId()) showJoinGameInfo.set(true);
+  });
 </script>
 
 <main>
@@ -14,7 +19,7 @@
     <Header />
     <Board />
   {:else}
-    <CreateGame />
+    <Into />
   {/if}
 </main>
 

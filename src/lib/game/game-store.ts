@@ -30,3 +30,6 @@ export const id = writable("");
 
 // Player status state
 export const player = writable<Turn>("X");
+
+// Board show state
+export const show = writable(false)

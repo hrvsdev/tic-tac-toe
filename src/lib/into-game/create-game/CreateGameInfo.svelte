@@ -1,6 +1,6 @@
 <script>
   import { id } from "../../game/game-store";
-  import { show } from "../../Home.svelte";
+  import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
   // URL with id
