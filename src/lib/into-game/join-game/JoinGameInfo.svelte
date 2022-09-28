@@ -5,7 +5,7 @@
   import { getURLId } from "../../../lib/utils";
 
   // URL Hash Id
-  let id = getURLId();
+  let id = getURLId() as string;
 
   // Input element
   let inputEl: HTMLInputElement;
@@ -23,7 +23,7 @@
   // Form submit action
   const onSubmit = async () => {
     loading = true;
-    const res = await joinGame(id);
+    const res = await joinGame(id.toString());
 
     if (res.success) {
       show.set(true);

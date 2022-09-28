@@ -6,28 +6,35 @@ import type { IGame } from "../firebase/types";
 
 // Join a game function
 const joinGame = async (hashId: string) => {
-  // Setting id
-  id.set(hashId);
+  try {
+    // Setting id
+    id.set(hashId);
 
-  // Getting snapshot from db via id
-  const snap = await get(ref(db, hashId));
+    console.log(hashId);
 
-  // Check if game exists
-  if (snap.exists() === false) return { success: false, msg: "not-found" };
+    // Getting snapshot from db via id
+    const snap = await get(ref(db, hashId));
 
-  // Getting data from snap
-  const data = snap.val() as IGame;
+    // Check if game exists
+    if (snap.exists() === false) return { success: false, msg: "not-found" };
 
-  // Checking if host is connected and friend is disconnceted
-  if (data.host.isDisconnected) return { success: false, msg: "host-dis" };
-  if (!data.friend.isDisconnected) return { success: false, msg: "already-conn" };
-  //  Updating db with friend as online
-  updateGame(hashId, { friend: { isDisconnected: false, sign: "O" } });
+    // Getting data from snap
+    const data = snap.val() as IGame;
 
-  // Setting player
-  player.set("O");
+    // Checking if host is connected and friend is disconnceted
+    if (data.host.isDisconnected) return { success: false, msg: "host-dis" };
+    if (!data.friend.isDisconnected) return { success: false, msg: "already-conn" };
+    //  Updating db with friend as online
+    updateGame(hashId, { friend: { isDisconnected: false, sign: "O" } });
 
-  return { success: true };
+    // Setting player
+    player.set("O");
+
+    return { success: true };
+  } catch (error) {
+    console.log(error);
+    return { success: false };
+  }
 };
 
 export default joinGame;
