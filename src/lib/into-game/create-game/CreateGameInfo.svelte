@@ -1,7 +1,9 @@
-<script>
+<script lang="ts">
   import { id } from "../../game/game-store";
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
+
+  import IconCopy from "~icons/tabler/clipboard"
 
   // URL with id
   const url = window.location.href + "#" + $id;
@@ -33,6 +35,7 @@
     </p>
     <div class="id-wrapper" on:click={copyId}>
       {window.location.href}#<span>{$id}</span>
+      <IconCopy/>
     </div>
   </div>
   <button on:click={onClick}>Continue</button>

@@ -1,13 +1,13 @@
 import { defineConfig } from "vite";
 import { svelte } from "@sveltejs/vite-plugin-svelte";
-import { svelteSVG } from "rollup-plugin-svelte-svg";
+import Icons from "unplugin-icons/vite";
 
 export default defineConfig({
   plugins: [
-    svelteSVG({
-      svgo: {},
-      enforce: "pre",
-    }),
     svelte(),
+    Icons({
+      compiler: "svelte",
+      autoInstall: true,
+    }),
   ],
 });
