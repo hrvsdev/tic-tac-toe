@@ -3,7 +3,7 @@
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
-  import IconCopy from "~icons/tabler/clipboard"
+  import {Copy} from "tabler-icons-svelte"
 
   // URL with id
   const url = window.location.href + "#" + $id;
@@ -35,7 +35,7 @@
     </p>
     <div class="id-wrapper" on:click={copyId}>
       {window.location.href}#<span>{$id}</span>
-      <IconCopy color="red" height="auto"/>
+      <Copy color="red"/>
     </div>
   </div>
   <button on:click={onClick}>Continue</button>
