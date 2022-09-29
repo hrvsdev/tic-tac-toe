@@ -15,7 +15,7 @@ const createGame = () => {
 
   // Creating a new game and getting its uid
   const res = newGame(get(data));
-  id.set(res.id), alert(res.id);
+  id.set(res.id)
 };
 
 export default createGame;

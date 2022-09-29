@@ -4,7 +4,7 @@
   import { copy } from "../../../utils";
 
   // URL with id
-  $: url = window.location.origin + "#" + $id;
+  const url = window.location.href + "#" + $id;
 
   // Copy id button action
   const copyId = () => copy(url);
@@ -31,7 +31,9 @@
       <mark on:click={shareId}>Share</mark>
       this ID with your friend to connect to this game.
     </p>
-    <div class="id-wrapper" on:click={copyId}>{url}</div>
+    <div class="id-wrapper" on:click={copyId}>
+      {window.location.href}#<span>{$id}</span>
+    </div>
   </div>
   <button on:click={onClick}>Continue</button>
 </div>
@@ -78,13 +80,18 @@
 
   .id-wrapper {
     cursor: pointer;
-    color: black;
+    color: rgba(0 0 0/0.7);
     letter-spacing: 0.5px;
     border-radius: 10px;
-    padding: 10px 15px;
+    padding: 12px 15px;
     background: var(--green-extra-light);
     text-align: center;
     transition: background 300ms, transform 100ms;
+  }
+
+  .id-wrapper > span {
+    color: black;
+    font-weight: bold;
   }
 
   .id-wrapper:hover {

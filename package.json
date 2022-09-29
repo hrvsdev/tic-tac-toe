@@ -24,6 +24,7 @@
     "copy-to-clipboard": "^3.3.2",
     "firebase": "^9.10.0",
     "nanoid": "^4.0.0",
-    "query-string": "^7.1.1"
+    "query-string": "^7.1.1",
+    "rollup-plugin-svelte-svg": "^1.0.0-beta.6"
   }
 }
