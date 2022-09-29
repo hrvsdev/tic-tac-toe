@@ -25,8 +25,14 @@
     max-width: 870px;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
     gap: 30px;
     padding: 0 20px;
+  }
+
+  @media (max-width: 500px) {
+    section {
+      grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+    }
   }
 </style>
