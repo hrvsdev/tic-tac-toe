@@ -15,7 +15,7 @@
   const copyId = () => {
     copy(url);
     isCopied = true;
-    setTimeout(() => (isCopied = false), 2000);
+    setTimeout(() => (isCopied = false), 3000);
   };
 
   // Id share action
@@ -40,8 +40,8 @@
       <mark on:click={shareId}>Share</mark>
       this ID with your friend to connect to this game.
     </p>
-    <div class="id-wrapper" on:click={copyId} title="Copy Link and ID">
-      <div class="text">{window.location.href}#<span>{$id}</span></div>
+    <div class="id-wrapper" on:click={copyId} title="Click to copy ID">
+      <div class="text">{window.location.host}/#<span>{$id}</span></div>
       <div class="ibox">
         {#if isCopied}
           <SquareCheck size="26"/>
