@@ -113,6 +113,7 @@
     letter-spacing: 0.5px;
     margin-right: auto;
     overflow-x: scroll;
+    scrollbar-width: none;
   }
 
   .text::-webkit-scrollbar {
