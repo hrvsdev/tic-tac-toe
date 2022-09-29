@@ -11,16 +11,16 @@
   -webkit-text-size-adjust: 100%;
 }
 
-p {
-  font-size: 16px;
-  line-height: 24px;
-}
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+}
+
+p {
+  font-size: 16px;
+  line-height: 24px;
 }
 
 input::-webkit-outer-spin-button,
@@ -31,6 +31,12 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+
+.ibox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 :root {

@@ -3,13 +3,20 @@
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
-  import { Copy } from "tabler-icons-svelte";
+  import { Copy, SquareCheck } from "tabler-icons-svelte";
 
   // URL with id
   const url = window.location.href + "#" + $id;
 
+  // Copied state
+  let isCopied = false;
+
   // Copy id button action
-  const copyId = () => copy(url);
+  const copyId = () => {
+    copy(url);
+    isCopied = true;
+    setTimeout(() => (isCopied = false), 2000);
+  };
 
   // Id share action
   const shareId = () => {
@@ -33,9 +40,15 @@
       <mark on:click={shareId}>Share</mark>
       this ID with your friend to connect to this game.
     </p>
-    <div class="id-wrapper" on:click={copyId}>
+    <div class="id-wrapper" on:click={copyId} title="Copy Link and ID">
       <div class="text">{window.location.href}#<span>{$id}</span></div>
-      <div class="icon"><Copy color="black" size="28" /></div>
+      <div class="ibox">
+        {#if isCopied}
+          <SquareCheck size="26"/>
+        {:else}
+          <Copy size="26"/>
+        {/if}
+      </div>
     </div>
   </div>
   <button on:click={onClick}>Continue</button>
@@ -82,26 +95,33 @@
   }
 
   .id-wrapper {
-    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 10px;
     cursor: pointer;
-    color: rgba(0 0 0/0.7);
-    letter-spacing: 0.5px;
     border-radius: 10px;
-    padding: 12px 15px;
+    padding: 8px 15px;
     background: var(--green-extra-light);
-    text-align: center;
     transition: background 300ms, transform 100ms;
   }
 
-  .id-wrapper span {
-    color: black;
-    font-weight: bold;
+  .id-wrapper > .text {
+    width: 100%;
+    text-align: center;
+    color: rgba(0 0 0/0.7);
+    letter-spacing: 0.5px;
+    margin-right: auto;
+    overflow-x: scroll;
   }
 
-  .id-wrapper .icon {
-    position: absolute;
-    right: 0;
-    bottom: 0;
+  .text::-webkit-scrollbar {
+    display: none;
+  }
+
+  .text > span {
+    color: black;
+    font-weight: bold;
   }
 
   .id-wrapper:hover {
