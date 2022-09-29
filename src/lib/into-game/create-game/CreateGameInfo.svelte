@@ -35,7 +35,7 @@
     </p>
     <div class="id-wrapper" on:click={copyId}>
       {window.location.href}#<span>{$id}</span>
-      <IconCopy/>
+      <IconCopy color="red" height="auto"/>
     </div>
   </div>
   <button on:click={onClick}>Continue</button>

@@ -1,5 +1,3 @@
-import queryString from "query-string";
-
 export const winLogic = [
   [0, 1, 2],
   [3, 4, 5],
@@ -12,5 +10,3 @@ export const winLogic = [
 ];
 
 export const getURLId = () => window.location.hash.substring(1)
-
-// export const getQueryId = () => queryString.parse(window.location.search).g as string;

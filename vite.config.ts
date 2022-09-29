@@ -7,7 +7,9 @@ export default defineConfig({
     svelte(),
     Icons({
       compiler: "svelte",
+      scale: 1.5,
       autoInstall: true,
+      defaultClass: "icon",
     }),
   ],
 });
