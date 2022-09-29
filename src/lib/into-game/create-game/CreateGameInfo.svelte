@@ -3,7 +3,7 @@
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
-  import {Copy} from "tabler-icons-svelte"
+  import { Copy } from "tabler-icons-svelte";
 
   // URL with id
   const url = window.location.href + "#" + $id;
@@ -34,8 +34,8 @@
       this ID with your friend to connect to this game.
     </p>
     <div class="id-wrapper" on:click={copyId}>
-      {window.location.href}#<span>{$id}</span>
-      <Copy color="red"/>
+      <div class="text">{window.location.href}#<span>{$id}</span></div>
+      <div class="icon"><Copy color="black" size="28" /></div>
     </div>
   </div>
   <button on:click={onClick}>Continue</button>
@@ -82,6 +82,7 @@
   }
 
   .id-wrapper {
+    position: relative;
     cursor: pointer;
     color: rgba(0 0 0/0.7);
     letter-spacing: 0.5px;
@@ -92,9 +93,15 @@
     transition: background 300ms, transform 100ms;
   }
 
-  .id-wrapper > span {
+  .id-wrapper span {
     color: black;
     font-weight: bold;
+  }
+
+  .id-wrapper .icon {
+    position: absolute;
+    right: 0;
+    bottom: 0;
   }
 
   .id-wrapper:hover {
