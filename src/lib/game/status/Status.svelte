@@ -23,7 +23,7 @@
     width: 100%;
     height: 60px;
     margin-bottom: 50px;
-    transition: transform 300ms;
+    transition: all 300ms;
   }
 
   .info {
@@ -45,25 +45,27 @@
   }
 
   .round {
+    font-size: 25px;
     font-weight: 700;
-    font-size: 40px;
   }
 
   .round > span {
-    font-size: 20px;
-    font-weight: 400;
     margin-right: 5px;
+    font-weight: 500;
+    font-size: 22px;
   }
 
   .status {
     flex-grow: 1;
-    font-size: 30px;
-    font-weight: 700;
+    font-size: 22px;
+    font-weight: 500;
   }
 
   @media (max-width: 600px) {
     .info-wrapper {
-      transform: scale(0.8);
+      max-width: 380px;
     }
+
+    
   }
 </style>
