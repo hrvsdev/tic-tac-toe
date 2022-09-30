@@ -23,6 +23,7 @@
     width: 100%;
     height: 60px;
     margin-bottom: 50px;
+    transition: transform 300ms;
   }
 
   .info {
@@ -58,5 +59,11 @@
     flex-grow: 1;
     font-size: 30px;
     font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .info-wrapper {
+      transform: scale(0.7);
+    }
   }
 </style>
