@@ -14,15 +14,9 @@
     </div>
   </div>
   <div class="center">
-    <div class="top">
-      <h3 class="score-text">SCORE</h3>
-    </div>
-    <div class="bottom">
-      <h1 class="score">
-        <span>2</span>
-        <span>-</span>
-        <span>6</span>
-      </h1>
+    <div class="score-bg" />
+    <div class="score-box">
+      <h1 class="score">{$data.scoreX} - {$data.scoreO}</h1>
     </div>
   </div>
   <div class="right">
@@ -46,34 +40,39 @@
   .left,
   .right {
     position: relative;
-    height: fit-content;
+    width: 75px;
+    height: 75px;
   }
 
   .ibox {
-    width: 75px;
-    height: 75px;
+    width: 100%;
+    height: 100%;
     border: 3px solid black;
     background: white;
   }
 
-  .icon-bg {
+  .icon-bg,
+  .score-bg {
     position: absolute;
     z-index: -1;
     top: 4px;
     left: 4px;
-    width: 75px;
-    height: 75px;
+    width: 100%;
+    height: 100%;
     background: black;
   }
 
-  .center > .top {
-    text-align: center;
-    color: rgba(0 0 0/0.8);
-    margin-bottom: 10px;
+  .center {
+    position: relative;
+    height: 75px;
   }
 
-  .score {
-    font-size: 50px;
-    line-height: 40px;
+  .score-box {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    border: 3px solid black;
+    background: white;
   }
 </style>
