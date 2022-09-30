@@ -48,7 +48,13 @@
     width: 100%;
     height: 100%;
     border: 3px solid black;
-    background: white;
+  }
+
+  .left .ibox{
+    background: var(--green-extra-light);
+  }
+  .right .ibox{
+    background: var(--pink-extra-light);
   }
 
   .icon-bg,
