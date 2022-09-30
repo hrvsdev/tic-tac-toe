@@ -1,16 +1,16 @@
 <script context="module" lang="ts">
-  import { id, data, player } from "./game-store";
+  import { id, data, player } from "../game-store";
 
-  import type { IGame } from "../../firebase/types";
-  import type { Moves, Turn } from "../types";
+  import type { IGame } from "../../../firebase/types";
+  import type { Moves, Turn } from "../../types";
 </script>
 
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { onDisconnect, onValue, ref } from "firebase/database";
 
-  import { winLogic } from "../utils";
-  import { db, updateGame } from "../../firebase/db";
+  import { winLogic } from "../../utils";
+  import { db, updateGame } from "../../../firebase/db";
 
   // Data used locally
   let turn: Turn;
@@ -147,8 +147,8 @@
 
 <style>
   section {
-    width: 458px;
-    height: 458px;
+    width: 388px;
+    height: 388px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
@@ -180,9 +180,8 @@
   }
 
   @media (max-width: 600px) {
-    section {
-      width: 308px;
-      height: 308px;
+    section{
+      transform: scale(0.7);
     }
 
     span {

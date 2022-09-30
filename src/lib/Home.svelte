@@ -4,9 +4,9 @@
   import { showJoinGameInfo } from "./into-game/into-game-store";
   import { getURLId } from "./utils";
 
-  import Board from "./game/Board.svelte";
+  import Board from "./game/board/Board.svelte";
   import Into from "./into-game/IntoGame.svelte";
-  import Header from "./game/Header.svelte";
+  import Header from "./game/players/Header.svelte";
 
   // onMount action
   onMount(() => {

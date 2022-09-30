@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { data } from "./game-store";
+  import { data } from "../game-store";
   import { scale } from "svelte/transition";
 
-  import XC from "../assets/XC.svelte";
-  import OC from "../assets/OC.svelte";
+  import XC from "../../assets/XC.svelte";
+  import OC from "../../assets/OC.svelte";
 </script>
 
-<div class="header">
+<div class="players">
   <div class="left">
     <div class="icon-bg" />
     <div class="player">
@@ -28,19 +28,19 @@
 </div>
 
 <style>
-  .header {
+  .players {
     display: flex;
     justify-content: space-between;
     max-width: 480px;
     width: 100%;
-    padding: 30px 20px;
-    margin-bottom: 50px;
+    padding: 20px 0;
   }
 
   .left,
   .right {
-    position: relative;
     height: 75px;
+    position: relative;
+    transition: transform 300ms;
   }
 
   .player {
@@ -52,11 +52,11 @@
     border: 3px solid black;
   }
 
-  .player > .ibox {
+  .ibox {
     width: 75px;
   }
 
-  .player .score {
+  .score {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,5 +82,12 @@
     width: 100%;
     height: 100%;
     background: black;
+  }
+
+  @media (max-width: 600px) {
+    .left,
+    .right {
+      transform: scale(0.7);
+    }
   }
 </style>
