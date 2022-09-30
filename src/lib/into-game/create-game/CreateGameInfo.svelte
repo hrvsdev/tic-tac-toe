@@ -43,11 +43,7 @@
     <div class="id-wrapper" on:click={copyId} title="Click to copy ID">
       <div class="text">{window.location.host}/#<span>{$id}</span></div>
       <div class="ibox">
-        {#if isCopied}
-          <SquareCheck size="26"/>
-        {:else}
-          <Copy size="26"/>
-        {/if}
+        <svelte:component this={isCopied ? SquareCheck : Copy} />
       </div>
     </div>
   </div>
