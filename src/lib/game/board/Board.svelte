@@ -132,6 +132,7 @@
   <div class="board">
     {#each $data.moves as { value, state }, i}
       <div
+        class="cell"
         on:click={() => onClick(i)}
         class:lose={state === "L"}
         class:draw={$data.isDraw}
@@ -148,21 +149,41 @@
 
 <style>
   section {
-    width: 388px;
-    height: 388px;
+    max-width: 480px;
+    width: 100%;
+    aspect-ratio: 1/1;
+    position: relative;
+    transition: transform 300ms;
+  }
+
+  .board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     grid-gap: 4px;
+    width: 100%;
+    height: 100%;
     margin-bottom: 30px;
     background-color: black;
+    border: 4px solid;
   }
 
-  div {
+  .board-bg {
+    position: absolute;
+    z-index: -1;
+    top: 4px;
+    left: 4px;
+    width: 100%;
+    height: 100%;
+    background: black;
+  }
+
+  .cell {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background: #E6E8EB
+;
     cursor: pointer;
   }
 
