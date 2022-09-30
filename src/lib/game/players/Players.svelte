@@ -34,13 +34,13 @@
     max-width: 480px;
     width: 100%;
     padding: 20px 0;
+    transition: transform 300ms;
   }
 
   .left,
   .right {
     height: 75px;
     position: relative;
-    transition: transform 300ms;
   }
 
   .player {
@@ -85,9 +85,8 @@
   }
 
   @media (max-width: 600px) {
-    .left,
-    .right {
-      transform: scale(0.7);
+    .players {
+      transform: scale(0.8);
     }
   }
 </style>

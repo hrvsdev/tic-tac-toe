@@ -63,7 +63,7 @@
 
   @media (max-width: 600px) {
     .info-wrapper {
-      transform: scale(0.7);
+      transform: scale(0.8);
     }
   }
 </style>

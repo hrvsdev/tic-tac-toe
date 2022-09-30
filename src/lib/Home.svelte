@@ -6,7 +6,8 @@
 
   import Board from "./game/board/Board.svelte";
   import Into from "./into-game/IntoGame.svelte";
-  import Header from "./game/players/Header.svelte";
+  import Players from "./game/players/Players.svelte";
+  import Status from "./game/status/Status.svelte";
 
   // onMount action
   onMount(() => {
@@ -16,8 +17,9 @@
 
 <main>
   {#if $show}
-    <Header />
+    <Players />
     <Board />
+    <Status/>
   {:else}
     <Into />
   {/if}

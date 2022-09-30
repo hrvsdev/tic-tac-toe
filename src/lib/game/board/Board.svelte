@@ -128,15 +128,22 @@
 </script>
 
 <section>
-  {#each $data.moves as { value, state }, i}
-    <div on:click={() => onClick(i)} class:lose={state === "L"} class:draw={$data.isDraw}>
-      {#if value}
-        <span in:scale={anim.in} out:scale={anim.out}>
-          {value}
-        </span>
-      {/if}
-    </div>
-  {/each}
+  <div class="board-bg" />
+  <div class="board">
+    {#each $data.moves as { value, state }, i}
+      <div
+        on:click={() => onClick(i)}
+        class:lose={state === "L"}
+        class:draw={$data.isDraw}
+      >
+        {#if value}
+          <span in:scale={anim.in} out:scale={anim.out}>
+            {value}
+          </span>
+        {/if}
+      </div>
+    {/each}
+  </div>
 </section>
 
 <style>
@@ -174,8 +181,8 @@
   }
 
   @media (max-width: 600px) {
-    section{
-      transform: scale(0.7);
+    section {
+      transform: scale(0.8);
     }
 
     span {
