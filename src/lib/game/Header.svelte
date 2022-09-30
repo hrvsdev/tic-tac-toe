@@ -9,22 +9,26 @@
 <div class="header">
   <div class="left">
     <div class="icon-bg" />
-    <div class="player">
+    <div class="ibox">
       <XC />
     </div>
   </div>
   <div class="center">
-    <div class="player">DRAW</div>
-    {#key $data.draw}
-      <div in:scale class="score">
-        {$data.draw}
-      </div>
-    {/key}
+    <div class="top">
+      <h3 class="score-text">SCORE</h3>
+    </div>
+    <div class="bottom">
+      <h1 class="score">
+        <span>2</span>
+        <span>-</span>
+        <span>6</span>
+      </h1>
+    </div>
   </div>
   <div class="right">
     <div class="icon-bg" />
-    <div class="player">
-      <OC/>
+    <div class="ibox">
+      <OC />
     </div>
   </div>
 </div>
@@ -33,24 +37,21 @@
   .header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    max-width: 458px;
+    max-width: 480px;
     width: 100%;
-    height: 140px;
+    padding: 30px 20px;
     margin-bottom: 50px;
   }
 
   .left,
   .right {
     position: relative;
+    height: fit-content;
   }
 
-  .player {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 75px ;
-    height: 75px ;
+  .ibox {
+    width: 75px;
+    height: 75px;
     border: 3px solid black;
     background: white;
   }
@@ -60,13 +61,19 @@
     z-index: -1;
     top: 4px;
     left: 4px;
-    width: 100%;
-    height: 100%;
+    width: 75px;
+    height: 75px;
     background: black;
   }
 
-  .score {
-    font-size: 30px;
+  .center > .top {
     text-align: center;
+    color: rgba(0 0 0/0.8);
+    margin-bottom: 10px;
+  }
+
+  .score {
+    font-size: 50px;
+    line-height: 40px;
   }
 </style>
