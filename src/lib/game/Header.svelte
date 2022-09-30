@@ -1,11 +1,13 @@
 <script lang="ts">
   import { data } from "./game-store";
   import { scale } from "svelte/transition";
+
+  import XC from "../assets/XC.svelte";
 </script>
 
 <div class="header">
   <div class="left">
-    <div class="player">PLAYER (X)</div>
+    <div class="player"><div class="x-icon"><XC/></div></div>
     {#key $data.scoreX}
       <div in:scale class="score">{$data.scoreX}</div>
     {/key}
