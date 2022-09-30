@@ -153,7 +153,6 @@
     width: 100%;
     aspect-ratio: 1/1;
     position: relative;
-    transition: transform 300ms;
   }
 
   .board {

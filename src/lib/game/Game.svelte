@@ -15,8 +15,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 20px;
     row-gap: 30px;
+    padding: 20px;
     transform-origin: top;
   }
   @media (max-width: 600px) {

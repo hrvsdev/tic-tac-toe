@@ -33,8 +33,6 @@
     justify-content: space-between;
     max-width: 480px;
     width: 100%;
-    padding: 20px 0;
-    transition: transform 300ms;
   }
 
   .left,

@@ -24,6 +24,7 @@
   section {
     max-width: 870px;
     width: 100%;
+    margin: auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
     gap: 30px;
