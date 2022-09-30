@@ -199,14 +199,4 @@
   .draw > span {
     color: rgb(170, 170, 170);
   }
-
-  @media (max-width: 600px) {
-    section {
-      transform: scale(0.8);
-    }
-
-    span {
-      font-size: 80px;
-    }
-  }
 </style>

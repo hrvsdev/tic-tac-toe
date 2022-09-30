@@ -1,10 +1,10 @@
-<div class="info-wrapper">
+<section class="info-wrapper">
   <div class="info-bg" />
   <div class="info">
     <div class="round"><span>Round</span>8</div>
     <div class="status">Player X's move</div>
   </div>
-</div>
+</section>
 
 <style>
   .info-bg {
@@ -42,6 +42,8 @@
     height: 100%;
     background: #fbdba7;
     padding: 0 10px;
+    font-size: 22px;
+    font-weight: 500;
   }
 
   .round {
@@ -51,21 +53,9 @@
 
   .round > span {
     margin-right: 5px;
-    font-weight: 500;
-    font-size: 22px;
   }
 
   .status {
     flex-grow: 1;
-    font-size: 22px;
-    font-weight: 500;
-  }
-
-  @media (max-width: 600px) {
-    .info-wrapper {
-      max-width: 380px;
-    }
-
-    
-  }
+  } 
 </style>

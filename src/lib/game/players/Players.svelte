@@ -6,7 +6,7 @@
   import OC from "../../assets/OC.svelte";
 </script>
 
-<div class="players">
+<section class="players">
   <div class="left">
     <div class="icon-bg" />
     <div class="player">
@@ -25,7 +25,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <style>
   .players {
@@ -82,11 +82,5 @@
     width: 100%;
     height: 100%;
     background: black;
-  }
-
-  @media (max-width: 600px) {
-    .players {
-      transform: scale(0.8);
-    }
   }
 </style>
