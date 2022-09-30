@@ -9,20 +9,20 @@
 <div class="header">
   <div class="left">
     <div class="icon-bg" />
-    <div class="ibox">
-      <XC />
-    </div>
-  </div>
-  <div class="center">
-    <div class="score-bg" />
-    <div class="score-box">
-      <h1 class="score">{$data.scoreX} - {$data.scoreO}</h1>
+    <div class="player">
+      <div class="ibox">
+        <XC />
+      </div>
+      <div class="score">{$data.scoreX}</div>
     </div>
   </div>
   <div class="right">
     <div class="icon-bg" />
-    <div class="ibox">
-      <OC />
+    <div class="player">
+      <div class="score">{$data.scoreO}</div>
+      <div class="ibox">
+        <OC />
+      </div>
     </div>
   </div>
 </div>
@@ -40,25 +40,41 @@
   .left,
   .right {
     position: relative;
-    width: 75px;
     height: 75px;
   }
 
-  .ibox {
+  .player {
+    display: flex;
+    column-gap: 3px;
     width: 100%;
     height: 100%;
+    background: black;
     border: 3px solid black;
   }
 
-  .left .ibox{
+  .player > .ibox {
+    width: 75px;
+  }
+
+  .player .score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 75px;
+    font-size: 55px;
+    font-weight: 700;
+  }
+
+  .left .ibox,
+  .left .score {
     background: var(--green-extra-light);
   }
-  .right .ibox{
+  .right .ibox,
+  .right .score {
     background: var(--pink-extra-light);
   }
 
-  .icon-bg,
-  .score-bg {
+  .icon-bg {
     position: absolute;
     z-index: -1;
     top: 4px;
@@ -66,19 +82,5 @@
     width: 100%;
     height: 100%;
     background: black;
-  }
-
-  .center {
-    position: relative;
-    height: 75px;
-  }
-
-  .score-box {
-    display: flex;
-    align-items: center;
-    height: 100%;
-    padding: 0 20px;
-    border: 3px solid black;
-    background: white;
   }
 </style>
