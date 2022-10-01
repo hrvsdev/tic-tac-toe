@@ -12,6 +12,9 @@
   import { winLogic } from "../../utils";
   import { db, updateGame } from "../../../firebase/db";
 
+  import X from "../../assets/X.svelte";
+  import O from "../../assets/O.svelte";
+
   // Data used locally
   let turn: Turn;
   let moves: Moves;
@@ -38,13 +41,13 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    if ($player !== $data.turn) return;
+    // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
@@ -139,7 +142,7 @@
       >
         {#if value}
           <span in:scale={anim.in} out:scale={anim.out}>
-            {value}
+            <svelte:component this={value === "X" ? X : O} />
           </span>
         {/if}
       </div>
@@ -181,7 +184,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #e6e8eb;
+    background: white;
     cursor: pointer;
   }
 
@@ -199,7 +202,7 @@
     color: rgb(170, 170, 170);
   }
 
-  @media(max-width: 600px){
+  @media (max-width: 600px) {
     section {
       max-width: 380px;
     }
