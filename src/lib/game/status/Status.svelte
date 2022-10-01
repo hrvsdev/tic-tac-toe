@@ -1,8 +1,12 @@
+<script lang="ts">
+  import { round, status } from "../../game/game-store";
+</script>
+
 <section class="info-wrapper">
   <div class="info-bg" />
   <div class="info">
-    <div class="round"><span>Round</span>8</div>
-    <div class="status">Player X's move</div>
+    <div class="round"><span>Round</span>{$round}</div>
+    <div class="status">{$status}</div>
   </div>
 </section>
 

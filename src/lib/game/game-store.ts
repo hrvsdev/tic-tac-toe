@@ -1,4 +1,4 @@
-import { writable } from "svelte/store";
+import { writable, derived } from "svelte/store";
 
 import type { IGame } from "src/firebase/types";
 import type { Turn } from "../types";
@@ -32,4 +32,18 @@ export const id = writable("");
 export const player = writable<Turn>("X");
 
 // Board show state
-export const show = writable(false)
+export const show = writable(false);
+
+// Status of the game
+export const status = derived(data, (d) => {
+  if (d.host.isDisconnected) return "Host (X) disconnected!";
+  if (d.friend.isDisconnected) return "Friend (O) disconnected!";
+  if (d.turn === "X") return "X's turn";
+  if (d.turn === "O") return "O's turn";
+});
+
+// Current round of the game
+
+export const round = derived(data, (d) => {
+  return d.scoreX + d.scoreO + d.draw + 1;
+});

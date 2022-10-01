@@ -41,13 +41,13 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    // if ($player !== $data.turn) return;
+    if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
