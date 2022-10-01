@@ -1,4 +1,4 @@
-import { writable, derived } from "svelte/store";
+import { writable, derived, get } from "svelte/store";
 
 import type { IGame } from "src/firebase/types";
 import type { Turn } from "../types";
@@ -38,11 +38,11 @@ export const show = writable(false);
 export const status = derived(data, (d) => {
   if (d.host.isDisconnected) return "Host (X) disconnected!";
   if (d.friend.isDisconnected) return "Friend (O) disconnected!";
-  if (d.isWin && d.turn === "O") return "X won!";
-  if (d.isWin && d.turn === "X") return "O won!";
   if (d.isDraw) return "Tie! Click to play";
-  if (d.turn === "X") return "X will move!";
-  if (d.turn === "O") return "O will move";
+  if (d.isWin && d.turn === "O") return get(player) === "X" ? "You (X) won!" : "X won!";
+  if (d.isWin && d.turn === "X") return get(player) === "O" ? "You (O) won!" : "O won!";
+  if (d.turn === "X") return get(player) === "X" ? "You (X) will move!" : "X will move!";
+  if (d.turn === "O") return get(player) === "O" ? "You (O) will move!" : "O will move!";
 });
 
 // Current round of the game

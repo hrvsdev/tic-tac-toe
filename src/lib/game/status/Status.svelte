@@ -30,7 +30,7 @@
 
   .info {
     display: flex;
-    column-gap: 3px;
+    gap: 3px;
     width: 100%;
     height: 100%;
     border: 3px solid black;
@@ -63,11 +63,16 @@
   @media (max-width: 600px) {
     .info-wrapper {
       max-width: 380px;
-      height: 48px;
+      height: 85px;
+    }
+
+    .info {
+      flex-direction: column;
     }
 
     .round,
     .status {
+      justify-content: center;
       font-size: 20px;
     }
   }
