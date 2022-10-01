@@ -198,4 +198,8 @@
   .draw > span {
     color: rgb(170, 170, 170);
   }
+
+  @media(max-width: 600px){
+    
+  }
 </style>
