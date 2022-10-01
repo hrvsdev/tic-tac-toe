@@ -1,6 +1,5 @@
 <script lang="ts">
   import { data } from "../game-store";
-  import { scale } from "svelte/transition";
 
   import XC from "../../assets/XC.svelte";
   import OC from "../../assets/OC.svelte";
