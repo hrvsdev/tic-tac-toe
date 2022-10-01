@@ -81,4 +81,24 @@
     height: 100%;
     background: black;
   }
+
+  @media (max-width: 600px) {
+    .players {
+      max-width: 380px;
+    }
+
+    .left,
+    .right {
+      height: 60px;
+    }
+
+    .ibox {
+      width: 60px;
+    }
+
+    .score {
+      width: 60px;
+      font-size: 44px;
+    }
+  }
 </style>

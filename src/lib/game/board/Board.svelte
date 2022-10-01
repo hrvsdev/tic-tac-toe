@@ -200,6 +200,8 @@
   }
 
   @media(max-width: 600px){
-    
+    section {
+      max-width: 380px;
+    }
   }
 </style>
