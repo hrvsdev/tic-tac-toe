@@ -54,5 +54,17 @@
 
   .status {
     flex-grow: 1;
-  } 
+  }
+
+  @media (max-width: 600px) {
+    .info-wrapper {
+      max-width: 380px;
+      height: 48px;
+    }
+
+    .round,
+    .status {
+      font-size: 20px;
+    }
+  }
 </style>
