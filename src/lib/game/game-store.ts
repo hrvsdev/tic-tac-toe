@@ -38,8 +38,11 @@ export const show = writable(false);
 export const status = derived(data, (d) => {
   if (d.host.isDisconnected) return "Host (X) disconnected!";
   if (d.friend.isDisconnected) return "Friend (O) disconnected!";
-  if (d.turn === "X") return "X's turn";
-  if (d.turn === "O") return "O's turn";
+  if (d.isWin && d.turn === "O") return "X won!";
+  if (d.isWin && d.turn === "X") return "O won!";
+  if (d.isDraw) return "Tie! Click to play";
+  if (d.turn === "X") return "X will move!";
+  if (d.turn === "O") return "O will move";
 });
 
 // Current round of the game
