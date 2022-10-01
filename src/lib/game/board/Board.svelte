@@ -138,6 +138,7 @@
         class="cell"
         on:click={() => onClick(i)}
         class:lose={state === "L"}
+        class:win={state === "W"}
         class:draw={$data.isDraw}
       >
         {#if value}
@@ -197,9 +198,13 @@
     font-size: 110px;
   }
 
+  .win > span {
+    filter: brightness(0.8);
+  }
+
   .lose > span,
   .draw > span {
-    color: rgb(170, 170, 170);
+    opacity: 0.5;
   }
 
   @media (max-width: 600px) {
