@@ -20,7 +20,7 @@
   let moves: Moves;
   let scoreX: number;
   let scoreO: number;
-  let round: number;
+  let round = 1;
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -122,6 +122,8 @@
 
     // Increasing the round
     round = round + 1;
+
+    console.log(round)
 
     // Updating data online
     updateGame($id, { moves: moves, isDraw: false, isWin: false, round });
