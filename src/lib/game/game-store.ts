@@ -43,8 +43,6 @@ export const status = derived(data, (d) => {
   if (d.host.isDisconnected) return "Host (X) disconnected!";
   if (d.friend.isDisconnected) return "Friend (O) disconnected!";
   if (d.isDraw) return "Tie! Click to play";
-  if (d.isWin && d.turn === "O") return get(player) === "X" ? "You (X) won!" : "X won!";
-  if (d.isWin && d.turn === "X") return get(player) === "O" ? "You (O) won!" : "O won!";
-  if (d.turn === "X") return get(player) === "X" ? "You (X) will move!" : "X will move!";
-  if (d.turn === "O") return get(player) === "O" ? "You (O) will move!" : "O will move!";
+  if (d.isWin) return get(player) === d.winner ? `You (${d.winner}) won!` : `${d.winner} won!`;
+  else return get(player) === d.turn ? `Your (${d.turn}) turn!` : `${d.turn}'s turn!`;
 });
