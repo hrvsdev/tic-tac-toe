@@ -40,9 +40,16 @@ export const show = writable(false);
 
 // Status of the game
 export const status = derived(data, (d) => {
+  // If any of player is disconnected
   if (d.host.isDisconnected) return "Host (X) disconnected!";
   if (d.friend.isDisconnected) return "Friend (O) disconnected!";
+
+  // If game is drawn to tied
   if (d.isDraw) return "Tie! Click to play";
-  if (d.isWin) return get(player) === d.winner ? `You (${d.winner}) won!` : `${d.winner} won!`;
-  else return get(player) === d.turn ? `Your (${d.turn}) turn!` : `${d.turn}'s turn!`;
+
+  // If there is a win
+  if (d.isWin) {return get(player) === d.winner ? `You (${d.winner}) won!` : `${d.winner} won!`;}
+
+  // Turn status
+  return get(player) === d.turn ? `Your (${d.turn}) turn!` : `${d.turn}'s turn!`;
 });
