@@ -156,7 +156,7 @@
 
 <style>
   section {
-    max-width: 480px;
+    max-width: 430px;
     width: 100%;
     aspect-ratio: 1/1;
     position: relative;
@@ -198,7 +198,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 110px;
+    font-size: 100px;
   }
 
   .win > span {
