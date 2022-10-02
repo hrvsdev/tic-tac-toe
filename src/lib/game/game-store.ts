@@ -14,11 +14,13 @@ export const data = writable<IGame>({
   // Current scores of players
   scoreX: 0,
   scoreO: 0,
-  draw: 0,
+
+  // Current round
+  round: 1,
 
   // Host and friend value
-  host: { isDisconnected: true},
-  friend: { isDisconnected: true},
+  host: { isDisconnected: true },
+  friend: { isDisconnected: true },
 
   // Current game win and draw state
   isWin: false,

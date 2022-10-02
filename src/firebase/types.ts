@@ -8,8 +8,8 @@ export interface IGame {
 
   turn: Turn;
   moves: Moves;
-  winner: Turn;
   round: number;
+  winner?: Turn;
   host: {
     name?: string;
     isDisconnected: boolean;
