@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { id } from "../../game/game-store";
+  import { data, id } from "../../game/game-store";
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
@@ -27,10 +27,11 @@
     });
   };
 
-  // Button click action
-  const onClick = () => {
-    show.set(true);
-  };
+  // Showing board action
+  const showBoard = () => show.set(true);
+
+  // Showing board automatically after player connects
+  $: $data.friend.isDisconnected === false && showBoard();
 </script>
 
 <div class="card-wrapper">
@@ -47,7 +48,7 @@
       </div>
     </div>
   </div>
-  <button on:click={onClick}>Continue</button>
+  <button on:click={showBoard}>Continue</button>
 </div>
 
 <style>
