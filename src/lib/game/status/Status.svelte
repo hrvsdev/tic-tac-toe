@@ -13,9 +13,9 @@
 <style>
   .info-wrapper {
     position: relative;
-    max-width: 480px;
+    max-width: 430px;
     width: 100%;
-    height: 60px;
+    height: 54px;
   }
 
   .info-bg {
@@ -44,7 +44,7 @@
     height: 100%;
     background: #fbdba7;
     padding: 0 10px;
-    font-size: 25px;
+    font-size: 22px;
     font-weight: 500;
   }
 

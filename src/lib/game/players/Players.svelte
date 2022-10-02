@@ -30,13 +30,13 @@
   .players {
     display: flex;
     justify-content: space-between;
-    max-width: 480px;
+    max-width: 430px;
     width: 100%;
   }
 
   .left,
   .right {
-    height: 75px;
+    height: 67px;
     position: relative;
   }
 
@@ -50,15 +50,15 @@
   }
 
   .ibox {
-    width: 75px;
+    width: 67px;
   }
 
   .score {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 75px;
-    font-size: 55px;
+    width: 67px;
+    font-size: 50px;
     font-weight: 700;
   }
 
