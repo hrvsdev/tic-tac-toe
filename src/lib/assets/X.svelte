@@ -11,7 +11,7 @@
 
 <style>
   svg {
-    width: 100px;
+    width: 90px;
     aspect-ratio: 1/1;
   }
 
