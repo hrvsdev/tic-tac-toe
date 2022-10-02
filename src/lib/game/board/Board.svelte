@@ -20,6 +20,7 @@
   let moves: Moves;
   let scoreX: number;
   let scoreO: number;
+  let round: number;
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -119,8 +120,11 @@
     // Emptying the moves array
     moves = moves.fill({ value: "", state: "" });
 
+    // Increasing the round
+    round = round + 1;
+
     // Updating data online
-    updateGame($id, { moves: moves, isDraw: false, isWin: false });
+    updateGame($id, { moves: moves, isDraw: false, isWin: false, round });
   };
 
   // Cell in and out animation
