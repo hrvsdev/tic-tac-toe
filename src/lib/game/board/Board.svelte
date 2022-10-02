@@ -98,7 +98,7 @@
         });
 
         // Updating data online
-        updateGame($id, { moves, scoreX, scoreO, isWin: true });
+        updateGame($id, { moves, scoreX, scoreO, isWin: true, winner: move });
         return (returnVal = true);
       } else return (returnVal = false);
     });
@@ -109,7 +109,7 @@
   // Draw check function
   const checkDraw = () => {
     if (moves.every((v) => v.value !== "")) {
-      updateGame($id, { isDraw: true, draw: $data.draw + 1 });
+      updateGame($id, { isDraw: true });
       return;
     }
   };

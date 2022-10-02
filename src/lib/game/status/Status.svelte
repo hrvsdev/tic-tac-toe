@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { round, status } from "../../game/game-store";
+  import { data, status } from "../../game/game-store";
 </script>
 
 <section class="info-wrapper">
   <div class="info-bg" />
   <div class="info">
-    <div class="round"><span>Round</span>{$round}</div>
+    <div class="round"><span>Round</span>{$data.round}</div>
     <div class="status">{$status}</div>
   </div>
 </section>

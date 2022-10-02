@@ -48,8 +48,3 @@ export const status = derived(data, (d) => {
   if (d.turn === "X") return get(player) === "X" ? "You (X) will move!" : "X will move!";
   if (d.turn === "O") return get(player) === "O" ? "You (O) will move!" : "O will move!";
 });
-
-// Current round of the game
-export const round = derived(data, (d) => {
-  return d.scoreX + d.scoreO + d.draw + 1;
-});
