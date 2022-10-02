@@ -17,12 +17,14 @@ export const data = writable<IGame>({
   draw: 0,
 
   // Host and friend value
-  host: { isDisconnected: true, sign: "X" },
-  friend: { isDisconnected: true, sign: "O" },
+  host: { isDisconnected: true},
+  friend: { isDisconnected: true},
 
   // Current game win and draw state
   isWin: false,
   isDraw: false,
+
+  // Current round of the game
 });
 
 // Id of the game
@@ -46,7 +48,6 @@ export const status = derived(data, (d) => {
 });
 
 // Current round of the game
-
 export const round = derived(data, (d) => {
   return d.scoreX + d.scoreO + d.draw + 1;
 });
