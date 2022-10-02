@@ -29,9 +29,6 @@
 
   // Showing board action
   const showBoard = () => show.set(true);
-
-  // Showing board automatically after player connects
-  $: console.log($data.friend, $show)
 </script>
 
 <div class="card-wrapper">
