@@ -31,7 +31,7 @@
   const showBoard = () => show.set(true);
 
   // Showing board automatically after player connects
-  $: $data.friend.isDisconnected === false && showBoard();
+  $: console.log($data.friend, $show)
 </script>
 
 <div class="card-wrapper">
