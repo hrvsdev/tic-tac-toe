@@ -11,7 +11,6 @@
 <style>
   .share-wrapper {
     position: relative;
-    max-width: 430px;
     width: 100%;
     height: 54px;
   }
@@ -42,7 +41,6 @@
 
   @media (max-width: 600px) {
     .share-wrapper {
-      max-width: 380px;
       height: 48px;
     }
 

@@ -10,7 +10,6 @@
   <style>
     .chat-btn-wrapper {
       position: relative;
-      max-width: 430px;
       width: 100%;
       height: 54px;
     }
@@ -41,7 +40,6 @@
   
     @media (max-width: 600px) {
       .chat-btn-wrapper {
-        max-width: 380px;
         height: 48px;
       }
   
