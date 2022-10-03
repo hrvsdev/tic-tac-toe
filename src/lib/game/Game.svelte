@@ -9,7 +9,9 @@
   <Players />
   <Board />
   <Status />
-  <Share/>
+  <div>
+    <Share />
+  </div>
 </div>
 
 <style>
