@@ -3,16 +3,17 @@
   import { id } from "../../game/game-store";
 </script>
 
-<section class="share-wrapper">
+<div class="share-wrapper">
   <div class="share-bg" />
   <div class="share"><Share size="26"/> Share</div>
-</section>
+</div>
 
 <style>
   .share-wrapper {
     position: relative;
     width: 100%;
     height: 54px;
+    cursor: pointer;
   }
 
   .share-bg {

@@ -2,16 +2,17 @@
     import { Message } from "tabler-icons-svelte";
   </script>
   
-  <section class="chat-btn-wrapper">
+  <div class="chat-btn-wrapper">
     <div class="chat-btn-bg" />
     <div class="chat-btn"><Message size="28"/>Chat</div>
-  </section>
+  </div>
   
   <style>
     .chat-btn-wrapper {
       position: relative;
       width: 100%;
       height: 54px;
+      cursor: pointer;
     }
   
     .chat-btn-bg {
