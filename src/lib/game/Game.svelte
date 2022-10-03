@@ -27,7 +27,7 @@
   }
 
   section {
-    margin-top: -10px;
+    margin-top: -5px;
     max-width: 430px;
     width: 100%;
     display: flex;
@@ -39,6 +39,7 @@
   @media (max-width: 600px) {
     section {
       flex-direction: column;
+      max-width: 380px;
     }
   }
 </style>
