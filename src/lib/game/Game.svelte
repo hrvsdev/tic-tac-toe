@@ -12,7 +12,7 @@
   <Status />
   <section>
     <Share />
-    <Chat/>
+    <Chat />
   </section>
 </div>
 
@@ -24,5 +24,21 @@
     row-gap: 30px;
     padding: 20px;
     transform-origin: top;
+  }
+
+  section {
+    margin-top: -10px;
+    max-width: 430px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  @media (max-width: 600px) {
+    section {
+      flex-direction: column;
+    }
   }
 </style>

@@ -13,7 +13,6 @@
       max-width: 430px;
       width: 100%;
       height: 54px;
-      margin-top: -10px;
     }
   
     .chat-btn-bg {
