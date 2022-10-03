@@ -10,10 +10,10 @@
   <Players />
   <Board />
   <Status />
-  <div>
+  <section>
     <Share />
     <Chat/>
-  </div>
+  </section>
 </div>
 
 <style>

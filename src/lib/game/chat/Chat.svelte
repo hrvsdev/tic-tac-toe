@@ -4,7 +4,7 @@
   
   <section class="chat-btn-wrapper">
     <div class="chat-btn-bg" />
-    <div class="chat-btn"><Message/> Chat</div>
+    <div class="chat-btn"><Message size="28"/>Chat</div>
   </section>
   
   <style>
