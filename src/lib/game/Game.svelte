@@ -1,6 +1,7 @@
 <script>
   import Board from "./board/Board.svelte";
   import Players from "./players/Players.svelte";
+  import Share from "./share/Share.svelte";
   import Status from "./status/Status.svelte";
 </script>
 
@@ -8,6 +9,7 @@
   <Players />
   <Board />
   <Status />
+  <Share/>
 </div>
 
 <style>
