@@ -1,11 +1,11 @@
 <script lang="ts">
   import { Share } from "tabler-icons-svelte";
-  import { id } from "../../game/game-store";
+  import { shareId } from "../../utils";
 </script>
 
-<div class="share-wrapper">
+<div class="share-wrapper" on:click={shareId}>
   <div class="share-bg" />
-  <div class="share"><Share size="26"/> Share</div>
+  <div class="share"><Share size="26" /> Share</div>
 </div>
 
 <style>
@@ -34,8 +34,7 @@
     justify-content: center;
     column-gap: 10px;
     border: 3px solid black;
-    background: #D1B1F0
-;
+    background: #d1b1f0;
     padding: 0 10px;
     font-size: 22px;
     font-weight: 500;
