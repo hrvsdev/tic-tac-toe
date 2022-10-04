@@ -34,7 +34,8 @@
     justify-content: center;
     column-gap: 10px;
     border: 3px solid black;
-    background: #fbdba7;
+    background: #D1B1F0
+;
     padding: 0 10px;
     font-size: 22px;
     font-weight: 500;
