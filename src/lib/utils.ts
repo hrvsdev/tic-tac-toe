@@ -15,13 +15,13 @@ export const winLogic = [
 export const getURLId = () => window.location.hash.substring(1);
 
 // URL with id
-export const idUrl = window.location.href + "#" + get(id);
+export const getIdUrl = () => window.location.href + "#" + get(id);
 
 // Id share action
 export const shareId = () => {
   navigator.share({
     title: "Tic Tac Toe - T3",
     text: `Play this Tic Tac Toe game with id - ${get(id)}`,
-    url: idUrl,
+    url: getIdUrl(),
   });
 };
