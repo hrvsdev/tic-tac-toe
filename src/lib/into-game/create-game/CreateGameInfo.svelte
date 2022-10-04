@@ -1,17 +1,17 @@
 <script lang="ts">
-  import { data, id } from "../../game/game-store";
+  import { id } from "../../game/game-store";
   import { show } from "../../game/game-store";
   import { copy } from "../../../utils";
 
   import { Copy, SquareCheck } from "tabler-icons-svelte";
+  import { idUrl, shareId } from "../../utils";
 
-  
   // Copied state
   let isCopied = false;
 
   // Copy id button action
   const copyId = () => {
-    copy(url);
+    copy(idUrl);
     isCopied = true;
     setTimeout(() => (isCopied = false), 3000);
   };
