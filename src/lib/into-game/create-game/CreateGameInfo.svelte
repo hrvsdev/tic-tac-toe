@@ -4,14 +4,17 @@
   import { copy } from "../../../utils";
 
   import { Copy, SquareCheck } from "tabler-icons-svelte";
-  import { idUrl, shareId } from "../../utils";
+  import { getIdUrl, shareId } from "../../utils";
+
+  // Id URL
+  const url = getIdUrl();
 
   // Copied state
   let isCopied = false;
 
   // Copy id button action
   const copyId = () => {
-    copy(idUrl);
+    copy(url);
     isCopied = true;
     setTimeout(() => (isCopied = false), 3000);
   };
