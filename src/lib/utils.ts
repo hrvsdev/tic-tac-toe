@@ -1,3 +1,6 @@
+import { get } from "svelte/store";
+import { id } from "./game/game-store";
+
 export const winLogic = [
   [0, 1, 2],
   [3, 4, 5],
@@ -9,4 +12,16 @@ export const winLogic = [
   [2, 4, 6],
 ];
 
-export const getURLId = () => window.location.hash.substring(1)
+export const getURLId = () => window.location.hash.substring(1);
+
+// URL with id
+export const idUrl = window.location.href + "#" + get(id);
+
+// Id share action
+const shareId = () => {
+  navigator.share({
+    title: "Tic Tac Toe - T3",
+    text: `Play this Tic Tac Toe game with id - ${get(id)}`,
+    url: idUrl,
+  });
+};
