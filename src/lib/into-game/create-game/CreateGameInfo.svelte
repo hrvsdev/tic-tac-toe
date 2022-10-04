@@ -5,9 +5,7 @@
 
   import { Copy, SquareCheck } from "tabler-icons-svelte";
 
-  // URL with id
-  const url = window.location.href + "#" + $id;
-
+  
   // Copied state
   let isCopied = false;
 
@@ -16,15 +14,6 @@
     copy(url);
     isCopied = true;
     setTimeout(() => (isCopied = false), 3000);
-  };
-
-  // Id share action
-  const shareId = () => {
-    navigator.share({
-      title: "Tic Tac Toe - T3",
-      text: url,
-      url: url,
-    });
   };
 
   // Showing board action
