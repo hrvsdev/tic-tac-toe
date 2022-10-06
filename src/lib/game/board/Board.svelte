@@ -24,7 +24,7 @@
   // Getting realtime data by firebase snapshot
   if ($id) {
     onValue(ref(db, $id), (res) => {
-      if (res.exists) {
+      if (res.exists()) {
         $data = res.val() as IGame;
       } else {
         $data.host.isDisconnected = true;
