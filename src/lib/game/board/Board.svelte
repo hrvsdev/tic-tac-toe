@@ -27,7 +27,7 @@
       if (res.exists) {
         $data = res.val() as IGame;
       } else {
-        
+        $data.host.isDisconnected = true;
       }
     });
   }
