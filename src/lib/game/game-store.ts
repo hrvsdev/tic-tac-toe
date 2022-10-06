@@ -41,7 +41,7 @@ export const show = writable(false);
 // Status of the game
 export const status = derived(data, (d) => {
   // If any of player is disconnected
-  if (d.host.isDisconnected) return "Host (X) disconnected!";
+  if (d.host.isDisconnected) return "Host (X) disconnected! Game deleted";
   if (d.friend.isDisconnected) return "Friend (O) disconnected!";
 
   // If game is drawn to tied
