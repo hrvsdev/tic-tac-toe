@@ -33,15 +33,4 @@ const updateGame = (id: string, data: IUpdateGame) => {
   }
 };
 
-// Delete game
-const deleteGame = (id: string) => {
-  try {
-    remove(ref(db, id));
-    return { success: true };
-  } catch (error) {
-    console.log(error);
-    return { success: false };
-  }
-};
-
-export { db, newGame, updateGame, deleteGame };
+export { db, newGame, updateGame };
