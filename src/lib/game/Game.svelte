@@ -11,7 +11,7 @@
   <Board />
   <Status />
   <section>
-    <Chat />
+    <!-- <Chat /> -->
     <Share />
   </section>
 </div>
