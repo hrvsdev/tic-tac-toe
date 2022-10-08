@@ -21,6 +21,10 @@
   let scoreX: number;
   let scoreO: number;
 
+  // Initializing sounds
+  const clickSound = new Audio("../../../assets/sounds/click.wav");
+  const winSound = new Audio("../../../assets/sounds/win.mp3");
+
   // Getting realtime data by firebase snapshot
   if ($id) {
     onValue(ref(db, $id), (res) => {
@@ -57,6 +61,7 @@
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
+    clickSound.play();
     moves = $data.moves;
     moves[i] = { value: $data.turn, state: "" };
 
@@ -71,7 +76,10 @@
   };
 
   // Winning move check function
-  const checkWin = () => loopLogic() || checkDraw();
+  const checkWin = () => {
+    winSound.play();
+    loopLogic() || checkDraw();
+  };
 
   // Looping over the all possible combinations
   const loopLogic = () => {
