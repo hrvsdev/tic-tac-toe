@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	import { id } from '../../../stores/game-store';
 	import { copy } from '../../../utils';
@@ -8,7 +9,7 @@
 	import { shareId } from '../../../utils';
 
 	// Id URL
-	const url = 'T3';
+	const url = $page.url.href + '/' + $id;
 
 	// Copied state
 	let isCopied = false;
@@ -22,17 +23,20 @@
 
 	// Showing board action
 	const showBoard = () => goto('/game');
+
+	// Share action
+	const share = () => shareId($id, url);
 </script>
 
 <div class="card-wrapper">
 	<h3>Share your Game ID</h3>
 	<div class="card-body">
 		<p>
-			<mark on:click={shareId}>Share</mark>
+			<mark on:click={share}>Share</mark>
 			this ID with your friend to connect to this game.
 		</p>
 		<div class="id-wrapper" on:click={copyId} title="Click to copy ID">
-			<div class="text">t3.hrvs.me/<span>{$id}</span></div>
+			<div class="text">{$page.url.host}/<span>{$id}</span></div>
 			<div class="ibox">
 				<svelte:component this={isCopied ? SquareCheck : Copy} />
 			</div>
