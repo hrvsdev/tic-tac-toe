@@ -6,7 +6,7 @@
 		showJoinGameInfo.set(true);
 	};
 
-	import Home from '$lib/Home.svelte';
+	import Home from '$lib/Layout.svelte';
 </script>
 
 <Home />
