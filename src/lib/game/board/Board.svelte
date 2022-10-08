@@ -123,7 +123,6 @@
   // Draw check function
   const checkDraw = () => {
     if (moves.every((v) => v.value !== "")) {
-      console.log("draw check");
       WinSound.play();
       updateGame($id, { isDraw: true });
       return;
