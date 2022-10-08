@@ -1,4 +1,4 @@
-import type { Moves, Turn } from "../lib/types";
+import type { Moves, Turn } from "$lib/types";
 
 export interface IGame {
   scoreX: number;

@@ -2,9 +2,9 @@
   import { scale } from "svelte/transition";
   import { onDisconnect, onValue, ref } from "firebase/database";
 
-  import { winLogic } from "../../utils";
+  import { winLogic } from "$lib/utils";
   import { db, updateGame } from "../../../firebase/db";
-  import { id, data, player } from "../game-store";
+  import { id, data, player } from "$app/stores/";
 
   import type { IGame } from "../../../firebase/types";
   import type { Moves, Turn } from "../../types";

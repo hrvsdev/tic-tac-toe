@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { data, status } from "../../game/game-store";
+  import { data, status } from "../../../stores/game-store";
 </script>
 
 <section class="info-wrapper">

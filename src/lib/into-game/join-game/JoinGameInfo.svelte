@@ -1,7 +1,7 @@
 <script lang="ts">
   import joinGame from "../../../commands/joinGame";
 
-  import { show } from "../../../lib/game/game-store";
+  import { show } from "../../../stores/game-store";
   import { getURLId } from "../../../lib/utils";
 
   // URL Hash Id

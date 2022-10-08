@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { id } from "../../game/game-store";
-  import { show } from "../../game/game-store";
+  import { id } from "../../../stores/game-store";
+  import { show } from "../../../stores/game-store";
   import { copy } from "../../../utils";
 
   import { Copy, SquareCheck } from "tabler-icons-svelte";

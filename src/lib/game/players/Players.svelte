@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { data } from "../game-store";
+  import { data } from "../../../stores/game-store";
 
   import XC from "../../assets/XC.svelte";
   import OC from "../../assets/OC.svelte";

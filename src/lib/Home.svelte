@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount } from "svelte";
-  import { show } from "./game/game-store";
+  import { show } from "../stores/game-store";
   import { showJoinGameInfo } from "./into-game/into-game-store";
   import { getURLId } from "./utils";
 

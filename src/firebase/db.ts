@@ -1,5 +1,5 @@
 import { getDatabase, ref } from "firebase/database";
-import { set, remove, update } from "firebase/database";
+import { set, update } from "firebase/database";
 
 import { genId } from "../utils";
 

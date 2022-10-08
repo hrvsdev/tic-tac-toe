@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { id } from "./game/game-store";
+import { id } from "../stores/game-store";
 
 export const winLogic = [
   [0, 1, 2],

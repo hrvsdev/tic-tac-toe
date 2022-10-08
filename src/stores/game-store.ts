@@ -1,7 +1,7 @@
 import { writable, derived, get } from "svelte/store";
 
 import type { IGame } from "src/firebase/types";
-import type { Turn } from "../types";
+import type { Turn } from "../lib/types";
 
 // Game data used for sharing between players via db
 export const data = writable<IGame>({
