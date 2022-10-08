@@ -1,14 +1,17 @@
 <script lang="ts">
   import { scale } from "svelte/transition";
   import { onDisconnect, onValue, ref } from "firebase/database";
-  
+
   import { winLogic } from "../../utils";
   import { db, updateGame } from "../../../firebase/db";
   import { id, data, player } from "../game-store";
 
   import type { IGame } from "../../../firebase/types";
   import type { Moves, Turn } from "../../types";
-  
+
+  import clickSound from "../../../assets/sounds/click.wav";
+  import winSound from "../../../assets/sounds/win.mp3";
+
   import X from "../../assets/X.svelte";
   import O from "../../assets/O.svelte";
 
@@ -19,8 +22,8 @@
   let scoreO: number;
 
   // Initializing sounds
-  const clickSound = new Audio("../../../assets/sounds/click.wav");
-  const winSound = new Audio("../../../assets/sounds/win.mp3");
+  const Click = new Audio(clickSound);
+  const Win = new Audio(winSound);
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -46,19 +49,19 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    if ($player !== $data.turn) return;
+    // if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
-    clickSound.play();
+    Click.play();
     moves = $data.moves;
     moves[i] = { value: $data.turn, state: "" };
 
@@ -73,10 +76,7 @@
   };
 
   // Winning move check function
-  const checkWin = () => {
-    winSound.play();
-    loopLogic() || checkDraw();
-  };
+  const checkWin = () => loopLogic() || checkDraw();
 
   // Looping over the all possible combinations
   const loopLogic = () => {
