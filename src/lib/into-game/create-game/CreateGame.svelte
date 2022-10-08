@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-  import { showCreateGameInfo } from "../into-game-store";
-
+  
   import createGame from "../../../commands/createGame";
 
   // Button click action

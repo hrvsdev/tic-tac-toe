@@ -35,9 +35,6 @@ export const id = writable("");
 // Player status state
 export const player = writable<Turn>("X");
 
-// Board show state
-export const show = writable(false);
-
 // Status of the game
 export const status = derived(data, (d) => {
   // If any of player is disconnected
