@@ -22,8 +22,8 @@
   let scoreO: number;
 
   // Initializing sounds
-  const Click = new Audio(clickSound);
-  const Win = new Audio(winSound);
+  const ClickSound = new Audio(clickSound);
+  const WinSound = new Audio(winSound);
 
   // Getting realtime data by firebase snapshot
   if ($id) {
@@ -49,19 +49,19 @@
   // Cell click action
   const onClick = (i: number) => {
     // Disabling move if player is disconncted'
-    // if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
+    if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
     // Checking if previous game is win or draw and ending it
     if ($data.isWin || $data.isDraw) return endGame();
 
     // Checking if player whose turn is clicking
-    // if ($player !== $data.turn) return;
+    if ($player !== $data.turn) return;
 
     // Returning if cell is not empty
     if ($data.moves[i].value) return;
 
     // Making cell value equal to the current turn
-    Click.play();
+    ClickSound.play();
     moves = $data.moves;
     moves[i] = { value: $data.turn, state: "" };
 
@@ -95,6 +95,9 @@
 
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
+        // Playing win sound
+        WinSound.play();
+
         // Updating score
         scoreX = $data.scoreX;
         scoreO = $data.scoreO;
@@ -118,6 +121,7 @@
   // Draw check function
   const checkDraw = () => {
     if (moves.every((v) => v.value !== "")) {
+      WinSound.play()
       updateGame($id, { isDraw: true });
       return;
     }
