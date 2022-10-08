@@ -1,17 +1,14 @@
-<script context="module" lang="ts">
+<script lang="ts">
+  import { scale } from "svelte/transition";
+  import { onDisconnect, onValue, ref } from "firebase/database";
+  
+  import { winLogic } from "../../utils";
+  import { db, updateGame } from "../../../firebase/db";
   import { id, data, player } from "../game-store";
 
   import type { IGame } from "../../../firebase/types";
   import type { Moves, Turn } from "../../types";
-</script>
-
-<script lang="ts">
-  import { scale } from "svelte/transition";
-  import { onDisconnect, onValue, ref } from "firebase/database";
-
-  import { winLogic } from "../../utils";
-  import { db, updateGame } from "../../../firebase/db";
-
+  
   import X from "../../assets/X.svelte";
   import O from "../../assets/O.svelte";
 
