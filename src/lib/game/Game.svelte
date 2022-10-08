@@ -1,6 +1,5 @@
 <script>
   import Board from "./board/Board.svelte";
-  import Chat from "./chat/Chat.svelte";
   import Players from "./players/Players.svelte";
   import Share from "./share/Share.svelte";
   import Status from "./status/Status.svelte";
@@ -11,7 +10,6 @@
   <Board />
   <Status />
   <section>
-    <!-- <Chat /> -->
     <Share />
   </section>
 </main>
