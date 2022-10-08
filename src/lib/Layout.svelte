@@ -1,9 +1,9 @@
 <script>
-	import Header from "./into-game/header/Header.svelte";
-
+	import Header from './into-game/header/Header.svelte';
 </script>
+
 <main>
-	<Header/>
+	<Header />
 	<section>
 		<slot />
 	</section>
