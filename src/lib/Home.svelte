@@ -4,8 +4,8 @@
   import { showJoinGameInfo } from "./into-game/into-game-store";
   import { getURLId } from "./utils";
 
-  import Into from "./into-game/IntoGame.svelte";
   import Game from "./game/Game.svelte";
+  import Into from "./into-game/IntoGame.svelte";
 
   // onMount action
   onMount(() => {
