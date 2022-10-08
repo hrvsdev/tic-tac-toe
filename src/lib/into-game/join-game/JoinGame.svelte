@@ -1,10 +1,8 @@
 <script lang="ts">
-  import { showJoinGameInfo } from "../into-game-store";
+	import { goto } from "$app/navigation";
 
   // Button click action
-  const onClick = () => {
-    showJoinGameInfo.set(true);
-  };
+  const onClick = () => goto("/join");
 </script>
 
 <div class="card-wrapper">

@@ -1,8 +1,8 @@
 <script lang="ts">
-  import joinGame from "../../../commands/joinGame";
-
-  import { show } from "../../../stores/game-store";
+	import { goto } from "$app/navigation";
   import { getURLId } from "../../../utils";
+  
+  import joinGame from "../../../commands/joinGame";
 
   // URL Hash Id
   let id = getURLId() as string;
@@ -26,7 +26,7 @@
     const res = await joinGame(id.toString());
 
     if (res.success) {
-      show.set(true);
+      goto("/game")
       loading = false;
     } else {
       error = true;

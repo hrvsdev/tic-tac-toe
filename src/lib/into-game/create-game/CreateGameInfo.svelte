@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 
 	import { id } from '../../../stores/game-store';
-	import { show } from '../../../stores/game-store';
 	import { copy } from '../../../utils';
 
 	import { Copy, SquareCheck } from 'tabler-icons-svelte';
