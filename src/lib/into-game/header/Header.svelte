@@ -1,5 +1,7 @@
 <script>
   import IUS from "../../assets/IUS.svelte";
+
+  import { BrandGithub } from "tabler-icons-svelte";
 </script>
 
 <header>
@@ -8,7 +10,9 @@
       <a href="/" class="icon"><IUS /></a>
     </div>
     <div class="right">
-      <a href="https://hrvs.me" target="_blank">Github</a>
+      <a href="https://hrvs.me" target="_blank">
+        <BrandGithub size="32" />
+      </a>
     </div>
   </div>
 </header>
@@ -34,11 +38,24 @@
   .right {
     display: flex;
     align-items: center;
+    justify-content: center;
     column-gap: 20px;
   }
 
   .icon {
     display: flex;
     align-items: center;
+  }
+
+  .right a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(0 0 0/0.8);
+    transition: all 300ms;
+  }
+
+  .right a:hover{
+    color: black;
   }
 </style>
