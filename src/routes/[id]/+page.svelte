@@ -1,1 +1,6 @@
-Game id
+<script>
+	import Game from '$lib/game/Game.svelte';
+</script>
+
+<Game />
+<!-- hello Vyas!! -->
