@@ -1,6 +1,6 @@
 <script lang="ts">
   import { Share } from "tabler-icons-svelte";
-  import { shareId } from "../../utils";
+  import { shareId } from "../../../utils";
 </script>
 
 <div class="share-wrapper" on:click={shareId}>

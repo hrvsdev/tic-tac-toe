@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import { show } from "../stores/game-store";
   import { showJoinGameInfo } from "./into-game/into-game-store";
-  import { getURLId } from "./utils";
+  import { getURLId } from "../utils";
 
   import Game from "./game/Game.svelte";
   import Into from "./into-game/IntoGame.svelte";

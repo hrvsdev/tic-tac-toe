@@ -4,7 +4,7 @@
   import { copy } from "../../../utils";
 
   import { Copy, SquareCheck } from "tabler-icons-svelte";
-  import { getIdUrl, shareId } from "../../utils";
+  import { getIdUrl, shareId } from "../../../utils";
 
   // Id URL
   const url = getIdUrl();

@@ -2,7 +2,7 @@
   import joinGame from "../../../commands/joinGame";
 
   import { show } from "../../../stores/game-store";
-  import { getURLId } from "../../../lib/utils";
+  import { getURLId } from "../../../utils";
 
   // URL Hash Id
   let id = getURLId() as string;

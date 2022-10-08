@@ -2,18 +2,18 @@
   import { scale } from "svelte/transition";
   import { onDisconnect, onValue, ref } from "firebase/database";
 
-  import { winLogic } from "$lib/utils";
+  import { winLogic } from "../../../utils";
   import { db, updateGame } from "../../../firebase/db";
-  import { id, data, player } from "$app/stores/";
-
-  import type { IGame } from "../../../firebase/types";
-  import type { Moves, Turn } from "../../types";
+  import { id, data, player } from "../../../stores/game-store";
 
   import clickSound from "../../../assets/sounds/click.wav";
   import winSound from "../../../assets/sounds/win.mp3";
-
-  import X from "../../assets/X.svelte";
-  import O from "../../assets/O.svelte";
+  
+  import X from "$lib/assets/X.svelte";
+  import O from "$lib/assets/O.svelte";
+  
+  import type { IGame } from "../../../firebase/types";
+  import type { Moves, Turn } from "../../types";
 
   // Data used locally
   let turn: Turn;

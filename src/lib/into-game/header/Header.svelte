@@ -1,7 +1,6 @@
 <script>
-  import IUS from "../../assets/IUS.svelte";
-
   import { BrandGithub } from "tabler-icons-svelte";
+  import IUS from "../../assets/IUS.svelte";
 </script>
 
 <header>
