@@ -6,7 +6,7 @@
   import Status from "./status/Status.svelte";
 </script>
 
-<div>
+<main>
   <Players />
   <Board />
   <Status />
@@ -14,10 +14,10 @@
     <!-- <Chat /> -->
     <Share />
   </section>
-</div>
+</main>
 
 <style>
-  div {
+  main {
     display: flex;
     align-items: center;
     flex-direction: column;
