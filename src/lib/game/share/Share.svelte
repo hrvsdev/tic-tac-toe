@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { id } from 'src/stores/game-store';
+	import { id } from '../../../stores/game-store';
 	import { Share } from 'tabler-icons-svelte';
 	import { shareId } from '../../../utils';
 
