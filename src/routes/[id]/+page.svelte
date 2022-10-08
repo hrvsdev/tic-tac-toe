@@ -1,10 +1,8 @@
 <script module="context" lang="ts">
-	import type { Load } from '@sveltejs/kit';
-
-	export const load: Load = ({ params }) => {
-	};
-
-	import Home from '$lib/Layout.svelte';
+	import JoinGameInfo from '$lib/into-game/join-game/JoinGameInfo.svelte';
+	import Layout from '$lib/Layout.svelte';
 </script>
 
-<Home />
+<Layout>
+	<JoinGameInfo />
+</Layout>

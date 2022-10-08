@@ -5,7 +5,7 @@
   import joinGame from "../../../commands/joinGame";
 
   // URL Hash Id
-  let id = getURLId() as string;
+  let id = "462292";
 
   // Input element
   let inputEl: HTMLInputElement;

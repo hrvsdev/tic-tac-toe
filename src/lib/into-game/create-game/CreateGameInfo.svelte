@@ -5,10 +5,10 @@
 	import { copy } from '../../../utils';
 
 	import { Copy, SquareCheck } from 'tabler-icons-svelte';
-	import { getIdUrl, shareId } from '../../../utils';
+	import { shareId } from '../../../utils';
 
 	// Id URL
-	const url = getIdUrl();
+	const url = 'T3';
 
 	// Copied state
 	let isCopied = false;
@@ -21,7 +21,7 @@
 	};
 
 	// Showing board action
-	const showBoard = () => goto("/game")
+	const showBoard = () => goto('/game');
 </script>
 
 <div class="card-wrapper">
@@ -32,7 +32,7 @@
 			this ID with your friend to connect to this game.
 		</p>
 		<div class="id-wrapper" on:click={copyId} title="Click to copy ID">
-			<div class="text">{window.location.host}/#<span>{$id}</span></div>
+			<div class="text">t3.hrvs.me/<span>{$id}</span></div>
 			<div class="ibox">
 				<svelte:component this={isCopied ? SquareCheck : Copy} />
 			</div>
