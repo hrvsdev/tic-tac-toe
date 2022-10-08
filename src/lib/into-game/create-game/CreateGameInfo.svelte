@@ -9,13 +9,14 @@
 	import { shareId } from '../../../utils';
 
 	// Id URL
-	const url = $page.url.href + '/' + $id;
+	const url = $page.url.origin + '/' + $id;
 
 	// Copied state
 	let isCopied = false;
 
 	// Copy id button action
 	const copyId = () => {
+		console.log($page)
 		copy(url);
 		isCopied = true;
 		setTimeout(() => (isCopied = false), 3000);

@@ -1,11 +1,8 @@
 <script lang="ts">
 	import { goto } from "$app/navigation";
-  
-  import createGame from "../../../commands/createGame";
 
   // Button click action
   const onClick = () => {
-    createGame()
     goto("/create")
   };
 </script>
