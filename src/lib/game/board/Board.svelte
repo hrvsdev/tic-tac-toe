@@ -80,8 +80,8 @@
 
   // Looping over the all possible combinations
   const loopLogic = () => {
-    // Returning value
-    let returnVal: boolean;
+    // Value to be returned
+    let returnVal = false;
 
     winLogic.forEach(([a, b, c]) => {
       // Getting value of the combination
@@ -91,7 +91,7 @@
       const moveC = moves[c].value;
 
       // Returning if value is empty
-      if (!move) return (returnVal = false);
+      if (!move) return;
 
       // Checking if all values are equal
       if (moveA === moveB && moveA === moveC) {
@@ -111,8 +111,10 @@
 
         // Updating data online
         updateGame($id, { moves, scoreX, scoreO, isWin: true, winner: move });
-        return (returnVal = true);
-      } else return (returnVal = false);
+
+        returnVal = true;
+        return;
+      } else return;
     });
 
     return returnVal;
@@ -121,7 +123,8 @@
   // Draw check function
   const checkDraw = () => {
     if (moves.every((v) => v.value !== "")) {
-      WinSound.play()
+      console.log("draw check");
+      WinSound.play();
       updateGame($id, { isDraw: true });
       return;
     }
