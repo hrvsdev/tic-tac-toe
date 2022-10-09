@@ -6,7 +6,9 @@
 
 <Header />
 <main>
-	<slot name="game" />
+	<!-- {#if $id}
+		<slot name="game" />
+	{/if} -->
 	<section>
 		<slot name="content" />
 	</section>
