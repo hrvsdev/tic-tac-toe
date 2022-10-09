@@ -1,9 +1,11 @@
 <script lang="ts">
+	import AlreadyGame from './into-game/already-game/AlreadyGame.svelte';
 	import Header from './into-game/header/Header.svelte';
 </script>
 
 <main>
 	<Header />
+	<AlreadyGame />
 	<section>
 		<slot />
 	</section>
