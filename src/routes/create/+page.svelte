@@ -4,5 +4,7 @@
 </script>
 
 <Layout>
-	<CreateGameInfo />
+	<svelte:fragment slot="content">
+		<CreateGameInfo />
+	</svelte:fragment>
 </Layout>

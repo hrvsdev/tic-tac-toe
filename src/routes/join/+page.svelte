@@ -1,8 +1,14 @@
-<script>
-	import JoinGameInfo from '$lib/into-game/join-game/JoinGameInfo.svelte';
+<script context="module" lang="ts">
 	import Layout from '$lib/Layout.svelte';
+	import JoinGameInfo from '$lib/into-game/join-game/JoinGameInfo.svelte';
+	import AlreadyGame from '$lib/into-game/already-game/AlreadyGame.svelte';
 </script>
 
 <Layout>
-	<JoinGameInfo />
+	<svelte:fragment slot="game">
+		<AlreadyGame />
+	</svelte:fragment>
+	<svelte:fragment slot="content">
+		<JoinGameInfo />
+	</svelte:fragment>
 </Layout>

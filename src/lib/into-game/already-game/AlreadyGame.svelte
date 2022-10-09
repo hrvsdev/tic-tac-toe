@@ -17,8 +17,9 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		background-color: var(--green-primary);
-		box-shadow: var(--green-dark-light) 0px 4px 14px 0px;
+		background-color: #e1efff;
+		outline: 2px solid #0072f5;
+		box-shadow: #5ea2ef 0px 4px 14px 0px;
 		border-radius: 15px;
 		cursor: pointer;
 		margin-bottom: 30px;
@@ -32,12 +33,12 @@
 	p {
 		font-size: 19px;
 		font-weight: 400;
-		color: rgba(255, 255, 255, 0.9);
+		color: rgba(0, 0, 0, 0.9);
 	}
 
 	p > span {
 		font-weight: 500;
-		color: rgb(255, 255, 255);
+		color: rgb(0, 0, 0);
 	}
 
 	@media (max-width: 600px) {
