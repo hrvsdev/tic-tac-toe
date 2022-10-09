@@ -6,18 +6,7 @@
 	import Header from './into-game/header/Header.svelte';
 
 	import type { IGame } from '../firebase/types';
-
-	// Getting realtime data by firebase snapshot
-	if ($id) {
-		onValue(ref(db, $id), (res) => {
-			if (res.exists()) {
-				$data = res.val() as IGame;
-			} else {
-				$data.host.isDisconnected = true;
-			}
-		});
-	}
-
+	
 	// Removing if host disconnects
 	if ($player === 'X' && $id) onDisconnect(ref(db, $id)).remove();
 
