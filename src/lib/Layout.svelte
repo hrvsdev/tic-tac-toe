@@ -1,25 +1,32 @@
 <script lang="ts">
-	import AlreadyGame from './into-game/already-game/AlreadyGame.svelte';
+	import { id } from '../stores/game-store';
+
 	import Header from './into-game/header/Header.svelte';
 </script>
 
+<Header />
 <main>
-	<Header />
-	<AlreadyGame />
+	<slot name="game" />
 	<section>
-		<slot />
+		<slot name="content" />
 	</section>
 </main>
 
 <style>
+	main {
+		width: 100vw;
+		padding: 0 20px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
 	section {
-		max-width: 870px;
+		max-width: 830px;
 		width: 100%;
-		margin: auto;
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(315px, 1fr));
 		gap: 30px;
-		padding: 0 20px;
 	}
 
 	@media (max-width: 500px) {

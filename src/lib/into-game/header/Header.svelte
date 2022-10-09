@@ -21,7 +21,7 @@
     width: 100%;
     border-bottom: 1px solid rgb(239 239 239);
     padding: 15px 20px;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
   }
 
   .container {

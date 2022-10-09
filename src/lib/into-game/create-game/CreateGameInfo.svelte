@@ -18,7 +18,6 @@
 
 	// Copy id button action
 	const copyId = () => {
-		console.log($page);
 		copy(url);
 		isCopied = true;
 		setTimeout(() => (isCopied = false), 3000);
