@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { id } from '../stores/game-store';
+	import { gameId, id } from '../stores/game-store';
 
 	import Header from './into-game/header/Header.svelte';
 </script>
 
 <Header />
 <main>
-	{#if $id}
+	{#if $gameId && $id === $gameId}
 		<slot name="game" />
 	{/if}
 	<section>
