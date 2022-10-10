@@ -1,17 +1,12 @@
 <script lang="ts">
-	import { goto, afterNavigate, beforeNavigate } from '$app/navigation';
+	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onDisconnect, ref } from 'firebase/database';
 
-	import { db } from '../../../firebase/db';
-	import { gameId, id, player } from '../../../stores/game-store';
+	import { id } from '../../../stores/game-store';
 	import { copy } from '../../../utils';
 
 	import { Copy, SquareCheck } from 'tabler-icons-svelte';
 	import { shareId } from '../../../utils';
-
-	// Setting game id as empty
-	// gameId.set('');
 
 	// Id URL
 	const url = $page.url.origin + '/' + $id;
@@ -31,14 +26,6 @@
 
 	// Share action
 	const share = () => shareId($id, url);
-
-	// Removing if host disconnects
-	if ($player === 'X' && $id) onDisconnect(ref(db, $id)).remove();
-
-	// Setting id as game id
-	// beforeNavigate(() => {
-	// 	gameId.set($id);
-	// });
 </script>
 
 <div class="card-wrapper">
