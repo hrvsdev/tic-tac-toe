@@ -25,12 +25,13 @@ export const data = writable<IGame>({
   // Current game win and draw state
   isWin: false,
   isDraw: false,
-
-  // Current round of the game
 });
 
-// Id of the game
+// Generated id of the current game
 export const id = writable("");
+
+// Id for current ongoing game
+export const gameId = writable("")
 
 // Player status state
 export const player = writable<Turn>("X");
