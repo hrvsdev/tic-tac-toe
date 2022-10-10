@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
-	import { onDestroy } from 'svelte';
-	import { goOffline, onDisconnect, ref } from 'firebase/database';
+	import { onDisconnect, ref } from 'firebase/database';
 
 	import { db } from '../../../firebase/db';
 	import { id, player } from '../../../stores/game-store';
@@ -32,10 +31,6 @@
 
 	// Removing if host disconnects
 	if ($player === 'X' && $id) onDisconnect(ref(db, $id)).remove();
-
-	// onDestroy(() => {
-	// 	goOffline(db);
-	// });
 </script>
 
 <div class="card-wrapper">
