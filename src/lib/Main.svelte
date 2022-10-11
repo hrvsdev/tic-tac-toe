@@ -1,9 +1,7 @@
 <script>
 	import { id } from '../stores/game-store';
 
-	$: {
-		console.log($id);
-	}
+	id.subscribe((v) => console.log(v));
 </script>
 
 <slot />
