@@ -25,22 +25,7 @@
 	// const ClickSound = new Audio(clickSound);
 	// const WinSound = new Audio(winSound);
 
-	// Getting realtime data by firebase snapshot
-	if ($id) {
-		onValue(ref(db, $id), (res) => {
-			if (res.exists()) {
-				$data = res.val() as IGame;
-			} else {
-				$data.host.isDisconnected = true;
-			}
-		});
-	}
 
-	// Removing if host disconnects
-	if ($player === 'X' && $id) onDisconnect(ref(db, $id)).remove();
-
-	// Setting disconnection to true if friend disconnects
-	if ($player === 'O' && $id) onDisconnect(ref(db, $id)).update({ 'friend/isDisconnected': true });
 
 	// Change turn function
 	const changeTurn = () => (turn = $data.turn === 'X' ? 'O' : 'X');
