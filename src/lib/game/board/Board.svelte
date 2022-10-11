@@ -1,9 +1,8 @@
 <script lang="ts">
 	import { scale } from 'svelte/transition';
-	import { onDisconnect, onValue, ref } from 'firebase/database';
 
 	import { winLogic } from '../../../utils';
-	import { db, updateGame } from '../../../firebase/db';
+	import { updateGame } from '../../../firebase/db';
 	import { id, data, player } from '../../../stores/game-store';
 
 	import clickSound from '../../../assets/sounds/click.wav';
@@ -12,7 +11,6 @@
 	import X from '$lib/assets/X.svelte';
 	import O from '$lib/assets/O.svelte';
 
-	import type { IGame } from '../../../firebase/types';
 	import type { Moves, Turn } from '../../types';
 
 	// Data used locally
@@ -24,8 +22,6 @@
 	// Initializing sounds
 	// const ClickSound = new Audio(clickSound);
 	// const WinSound = new Audio(winSound);
-
-
 
 	// Change turn function
 	const changeTurn = () => (turn = $data.turn === 'X' ? 'O' : 'X');
