@@ -33,6 +33,6 @@ npm run build
 - **Primary Language:** TypeScript
 - **Front-end & UI:** Svelte
 - **SSR Framework:** SvelteKit
-- **Datbase:** Firebase Realtime Database
+- **Database:** Firebase Realtime Database
 - **IDE:** VS Code
 - **Hosting:** Vercel
