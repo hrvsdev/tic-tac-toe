@@ -4,11 +4,25 @@
 
 ## Run the App Locally
 
+#### Clone the Repo
 ```
-$ git clone https://github.com/hrvsdev/tic-tac-toe
-$ cd tic-tac-toe
-$ npm install
-$ npm run dev
+git clone https://github.com/hrvsdev/tic-tac-toe
+cd tic-tac-toe
+```
+
+#### Install packages
+```
+npm install
+```
+
+#### Run development server
+```
+npm run dev
+```
+
+#### Build the app
+```
+npm run build
 ```
 
 ## Features
