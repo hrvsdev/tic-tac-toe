@@ -1,7 +1,7 @@
 <script context="module" lang="ts">
 	import AlreadyGame from '$lib/into-game/already-game/AlreadyGame.svelte';
 	import CreateGameInfo from '$lib/into-game/create-game/CreateGameInfo.svelte';
-	import Layout from '$lib/Layout.svelte';
+	import Layout from '$lib/into-game/Layout.svelte';
 </script>
 
 <Layout>

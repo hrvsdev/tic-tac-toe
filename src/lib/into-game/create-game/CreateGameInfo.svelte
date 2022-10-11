@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { onDisconnect, ref } from 'firebase/database';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
-	import { id } from '../../../stores/game-store';
+	import { db } from '../../../firebase/db';
+	import { id, player } from '../../../stores/game-store';
 	import { copy } from '../../../utils';
 
 	import { Copy, SquareCheck } from 'tabler-icons-svelte';
@@ -26,6 +28,9 @@
 
 	// Share action
 	const share = () => shareId($id, url);
+	
+	// Removing if host disconnects
+	if ($player === 'X' && $id) onDisconnect(ref(db, $id)).remove();
 </script>
 
 <div class="card-wrapper">

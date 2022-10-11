@@ -3,15 +3,18 @@
 	import CreateGame from '$lib/into-game/create-game/CreateGame.svelte';
 	import JoinGame from '$lib/into-game/join-game/JoinGame.svelte';
 
-	import Layout from '$lib/Layout.svelte';
+	import Main from '$lib/Main.svelte';
+	import Layout from '$lib/into-game/Layout.svelte';
 </script>
 
-<Layout>
-	<svelte:fragment slot="game">
-		<AlreadyGame />
-	</svelte:fragment>
-	<svelte:fragment slot="content">
-		<CreateGame />
-		<JoinGame />
-	</svelte:fragment>
-</Layout>
+<Main>
+	<Layout>
+		<svelte:fragment slot="game">
+			<AlreadyGame />
+		</svelte:fragment>
+		<svelte:fragment slot="content">
+			<CreateGame />
+			<JoinGame />
+		</svelte:fragment>
+	</Layout>
+</Main>

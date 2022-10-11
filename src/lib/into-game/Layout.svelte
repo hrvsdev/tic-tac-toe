@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { gameId, id } from '../stores/game-store';
+	import { gameId, id } from '../../stores/game-store';
 
-	import Header from './into-game/header/Header.svelte';
+	import Header from './header/Header.svelte';
 </script>
 
 <Header />
