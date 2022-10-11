@@ -1,10 +1,10 @@
 <script lang="ts">
+	import Main from '$lib/Main.svelte';
+	import Layout from '$lib/into-game/Layout.svelte';
+
 	import AlreadyGame from '$lib/into-game/already-game/AlreadyGame.svelte';
 	import CreateGame from '$lib/into-game/create-game/CreateGame.svelte';
 	import JoinGame from '$lib/into-game/join-game/JoinGame.svelte';
-
-	import Main from '$lib/Main.svelte';
-	import Layout from '$lib/into-game/Layout.svelte';
 </script>
 
 <Main>
