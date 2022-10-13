@@ -11,4 +11,9 @@
 		height: 100%;
 		background: rgb(0 0 0/0.2);
 	}
+
+	.modal {
+		border-radius: 10px;
+		background: white;
+	}
 </style>
