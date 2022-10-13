@@ -1,6 +1,6 @@
 # Tic Tac Toe - T3
 
-[Tic Tic Toe](https://t3.hrvs.me) is a mini multiplayer game for two players.
+[Tic Tic Toe](https://t3.hrvs.me) is a mini multiplayer game for two players. It can be played even locally.
 
 ## Run Locally
 
