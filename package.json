@@ -1,12 +1,12 @@
 {
 	"name": "tic-tac-toe",
-	"description": "A multiplayer Tic Tac Toe game made with Svelte and Firebase.",
+	"description": "A multiplayer Tic Tac Toe mini game for two players made with Svelte and Firebase.",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
-		"preview": "vite preview",
+		"preview": "vite preview"
 	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "next",
