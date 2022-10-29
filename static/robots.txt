@@ -1,2 +1,6 @@
 User-agent: *
 Allow: /
+
+Host: https://t3.hrvs.me
+
+Sitemap: https://t3.hrvs.me/sitemap.xml
