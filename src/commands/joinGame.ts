@@ -17,12 +17,12 @@ const joinGame = async (hashId: string) => {
 		const snap = await get(ref(db, hashId));
 
 		// Check if game exists
-		if (snap.exists() === false) return { success: false, msg: 'not-found' };
+		if (!snap.exists()) return { success: false, msg: 'not-found' };
 
 		// Getting data from snap
 		const data = snap.val() as IGame;
 
-		// Checking if host is connected and friend is disconnceted
+		// Checking if host is connected and friend is disconnected
 		if (data.host.isDisconnected) return { success: false, msg: 'host-dis' };
 		if (!data.friend.isDisconnected) return { success: false, msg: 'already-conn' };
 
