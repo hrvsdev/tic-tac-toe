@@ -1,4 +1,5 @@
-<script lang="ts">
+<script lang='ts'>
+	import { onMount } from 'svelte';
 	import { scale } from 'svelte/transition';
 
 	import { winLogic } from '../../../utils';
@@ -11,7 +12,7 @@
 	import X from '$lib/assets/X.svelte';
 	import O from '$lib/assets/O.svelte';
 
-	import type { Moves, Turn } from '../../types';
+	import type { Moves, Turn } from '$lib/types';
 
 	// Data used locally
 	let turn: Turn;
@@ -20,15 +21,15 @@
 	let scoreO: number;
 
 	// Initializing sounds
-	// const ClickSound = new Audio(clickSound);
-	// const WinSound = new Audio(winSound);
+	let ClickSound: HTMLAudioElement;
+	let WinSound: HTMLAudioElement;
 
 	// Change turn function
 	const changeTurn = () => (turn = $data.turn === 'X' ? 'O' : 'X');
 
 	// Cell click action
 	const onClick = (i: number) => {
-		// Disabling move if player is disconncted'
+		// Disabling move if player is disconnected
 		if ($data.host.isDisconnected || $data.friend.isDisconnected) return;
 
 		// Checking if previous game is win or draw and ending it
@@ -41,7 +42,7 @@
 		if ($data.moves[i].value) return;
 
 		// Making cell value equal to the current turn
-		// ClickSound.play();
+		ClickSound.play();
 		moves = $data.moves;
 		moves[i] = { value: $data.turn, state: '' };
 
@@ -76,7 +77,7 @@
 			// Checking if all values are equal
 			if (moveA === moveB && moveA === moveC) {
 				// Playing win sound
-				// WinSound.play();
+				WinSound.play();
 
 				// Updating score
 				scoreX = $data.scoreX;
@@ -103,7 +104,7 @@
 	// Draw check function
 	const checkDraw = () => {
 		if (moves.every((v) => v.value !== '')) {
-			// WinSound.play();
+			WinSound.play();
 			updateGame($id, { isDraw: true });
 			return;
 		}
@@ -126,14 +127,21 @@
 		in: { duration: 100, opacity: 0.4 },
 		out: { duration: 0 }
 	};
+
+	// On mount
+	onMount(() => {
+		ClickSound = new Audio(clickSound);
+		WinSound = new Audio(winSound);
+	});
+
 </script>
 
 <section>
-	<div class="board-bg" />
-	<div class="board">
+	<div class='board-bg'></div>
+	<div class='board'>
 		{#each $data.moves as { value, state }, i}
 			<div
-				class="cell"
+				class='cell'
 				on:click={() => onClick(i)}
 				class:lose={state === 'L'}
 				class:win={state === 'W'}
@@ -150,64 +158,64 @@
 </section>
 
 <style>
-	section {
-		max-width: 430px;
-		width: 100%;
-		aspect-ratio: 1/1;
-		position: relative;
-	}
+    section {
+        max-width: 430px;
+        width: 100%;
+        aspect-ratio: 1/1;
+        position: relative;
+    }
 
-	.board {
-		display: grid;
-		grid-template-columns: repeat(3, 1fr);
-		grid-template-rows: repeat(3, 1fr);
-		grid-gap: 4px;
-		width: 100%;
-		height: 100%;
-		margin-bottom: 30px;
-		background-color: black;
-		border: 4px solid;
-	}
+    .board {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 4px;
+        width: 100%;
+        height: 100%;
+        margin-bottom: 30px;
+        background-color: black;
+        border: 4px solid;
+    }
 
-	.board-bg {
-		position: absolute;
-		z-index: -1;
-		top: 4px;
-		left: 4px;
-		width: 100%;
-		height: 100%;
-		background: black;
-	}
+    .board-bg {
+        position: absolute;
+        z-index: -1;
+        top: 4px;
+        left: 4px;
+        width: 100%;
+        height: 100%;
+        background: black;
+    }
 
-	.cell {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background: white;
-		cursor: pointer;
-	}
+    .cell {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: white;
+        cursor: pointer;
+    }
 
-	span {
-		width: calc(100% - 2px);
-		height: calc(100% - 2px);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		font-size: 100px;
-	}
+    span {
+        width: calc(100% - 2px);
+        height: calc(100% - 2px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 100px;
+    }
 
-	.win > span {
-		filter: brightness(0.8);
-	}
+    .win > span {
+        filter: brightness(0.8);
+    }
 
-	.lose > span,
-	.draw > span {
-		opacity: 0.5;
-	}
+    .lose > span,
+    .draw > span {
+        opacity: 0.5;
+    }
 
-	@media (max-width: 600px) {
-		section {
-			max-width: 380px;
-		}
-	}
+    @media (max-width: 600px) {
+        section {
+            max-width: 380px;
+        }
+    }
 </style>

@@ -1,8 +1,8 @@
-<script lang="ts">
+<script lang='ts'>
 	import { onDisconnect, onValue, ref } from 'firebase/database';
 	import { db } from '../firebase/db';
 	import { data, id, player } from '../stores/game-store';
-	
+
 	import type { IGame } from '../firebase/types';
 
 	// Getting realtime data by firebase snapshot
