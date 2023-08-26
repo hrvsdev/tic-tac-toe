@@ -2,7 +2,7 @@ import { get, ref } from 'firebase/database';
 
 import { player, id } from '../stores/game-store';
 import { db, updateGame } from '../firebase/db';
-import type { IGame } from '../firebase/types';
+import type { Game } from '../firebase/types';
 
 // Join a game function
 const joinGame = async (hashId: string) => {
@@ -20,7 +20,7 @@ const joinGame = async (hashId: string) => {
 		if (!snap.exists()) return { success: false, msg: 'not-found' };
 
 		// Getting data from snap
-		const data = snap.val() as IGame;
+		const data = snap.val() as Game;
 
 		// Checking if host is connected and friend is disconnected
 		if (data.host.isDisconnected) return { success: false, msg: 'host-dis' };

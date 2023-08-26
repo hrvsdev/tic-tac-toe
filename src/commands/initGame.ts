@@ -1,8 +1,3 @@
-import { get } from 'svelte/store';
-import { ref, remove } from 'firebase/database';
-import { db } from '../firebase/db';
-import { data, id } from '../stores/game-store';
-
 const initGame = () => {
 	// if (get(id)) {
 	// 	remove(ref(db, get(id)));

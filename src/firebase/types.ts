@@ -1,6 +1,6 @@
 import type { Moves, Turn } from "$lib/types";
 
-export interface IGame {
+export interface Game {
   scoreX: number;
   scoreO: number;
   isWin: boolean;
@@ -20,7 +20,7 @@ export interface IGame {
   };
 }
 
-export interface IUpdateGame {
+export interface UpdateGame {
   scoreX?: number;
   scoreO?: number;
   turn?: Turn;

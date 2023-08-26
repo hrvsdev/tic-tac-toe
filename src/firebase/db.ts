@@ -5,13 +5,13 @@ import { genId } from "../utils";
 
 import base from "./config";
 
-import type { IGame, IUpdateGame } from "./types";
+import type { Game, UpdateGame } from "./types";
 
 // Realtime database ref
 const db = getDatabase(base);
 
 // Creating a new game
-const newGame = (data: IGame) => {
+const newGame = (data: Game) => {
   try {
     const id = genId();
     set(ref(db, id), data);
@@ -23,7 +23,7 @@ const newGame = (data: IGame) => {
 };
 
 // Updating game data
-const updateGame = (id: string, data: IUpdateGame) => {
+const updateGame = (id: string, data: UpdateGame) => {
   try {
     update(ref(db, id), data);
     return { success: true };
