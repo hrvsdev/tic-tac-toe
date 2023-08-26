@@ -32,7 +32,7 @@
 	<h3>Share your Game ID</h3>
 	<div class="card-body">
 		<p>
-			<mark on:click={share}>Share</mark>
+			<mark on:click={share} on:keyup={share}>Share</mark>
 			this ID with your friend to connect to this game.
 		</p>
 		<div class="id-wrapper" on:click={copyId} title="Click to copy ID">

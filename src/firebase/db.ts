@@ -11,10 +11,10 @@ import type { Game, UpdateGame } from "./types";
 const db = getDatabase(base);
 
 // Creating a new game
-const newGame = (data: Game) => {
+const newGame = async (data: Game) => {
   try {
     const id = genId();
-    set(ref(db, id), data);
+    await set(ref(db, id), data);
     return { success: true, id };
   } catch (error) {
     console.log(error);
@@ -23,9 +23,9 @@ const newGame = (data: Game) => {
 };
 
 // Updating game data
-const updateGame = (id: string, data: UpdateGame) => {
+const updateGame = async (id: string, data: UpdateGame) => {
   try {
-    update(ref(db, id), data);
+    await update(ref(db, id), data);
     return { success: true };
   } catch (error) {
     console.log(error);

@@ -27,7 +27,7 @@ const joinGame = async (hashId: string) => {
 		if (!data.friend.isDisconnected) return { success: false, msg: 'already-conn' };
 
 		//  Updating db with friend as online
-		updateGame(hashId, { friend: { isDisconnected: false } });
+		await updateGame(hashId, { friend: { isDisconnected: false } });
 
 		// Setting player
 		player.set('O');

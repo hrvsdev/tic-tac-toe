@@ -26,7 +26,7 @@
 		const res = await joinGame(id.toString());
 
 		if (res.success) {
-			goto('/game');
+			await goto('/game');
 			loading = false;
 		} else {
 			error = true;

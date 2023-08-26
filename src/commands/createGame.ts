@@ -3,7 +3,7 @@ import { data, player, id } from '../stores/game-store';
 import { newGame } from '../firebase/db';
 
 // Create a new game function
-const createGame = () => {
+const createGame = async () => {
 	// Making host connected
 	data.update((d) => {
 		d.host.isDisconnected = false;
@@ -14,7 +14,7 @@ const createGame = () => {
 	player.set('X');
 
 	// Creating a new game and getting its uid
-	const res = newGame(get(data));
+	const res = await newGame(get(data));
 	if (res.success && res.id) id.set(res.id);
 };
 
