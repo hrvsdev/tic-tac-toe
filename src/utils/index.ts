@@ -1,6 +1,7 @@
 import { customAlphabet } from 'nanoid';
 import copyToClipboard from 'copy-to-clipboard';
 
+// All win combinations
 export const winLogic = [
 	[0, 1, 2],
 	[3, 4, 5],
